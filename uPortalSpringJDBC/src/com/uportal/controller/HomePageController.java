@@ -15,52 +15,59 @@ import com.uportal.services.UserService;
 @Controller
 public class HomePageController {
 
- @Autowired
- UserService userService;
+	boolean initDB = false;
+	
+	@Autowired
+	UserService userService;
 
- @RequestMapping("/register")
- public ModelAndView registerUser(@ModelAttribute User user) {
-	 Map<String, List<User>> map = new HashMap<String, List<User>>();
-	 return new ModelAndView("register", "map", map);
- }
+	@RequestMapping("/register")
+	public ModelAndView registerUser(@ModelAttribute User user) {
+		Map<String, List<User>> map = new HashMap<String, List<User>>();
+		return new ModelAndView("register", "map", map);
+	}
 
- @RequestMapping("/insert")
- public String insertData(@ModelAttribute User user) {
-  if (user != null)
-   userService.insertData(user);
-  return "redirect:/getList";
- }
+	@RequestMapping("/insert")
+	public String insertData(@ModelAttribute User user) {
+		if (!initDB)
+		{
+			userService.initDB();
+			initDB = true;
+		}
+		if (user != null)
+			userService.insertData(user);
+		return "redirect:/getList";
+	}
 
- @RequestMapping("/getList")
- public ModelAndView getUserLIst() {
-  List<User> userList = userService.getUserList();
-  return new ModelAndView("userList", "userList", userList);
- }
+	@RequestMapping("/getList")
+	public ModelAndView getUserLIst() {
+		List<User> userList = userService.getUserList();
+		return new ModelAndView("userList", "userList", userList);
+	}
 
- @RequestMapping("/edit")
- public ModelAndView editUser(@RequestParam String userid,
-   @ModelAttribute User user) {
+	@RequestMapping("/edit")
+	public ModelAndView editUser(@RequestParam String userid,
+			@ModelAttribute User user) {
 
-  user = userService.getUser(userid);
+		user = userService.getUser(userid);
 
-  Map<String, Object> map = new HashMap<String, Object>();
-  map.put("user", user);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("user", user);
 
-  return new ModelAndView("edit", "map", map);
+		return new ModelAndView("edit", "map", map);
 
- }
+	}
 
- @RequestMapping("/update")
- public String updateUser(@ModelAttribute User user) {
-  userService.updateData(user);
-  return "redirect:/getList";
+	@RequestMapping("/update")
+	public String updateUser(@ModelAttribute User user) {
+		userService.updateData(user);
+		return "redirect:/getList";
 
- }
+	}
 
- @RequestMapping("/delete")
- public String deleteUser(@RequestParam String userid) {
-  System.out.println("userid = " + userid);
-  userService.deleteData(userid);
-  return "redirect:/getList";
- }
+	@RequestMapping("/delete")
+	public String deleteUser(@RequestParam String userid) {
+		System.out.println("userid = " + userid);
+		userService.deleteData(userid);
+		return "redirect:/getList";
+	}
 }
