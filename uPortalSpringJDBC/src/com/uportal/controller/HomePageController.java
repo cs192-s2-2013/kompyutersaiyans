@@ -25,7 +25,7 @@ public class HomePageController {
  }
 
  @RequestMapping("/insert")
- public String inserData(@ModelAttribute User user) {
+ public String insertData(@ModelAttribute User user) {
   if (user != null)
    userService.insertData(user);
   return "redirect:/getList";

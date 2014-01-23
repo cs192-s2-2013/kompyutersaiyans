@@ -11,8 +11,9 @@ CREATE table 'user' (
 	primary key (userid)
 )
 
-CREATE user 'java'@'localhost' identified by 'eclipseisabitch';
-grant all privileges on userdb to 'java'@'localhost';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'root' WITH GRANT OPTION;
+CREATE user 'java'@'localhost' identified by 'root';
+grant all privileges on *.* to 'java'@'localhost';
 	
 -- Dumping data for table userdb.user: ~14 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
