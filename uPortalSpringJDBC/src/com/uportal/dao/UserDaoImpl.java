@@ -41,7 +41,7 @@ public class UserDaoImpl implements UserDao {
 		
 		if(!isDBinit)//initialize db; create table; create user
 		{
-			try 
+			try
 			{
 				System.out.println("DB init");
 				Connection cxn = DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","");
