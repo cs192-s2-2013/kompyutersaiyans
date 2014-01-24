@@ -9,5 +9,4 @@ public interface UserDao {
 	public void updateData(User user);
 	public void deleteData(String id);
 	public User getUser(String username);
-	public void initDB();
 }

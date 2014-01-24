@@ -4,10 +4,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;  
   
 
+
 import org.springframework.validation.Errors;  
 import org.springframework.validation.ValidationUtils;  
 import org.springframework.validation.Validator;  
   
+
 
 import com.uportal.domain.User;  
   
@@ -100,8 +102,8 @@ public class FormValidation implements Validator {
  }
 
 @Override
-public boolean supports(Class arg0) {
+public boolean supports(Class<?> arg0) {
 	// TODO Auto-generated method stub
 	return false;
-}  
+}
 }  

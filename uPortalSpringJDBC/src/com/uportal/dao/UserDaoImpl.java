@@ -1,7 +1,6 @@
 package com.uportal.dao;
 
 import java.util.ArrayList;
-import java.sql.*;
 import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,25 +12,6 @@ public class UserDaoImpl implements UserDao {
 
 	@Autowired
 	DataSource dataSource;
-	
-	public void initDB()
-	{
-		try
-		{
-			Connection cxn = DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","");
-			Statement st = cxn.createStatement();
-			System.out.println("connection established");
-			st.execute("CREATE DATABASE IF NOT EXISTS userdb;");
-			st.execute("USE userdb;");
-			st.execute("CREATE user 'java'@'localhost' identified by 'root';");
-			st.execute("grant all privileges on userdb to 'java'@'localhost' identified by 'root' with grant option;");
-		}
-		catch(Exception e)
-		{
-			System.out.println("ERROR");
-			e.printStackTrace();
-		}
-	}
 
 	public void insertData(User user) {
 
