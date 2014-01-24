@@ -44,6 +44,7 @@
 	
 	  <div>
 	   <form:form method="post" action="/submit" modelAttribute="user" commandName="user">
+		
 	    <table>
 	     <tr>
 	      <td>First Name :</td>
@@ -58,12 +59,16 @@
 	     <tr>
 	      <td>Email :</td>
 	      <td><form:input path="email" /></td>
-	      <td style="color: red; font-style: italic;"><form:errors path="email" /></td>
+	      <td style="color: red; font-style: italic;">
+	      	<form:errors path="email" /><c:if test="${msg_failed == 2}">Email is already taken.</c:if>
+	      </td>
 	     </tr>
 	     <tr>
 	      <td>Username :</td>
 	     <td><form:input path="username" /></td>
-	     <td style="color: red; font-style: italic;"><form:errors path="username" /></td>
+	     <td style="color: red; font-style: italic;">
+	      	<form:errors path="username" /><c:if test="${msg_failed == 1}">Username is already taken.</c:if>
+	      </td>
 	     </tr>
 	     <tr>
 	      <td>Password :</td>
