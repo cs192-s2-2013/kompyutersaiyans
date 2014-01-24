@@ -12,7 +12,7 @@ CREATE table 'user' (
 )
 
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'root' WITH GRANT OPTION;
-CREATE user 'java'@'localhost' identified by 'root';
+CREATE user 'java'@'localhost' identified by 'eclipseisabitch';
 grant all privileges on *.* to 'java'@'localhost';
 	
 -- Dumping data for table userdb.user: ~14 rows (approximately)

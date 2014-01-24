@@ -1,6 +1,7 @@
 package com.uportal.dao;
 
 import java.util.ArrayList;
+import java.sql.*;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -10,11 +11,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import sun.security.timestamp.TSRequest;
+
 import com.uportal.domain.User;
 import com.uportal.jdbc.UserRowMapper;
 
 public class UserDaoImpl implements UserDao {
 
+	private boolean isDBinit = false;
+	
 	@Autowired
 	DataSource dataSource;
 
@@ -33,6 +38,31 @@ public class UserDaoImpl implements UserDao {
 	}*/
 	
 	public int insertData(User user) {
+		
+		if(!isDBinit)//initialize db; create table; create user
+		{
+			try
+			{
+				System.out.println("DB init");
+				Connection cxn = DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","");
+				Statement st = cxn.createStatement();
+				System.out.println("connection established");
+				st.execute("CREATE DATABASE IF NOT EXISTS userdb;");
+				st.execute("USE userdb;");
+				st.execute("CREATE table if not exists user (	    userid int not null auto_increment,    firstname varchar(255) DEFAULT null,    lastname varchar(255) DEFAULT null,    email varchar(255) DEFAULT null,    username varchar(255) DEFAULT null,    password varchar(255) DEFAULT null,    primary key (userid));");
+				st.execute("CREATE user 'java'@'localhost' identified by 'eclipseisabitch';");
+				st.execute("grant all privileges on userdb to 'java'@'localhost' with grant option;");
+				st.execute("INSERT INTO `user` (`firstname`, `lastname`, `email`, `username`, `password`) VALUES ('Sherlyne', 'Francia', 'sherlyne@francia.com', 'sherlyne', 'francia'),	('Denise', 'Francisco', 'denise@francisco.com', 'denise', 'francisco'),	('Erwin', 'Sanchez', 'erwin@sanchez.com', 'erwin', 'sanchex'),	('Frank', 'Rayo', 'frank@rayo.com', 'frank', 'rayo'),	('Mark', 'Navata', 'mark@navata.com', 'mark', 'navata');");
+				cxn.close();
+				System.out.println("OK");
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			isDBinit = true;
+		}
+		
 		boolean t = true;
 		String sql = "INSERT INTO user "
 				+ "(firstname, lastname, email, username, password) VALUES (?,?,?,?,?);";
