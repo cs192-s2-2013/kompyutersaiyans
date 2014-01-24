@@ -46,7 +46,7 @@
 	  </div>
 	  
 	  <div>
-	  	<a href="http://localhost:8080/uPortalSpringJDBC/register">Register</a>
+	  	<a href="register">Register</a>
 	  	<a href="#">Sign in</a>
 	  </div>
 	  
