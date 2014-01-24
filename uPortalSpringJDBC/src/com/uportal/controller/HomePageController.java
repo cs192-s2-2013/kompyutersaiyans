@@ -9,8 +9,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import org.springframework.ui.Model;  
+import org.springframework.ui.ModelMap;  
+import org.springframework.validation.BindingResult; 
+
 import com.uportal.domain.User;
 import com.uportal.services.UserService;
+import com.uportal.validator.FormValidation;
 
 @Controller
 public class HomePageController {
@@ -31,6 +37,22 @@ public class HomePageController {
   return "redirect:/getList";
  }
 
+ @RequestMapping("/submit")  
+ public String saveForm(User user, BindingResult result, ModelMap model) {  
+  FormValidation formValidation = new FormValidation();  
+  
+  formValidation.validate(user, result);  
+  
+  if (result.hasErrors()) {    
+   return "register";  
+  }  
+  
+  user = (User) result.getModel().get("user");  
+  userService.insertData(user);
+  System.out.println(user.getUserId());  
+  return "redirect:/getList";  
+ }  
+ 
  @RequestMapping("/getList")
  public ModelAndView getUserLIst() {
   List<User> userList = userService.getUserList();

@@ -26,6 +26,21 @@ public class UserDaoImpl implements UserDao {
 						user.getEmail(), user.getUsername(), user.getPassword() });
 
 	}
+	
+	/*public boolean insertData(User user) {
+		boolean t = true;
+		String sql = "INSERT INTO user "
+				+ "(firstname, lastname, email, username, password) VALUES (?,?,?,?,?);";
+
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		final String check = "select count(*) from user where username = ?;";
+		int result= jdbcTemplate.queryForInt(check, new Object[]{String.valueOf(user.getUsername())});
+		jdbcTemplate.update(
+				sql,
+				new Object[] { user.getFirstName(), user.getLastName(),
+						user.getEmail(), user.getUsername(), user.getPassword() });
+
+	}*/
 
 	public List<User> getUserList() {
 		ArrayList<User> userList = new ArrayList<User>();

@@ -43,27 +43,37 @@
 	
 	
 	  <div>
-	   <form:form method="post" action="/insert" modelAttribute="user" >
+	   <form:form method="post" action="/submit" modelAttribute="user" commandName="user">
 	    <table>
 	     <tr>
 	      <td>First Name :</td>
 	      <td><form:input path="firstName" /></td>
+	      <td style="color: red; font-style: italic;"><form:errors path="firstName" /></td>
 	     </tr>
 	     <tr>
 	      <td>Last Name :</td>
 	      <td><form:input path="lastName"/></td>
+	      <td style="color: red; font-style: italic;"><form:errors path="lastName" /></td>
 	     </tr>
 	     <tr>
 	      <td>Email :</td>
 	      <td><form:input path="email" /></td>
+	      <td style="color: red; font-style: italic;"><form:errors path="email" /></td>
 	     </tr>
 	     <tr>
 	      <td>Username :</td>
 	     <td><form:input path="username" /></td>
+	     <td style="color: red; font-style: italic;"><form:errors path="username" /></td>
 	     </tr>
 	     <tr>
 	      <td>Password :</td>
 	     <td><form:password path="password" /></td>
+	     <td style="color: red; font-style: italic;"><form:errors path="password" /></td>
+	     </tr>
+	     <tr>
+	      <td>Confirm Password :</td>
+	     <td><form:password path="confirmPassword" /></td>
+	     <td style="color: red; font-style: italic;"><form:errors path="confirmPassword" /></td>
 	     </tr>
 	     <tr>
 	      <td> </td>

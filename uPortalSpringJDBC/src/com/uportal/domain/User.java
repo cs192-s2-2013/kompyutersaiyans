@@ -8,6 +8,7 @@ public class User {
     private String email;  
     private String username;  
     private String password;
+    private String confirmPassword;
      
     public int getUserId() {  
      return userid;  
@@ -51,10 +52,18 @@ public class User {
     
     public String getPassword() {  
         return password;  
-       }  
+    }  
         
-       public void setPassword(String password) {  
-        this.password = password;  
+	   public void setPassword(String password) {  
+	    this.password = password;  
+	   }  
+	   
+	   public String getConfirmPassword() {  
+	        return confirmPassword;  
+	       }  
+	        
+       public void setConfirmPassword(String confirmPassword) {  
+        this.confirmPassword = confirmPassword;  
        }  
    }  
 
