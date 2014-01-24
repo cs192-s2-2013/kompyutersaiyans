@@ -32,6 +32,13 @@ public class HomePageController {
 	 return "home";
  }
  
+ @RequestMapping("/signin")
+ public ModelAndView signIn(@ModelAttribute User user)
+ {
+	 Map<String, List<User>> map = new HashMap<String, List<User>>();
+	 return new ModelAndView("signin", "map", map);
+ }
+ 
  @RequestMapping("/register")
  public ModelAndView registerUser(@ModelAttribute User user) {
 	 Map<String, List<User>> map = new HashMap<String, List<User>>();

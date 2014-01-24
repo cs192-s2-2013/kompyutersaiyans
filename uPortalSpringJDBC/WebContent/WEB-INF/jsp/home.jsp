@@ -47,7 +47,7 @@
 	  
 	  <div>
 	  	<a href="register">Register</a>
-	  	<a href="#">Sign in</a>
+	  	<a href="signin">Sign in</a>
 	  </div>
 	  
 	 </center>
