@@ -3,8 +3,12 @@ package com.uportal.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -91,5 +95,12 @@ public class HomePageController {
   System.out.println("userid = " + userid);
   userService.deleteData(userid);
   return "redirect:/getList";
+ }
+ 
+ 
+ 
+ @ExceptionHandler(Exception.class)
+ public String handleError(HttpServletRequest req, Exception exception) {
+   return "redirect:/home";
  }
 }
