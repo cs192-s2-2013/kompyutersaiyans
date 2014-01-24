@@ -37,31 +37,35 @@ public class UserDaoImpl implements UserDao {
 
 	}*/
 	
+	public void initDB()
+	{
+		try
+		{
+			System.out.println("DB init");
+			Connection cxn = DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","");
+			Statement st = cxn.createStatement();
+			System.out.println("connection established");
+			st.execute("CREATE DATABASE IF NOT EXISTS userdb;");
+			st.execute("USE userdb;");
+			st.execute("CREATE table if not exists user (	    userid int not null auto_increment,    firstname varchar(255) DEFAULT null,    lastname varchar(255) DEFAULT null,    email varchar(255) DEFAULT null,    username varchar(255) DEFAULT null,    password varchar(255) DEFAULT null,    primary key (userid));");
+			st.execute("flush privileges;");
+			st.execute("CREATE user 'java'@'localhost' identified by 'eclipseisabitch';");
+			st.execute("grant all privileges on *.* to 'java'@'localhost' with grant option;");
+			st.execute("INSERT INTO `user` (`firstname`, `lastname`, `email`, `username`, `password`) VALUES ('Sherlyne', 'Francia', 'sherlyne@francia.com', 'sherlyne', 'francia'),	('Denise', 'Francisco', 'denise@francisco.com', 'denise', 'francisco'),	('Erwin', 'Sanchez', 'erwin@sanchez.com', 'erwin', 'sanchex'),	('Frank', 'Rayo', 'frank@rayo.com', 'frank', 'rayo'),	('Mark', 'Navata', 'mark@navata.com', 'mark', 'navata');");
+			cxn.close();
+			System.out.println("OK");
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		isDBinit = true;
+	}
+	
 	public int insertData(User user) {
 		
-		if(!isDBinit)//initialize db; create table; create user
-		{
-			try
-			{
-				System.out.println("DB init");
-				Connection cxn = DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","");
-				Statement st = cxn.createStatement();
-				System.out.println("connection established");
-				st.execute("CREATE DATABASE IF NOT EXISTS userdb;");
-				st.execute("USE userdb;");
-				st.execute("CREATE table if not exists user (	    userid int not null auto_increment,    firstname varchar(255) DEFAULT null,    lastname varchar(255) DEFAULT null,    email varchar(255) DEFAULT null,    username varchar(255) DEFAULT null,    password varchar(255) DEFAULT null,    primary key (userid));");
-				st.execute("CREATE user 'java'@'localhost' identified by 'eclipseisabitch';");
-				st.execute("grant all privileges on userdb to 'java'@'localhost' with grant option;");
-				st.execute("INSERT INTO `user` (`firstname`, `lastname`, `email`, `username`, `password`) VALUES ('Sherlyne', 'Francia', 'sherlyne@francia.com', 'sherlyne', 'francia'),	('Denise', 'Francisco', 'denise@francisco.com', 'denise', 'francisco'),	('Erwin', 'Sanchez', 'erwin@sanchez.com', 'erwin', 'sanchex'),	('Frank', 'Rayo', 'frank@rayo.com', 'frank', 'rayo'),	('Mark', 'Navata', 'mark@navata.com', 'mark', 'navata');");
-				cxn.close();
-				System.out.println("OK");
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-			isDBinit = true;
-		}
+		if(!isDBinit)
+			initDB();
 		
 		boolean t = true;
 		String sql = "INSERT INTO user "
@@ -94,6 +98,8 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public List<User> getUserList() {
+		if(!isDBinit)
+			initDB();
 		ArrayList<User> userList = new ArrayList<User>();
 		String sql = "select * from user";
 
@@ -104,6 +110,8 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void deleteData(String userid) {
+		if(!isDBinit)
+			initDB();
 		String sql = "delete from user where userid=" + userid;
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		jdbcTemplate.update(sql);
