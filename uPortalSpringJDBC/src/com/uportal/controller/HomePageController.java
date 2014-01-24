@@ -22,17 +22,16 @@ public class HomePageController {
  @Autowired
  UserService userService;
 
+ 	
+ @RequestMapping("/home")
+ public String homePage(){
+	 return "home";
+ }
+ 
  @RequestMapping("/register")
  public ModelAndView registerUser(@ModelAttribute User user) {
 	 Map<String, List<User>> map = new HashMap<String, List<User>>();
 	 return new ModelAndView("register", "map", map);
- }
-
- @RequestMapping("/insert")
- public String inserData(@ModelAttribute User user) {
-  if (user != null)
-   userService.insertData(user);
-  return "redirect:/getList";
  }
 
  @RequestMapping("/submit")  
@@ -53,8 +52,9 @@ public class HomePageController {
 			 model.addAttribute("msg_failed", "2");
 			 return "register";
 		 }else{
-		  System.out.println(user.getUserId());  
-		  return "redirect:/getList"; 
+		  System.out.println(user.getUserId()); 
+			 model.addAttribute("msg_success", "true");
+			 return "home";
 		 }
 	  }
 	   

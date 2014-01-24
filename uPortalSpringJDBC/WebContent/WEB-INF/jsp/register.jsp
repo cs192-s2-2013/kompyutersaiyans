@@ -41,7 +41,10 @@
 	 
 	 <b>uPortal | Registration Form </b> 
 	
-	
+	  <div>
+	  
+	  </div>
+	  	<c:if test="${msg_success == true}">Sign up success. You can now log in.</c:if>
 	  <div>
 	   <form:form method="post" action="/submit" modelAttribute="user" commandName="user">
 		
