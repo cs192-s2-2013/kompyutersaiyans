@@ -39,6 +39,27 @@ public class HomePageController {
 	 return new ModelAndView("signin", "map", map);
  }
  
+  @RequestMapping("/login")
+ public String logIn(@ModelAttribute User user)
+ {
+	 System.out.println("LOGIN");
+	 System.out.println(user.getUsername());
+	 List<User> userList = userService.getUserList();
+	 
+	 for(int x=0;x<userList.size();x++)
+	 {
+		 if(userList.get(x).getUsername().equals(user.getUsername()))
+		 {
+			 PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			 if(passwordEncoder.matches(user.getPassword(), userList.get(x).getPassword()))
+				 return "redirect:/welcome";
+			 else
+				 return "redirect:/signin";
+		 }
+	 }
+	 return "redirect:/signin";
+ }
+ 
  @RequestMapping("/register")
  public ModelAndView registerUser(@ModelAttribute User user) {
 	 Map<String, List<User>> map = new HashMap<String, List<User>>();
@@ -104,6 +125,11 @@ public class HomePageController {
   return "redirect:/getList";
  }
  
+ @RequestMapping("/welcome")
+ public ModelAndView loggedIn(@ModelAttribute User user)
+ {
+	 return new ModelAndView("welcome");
+ }
  
  
  @ExceptionHandler(Exception.class)

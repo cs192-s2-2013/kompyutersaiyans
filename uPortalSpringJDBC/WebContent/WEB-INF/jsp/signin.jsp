@@ -35,7 +35,7 @@ td {
   <center>
     <b>uPortal | Log-In </b>
     <div>
-	   <form:form method="post" action="/submit" modelAttribute="user" commandName="user">
+	   <form:form method="post" action="/login" modelAttribute="user" commandName="user">
 		
 	    <table>
 	     <tr>
