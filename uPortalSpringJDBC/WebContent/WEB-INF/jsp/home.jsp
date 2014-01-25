@@ -47,9 +47,13 @@
 	  
 	  <div>
 	  	<a href="register">Register</a>
-	  	<a href="signin">Sign in</a>
+	  	<a href="login">Sign in</a>
 	  </div>
 	  
+	  <div>
+	  	<a href="public">Public Feature</a>
+	  	<a href="private">Private Feature</a>
+	  </div>
 	 </center>
 	</body>
 </html>

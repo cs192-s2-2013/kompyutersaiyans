@@ -1,5 +1,6 @@
 package com.uportal.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.ModelMap;  
@@ -30,13 +32,6 @@ public class HomePageController {
  @RequestMapping("/home")
  public String homePage(){
 	 return "home";
- }
- 
- @RequestMapping("/signin")
- public ModelAndView signIn(@ModelAttribute User user)
- {
-	 Map<String, List<User>> map = new HashMap<String, List<User>>();
-	 return new ModelAndView("signin", "map", map);
  }
  
  @RequestMapping("/register")
@@ -104,7 +99,20 @@ public class HomePageController {
   return "redirect:/getList";
  }
  
+ @RequestMapping(value="/private", method = RequestMethod.GET)
+	public String privatePage(ModelMap model, Principal principal ) {
+
+		String name = principal.getName();
+		model.addAttribute("username", name);
+		model.addAttribute("message", "This is a private feature for");
+		return "private";
+
+	}
  
+ @RequestMapping("/public")
+ public String publicPage(){
+	 return "public";
+ }
  
  @ExceptionHandler(Exception.class)
  public String handleError(HttpServletRequest req, Exception exception) {
