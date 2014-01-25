@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>uPortal | Sign Up</title>
+<title>uPortal | Log-In</title>
 <style>
 body {
   font-size: 20px;
