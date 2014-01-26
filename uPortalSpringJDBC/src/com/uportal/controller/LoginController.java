@@ -1,6 +1,7 @@
 package com.uportal.controller;
 
 import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,21 +15,29 @@ public class LoginController {
  
 		String name = principal.getName();
 		model.addAttribute("username", name);
-		model.addAttribute("message", "Spring Security Custom Form example");
+		model.addAttribute("message", "Welcome");
 		return "hello";
  
 	}
  
 	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public String login(ModelMap model) {
- 
+	public String login(ModelMap model, Principal principal) {
+		if(principal != null){
+			 String name = principal.getName();
+				model.addAttribute("username", name);
+				return "home";
+		 	}
 		return "login";
  
 	}
  
 	@RequestMapping(value="/loginfailed", method = RequestMethod.GET)
-	public String loginerror(ModelMap model) {
- 
+	public String loginerror(ModelMap model, Principal principal) {
+		if(principal != null){
+			 String name = principal.getName();
+				model.addAttribute("username", name);
+				return "home";
+		 	}
 		model.addAttribute("error", "true");
 		return "login";
  

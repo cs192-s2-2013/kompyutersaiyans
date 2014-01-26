@@ -32,7 +32,7 @@ public class FormValidation implements Validator {
 
   
   ValidationUtils.rejectIfEmpty(errors, "firstName", "required.firstName",  
-    "Name is required.");  
+    "First name is required.");  
   
 // input string contains characters only  
   if (!(user.getFirstName() != null && user.getFirstName().isEmpty())) {  
@@ -45,7 +45,7 @@ public class FormValidation implements Validator {
   } 
   
   ValidationUtils.rejectIfEmpty(errors, "lastName", "required.lastName",  
-		  "Name is required.");  
+		  "Last name is required.");  
   if (!(user.getLastName() != null && user.getLastName().isEmpty())) {  
 	   pattern = Pattern.compile(STRING_PATTERN);  
 	   matcher = pattern.matcher(user.getLastName());  
@@ -77,7 +77,7 @@ public class FormValidation implements Validator {
 	   matcher = pattern.matcher(user.getUsername());  
 	   if (!matcher.matches()) {  
 	    errors.rejectValue("username", "username.containNonChar",  
-	      "Enter a username name");  
+	      "Enter a username");  
 	   }  
 	   
 	   if (user.getUsername().toString().length() < 8) {  
@@ -89,10 +89,20 @@ public class FormValidation implements Validator {
   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",  
     "required.password", "Password is required.");  
   
-  if (user.getPassword().toString().length() < 8) {  
-	    errors.rejectValue("username", "username.exceed",  
-	      "Password should be 8 or more characters");  
-	   } 
+  if (!(user.getPassword() != null && user.getPassword().isEmpty())) {  
+	   pattern = Pattern.compile(ALPHA_NUMERIC);  
+	   matcher = pattern.matcher(user.getPassword());  
+	   if (!matcher.matches()) {  
+	    errors.rejectValue("password", "password.containNonChar",  
+	      "Enter an alphanumeric password");  
+	   }  
+	   
+	   if (user.getPassword().toString().length() < 8) {  
+		    errors.rejectValue("password", "password.exceed",  
+		      "Password should be 8 or more characters");  
+		   }  
+	  } 
+  
 // password matching validation  
   if (!user.getPassword().equals(user.getConfirmPassword())) {  
    errors.rejectValue("confirmPassword", "password.mismatch",  

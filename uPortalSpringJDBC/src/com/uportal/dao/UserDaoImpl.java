@@ -11,8 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import sun.security.timestamp.TSRequest;
-
 import com.uportal.domain.User;
 import com.uportal.jdbc.UserRowMapper;
 
@@ -74,12 +72,12 @@ public class UserDaoImpl implements UserDao {
 		int emailResult= jdbcTemplate.queryForInt(emailCheck, new Object[]{String.valueOf(user.getEmail())});
 		
 		if (usernameResult == 0 && emailResult == 0){
-			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			String hashedPassword = passwordEncoder.encode(user.getPassword());
+			//PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			//SString hashedPassword = passwordEncoder.encode(user.getPassword());
 			jdbcTemplate.update(
 					sql,
 					new Object[] { user.getFirstName(), user.getLastName(),
-							user.getEmail(), user.getUsername(), hashedPassword });
+							user.getEmail(), user.getUsername(), user.getPassword() });
 			return 0;
 		}
 		

@@ -29,19 +29,31 @@ public class HomePageController {
  UserService userService;
 
  	
- @RequestMapping("/home")
- public String homePage(){
-	 return "home";
- }
+ @RequestMapping(value="/home", method = RequestMethod.GET)
+	public String homePage(ModelMap model, Principal principal ) {
+	 	if(principal != null){
+	 		String name = principal.getName();
+			model.addAttribute("username", name);
+			model.addAttribute("message", "Spring Security Custom Form example");
+	 	}
+		
+		return "home";
+
+	}
  
  @RequestMapping("/register")
- public ModelAndView registerUser(@ModelAttribute User user) {
+ public ModelAndView registerUser(@ModelAttribute User user, ModelMap model, Principal principal) {
+	 if(principal != null){
+		 String name = principal.getName();
+			model.addAttribute("username", name);
+			return new ModelAndView("home");
+	 	}
 	 Map<String, List<User>> map = new HashMap<String, List<User>>();
 	 return new ModelAndView("register", "map", map);
  }
 
  @RequestMapping("/submit")  
- public String saveForm(User user, BindingResult result, ModelMap model) {  
+ public String saveForm(User user, BindingResult result, ModelMap model, Principal principal) {  
 	  FormValidation formValidation = new FormValidation();  
 	  
 	  formValidation.validate(user, result);  
@@ -104,13 +116,17 @@ public class HomePageController {
 
 		String name = principal.getName();
 		model.addAttribute("username", name);
-		model.addAttribute("message", "This is a private feature for");
+		model.addAttribute("message", "This is a private feature");
 		return "private";
 
 	}
  
  @RequestMapping("/public")
- public String publicPage(){
+ public String publicPage(ModelMap model, Principal principal){
+	 if(principal != null){
+		 String name = principal.getName();
+			model.addAttribute("username", name);
+	 	}
 	 return "public";
  }
  
