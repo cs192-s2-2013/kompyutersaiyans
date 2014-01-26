@@ -3,25 +3,31 @@
 <head>
 <title>Login Page</title>
 <style>
-.errorblock {
-	color: #ff0000;
-	background-color: #ffEEEE;
-	border: 3px solid #ff0000;
-	padding: 8px;
-	margin: 16px;
-}
 	body {
 	 font-size: 20px;
 	 color: teal;
 	 font-family: Calibri;
 	}
 	
+	a,a:visited{
+		color: teal;
+	}
 	td {
 	 font-size: 15px;
 	 color: black;
 	 width: 100px;
 	 height: 22px;
 	 text-align: left;
+	}
+	
+	.errorblock {
+	color: #ff0000;
+	background-color: #ffEEEE;
+	border: 1px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+	width: 300px;
+	font-size: small;
 	}
 	
 	#love{
@@ -34,20 +40,27 @@
 	 background-color: orange;
 	 border: thick;
 	}
-</style>
+	#rform{
+		
+		
+	}
+	</style>
 </head>
+
+
 <body onload='document.f.j_username.focus();'>
-	<h3>Login with Username and Password (Custom Page)</h3>
+<center>
+	<b><a href="home">uPortal</a> | Sign in </b> 
  
-	<c:if test="${not empty error}">
-		<div class="errorblock">
-			Your login attempt was not successful, try again.<br /> Caused :
-			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-		</div>
-	</c:if>
+	
  
  	<div>
- 		<form name='f' action="<c:url value='/j_spring_security_check' />"
+ 		<c:if test="${not empty error}">
+			<div class="errorblock">
+				Invalid username or password.
+			</div>
+		</c:if>
+ 		<form name='f' id="rform" action="<c:url value='/j_spring_security_check' />"
 		method='POST'>
  
 		<table>
@@ -62,17 +75,15 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan='2'><input name="submit" type="submit"
-					value="submit" />
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2'><input name="reset" type="reset" />
-				</td>
+				<td><input name="submit" type="submit"
+					value="Submit" />
+				</td> 
+				
 			</tr>
 		</table>
  
 	</form>
  	</div>
+ 	</center>
 </body>
 </html>

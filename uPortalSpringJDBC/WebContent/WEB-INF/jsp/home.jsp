@@ -6,7 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 	<head>
-	<title>uPortal | Sign Up</title>
+	<title>uPortal | Home</title>
 	<style>
 	body {
 	 font-size: 20px;
@@ -14,6 +14,9 @@
 	 font-family: Calibri;
 	}
 	
+	a,a:visited{
+		color: teal;
+	}
 	td {
 	 font-size: 15px;
 	 color: black;
@@ -39,16 +42,21 @@
 	  
 	 
 	 
-	 <b>uPortal | Home </b> 
+	 <b><a href="home">uPortal</a> | Home </b> 
 	
+		<div>
+			<c:if test="${username != null}"><a href="<c:url value="/j_spring_security_logout" />" > Logout</a></c:if>
+		</div>
 	  <div>
 	  	<c:if test="${msg_success == true}">Sign up success. You can now log in.</c:if>
 	  </div>
 	  
-	  <div>
-	  	<a href="register">Register</a>
+	  <c:if test="${username == null}"><div>
+	  	<a href="register">Sign up</a>
 	  	<a href="login">Sign in</a>
 	  </div>
+	  
+	  </c:if>
 	  
 	  <div>
 	  	<a href="public">Public Feature</a>

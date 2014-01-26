@@ -32,4 +32,15 @@
   <property name="username" value="java" />
   <property name="password" value="eclipseisabitch" />
  </bean>
+ 
+ <bean id="anonymousAuthFilter"
+    class="org.springframework.security.web.authentication.AnonymousAuthenticationFilter">
+  <property name="key" value="foobar"/>
+  <property name="userAttribute" value="anonymousUser,ROLE_ANONYMOUS"/>
+</bean>
+
+<bean id="anonymousAuthenticationProvider"
+    class="org.springframework.security.authentication.AnonymousAuthenticationProvider">
+  <property name="key" value="foobar"/>
+</bean>
 </beans>
