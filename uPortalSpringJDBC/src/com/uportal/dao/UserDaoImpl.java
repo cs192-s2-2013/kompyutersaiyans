@@ -48,6 +48,8 @@ public class UserDaoImpl implements UserDao {
 				st.execute("CREATE DATABASE IF NOT EXISTS userdb;");
 				st.execute("USE userdb;");
 				st.execute("CREATE table if not exists user (	    userid int not null auto_increment,    firstname varchar(255) DEFAULT null,    lastname varchar(255) DEFAULT null,    email varchar(255) DEFAULT null,    username varchar(255) DEFAULT null,    password varchar(255) DEFAULT null,    primary key (userid));");
+				st.execute("alter table userdb.user add column enabled tinyint(1) default true;");
+				st.execute("alter table userdb.user add column access varchar(50) default 'ROLE_USER';");
 				st.execute("CREATE user 'java'@'localhost' identified by 'eclipseisabitch';");
 				st.execute("grant all privileges on userdb to 'java'@'localhost' with grant option;");
 				st.execute("INSERT INTO `user` (`firstname`, `lastname`, `email`, `username`, `password`) VALUES ('Sherlyne', 'Francia', 'sherlyne@francia.com', 'sherlyne', 'francia'),	('Denise', 'Francisco', 'denise@francisco.com', 'denise', 'francisco'),	('Erwin', 'Sanchez', 'erwin@sanchez.com', 'erwin', 'sanchex'),	('Frank', 'Rayo', 'frank@rayo.com', 'frank', 'rayo'),	('Mark', 'Navata', 'mark@navata.com', 'mark', 'navata');");
