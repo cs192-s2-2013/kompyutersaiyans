@@ -1,48 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
-<title>uPortal | Private</title>
-<style>
-	body {
-	 font-size: 20px;
-	 color: teal;
-	 font-family: Calibri;
-	}
-	
-	a,a:visited{
-		color: teal;
-	}
-	td {
-	 font-size: 15px;
-	 color: black;
-	 width: 100px;
-	 height: 22px;
-	 text-align: left;
-	}
-	
-	#message{
-		color: black;
-		padding: 20px;
-	}
-	
-	#love{
-		color: green;
-	}
-	.heading {
-	 font-size: 18px;
-	 color: white;
-	 font: bold;
-	 background-color: orange;
-	 border: thick;
-	}
-	</style>
-</head>
-<b><a href="home">uPortal</a> | Private Feature </b> 
-<body>
-	<div id="message">${message}.
-	
-	</div>	
- 
-	<a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
- 
-</body>
-</html>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<t:userpage title="Private Page">
+	<div id="message">${message}.</div>	
+</t:userpage>
