@@ -6,6 +6,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 	 
 <t:genericpage title="Home">
+	<br />
 	<div>
 	 	<a href="public">Public Feature</a>
 	 	<a href="private">Private Feature</a>

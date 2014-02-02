@@ -12,49 +12,42 @@
 	</div>
 
 	<div>
-		<form:form method="post" action="/submit" modelAttribute="user" commandName="user" id="rform">
-			<table>
-				<tr>
-					<td>First Name :</td>
-					<td><form:input path="firstName" /></td>
-					<td style="color: red; font-style: italic; font-size: small; width:200px;"><form:errors path="firstName" /></td>
-				</tr>
-				<tr>
-					<td>Last Name :</td>
-					<td><form:input path="lastName"/></td>
-					<td style="color: red; font-style: italic; font-size: small; width:200px;"><form:errors path="lastName" /></td>
-				</tr>
-				<tr>
-					<td>Email :</td>
-					<td><form:input path="email" /></td>
-					<td style="color: red; font-style: italic; font-size: small; width:200px;">
-						<form:errors path="email" /><c:if test="${msg_failed == 2}">Email is already taken.</c:if>
-					</td>
-				</tr>
-				<tr>
-					<td>Username :</td>
-					<td><form:input path="username" /></td>
-					<td style="color: red; font-style: italic; font-size: small; width:200px;">
-						<form:errors path="username" /><c:if test="${msg_failed == 1}">Username is already taken.</c:if>
-					</td>
-				</tr>
-				<tr>
-					<td>Password :</td>
-					<td><form:password path="password" /></td>
-					<td style="color: red; font-style: italic; font-size: small; width:200px;"><form:errors path="password" /></td>
-				</tr>
-				<tr>
-					<td>Confirm Password :</td>
-					<td><form:password path="confirmPassword" /></td>
-					<td style="color: red; font-style: italic; font-size: small; width:200px;"><form:errors path="confirmPassword" /></td>
-				</tr>
-				<tr>
-					<td> </td>
-					<td><input type="submit" value="Save" /></td>
-				</tr>
-				<tr>
-				</tr>
-			</table>
+		<form:form method="post" action="/submit" modelAttribute="user" commandName="user" id="rform" class="pure-form">	
+			<div class="formdiv">
+				<form:input path="firstName" class="pure-input-1-3" placeholder="First name" required="true"/>
+				<label style="color: red; font-style: italic; font-size: small; width:200px;" class=comment><form:errors path="firstName" /></label>
+			</div>
+			<div class="formdiv">
+				<form:input path="lastName" class="pure-input-1-3" placeholder="Last name" required="true"/>
+				<label style="color: red; font-style: italic; font-size: small; width:200px;" class=comment><form:errors path="lastName" /></label>
+			</div>
+			<div class="formdiv">
+				<form:input path="email" class="pure-input-1-3" placeholder="Email address" required="true"/>
+				<label style="color: red; font-style: italic; font-size: small; width:200px;" class=comment>
+					<form:errors path="email" /><c:if test="${msg_failed == 2}">Email is already taken.</c:if>
+				</label>
+			</div>
+			<div class="formdiv">
+				<form:input path="username" class="pure-input-1-3" placeholder="Username" required="true"/>
+				<label style="color: red; font-style: italic; font-size: small; width:200px;" class=comment>
+					<form:errors path="username" /><c:if test="${msg_failed == 1}">Username is already taken.</c:if>
+				</label>
+			</div>
+			<div class="formdiv">
+				<form:password path="password" class="pure-input-1-3" placeholder="Password" required="true"/>
+				<label style="color: red; font-style: italic; font-size: small; width:200px;" class=comment>
+					<form:errors path="password" />
+				</label>
+			</div>
+			<div class="formdiv">
+				<form:password path="confirmPassword" class="pure-input-1-3" placeholder="Confirm password" required="true"/>
+				<label style="color: red; font-style: italic; font-size: small; width:200px;" class=comment>
+					<form:errors path="confirmPassword" />
+				</label>
+			</div>
+			<div class="formdiv">
+				<button type="submit" class="pure-button pure-input-1-3 pure-button-primary" value="Save" style="background: #8e44ad; border-radius: 5px;">Submit</button>
+			</div>
 		</form:form>
 	</div>
 	
