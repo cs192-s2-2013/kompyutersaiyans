@@ -29,7 +29,7 @@
 		        		</li>
 		        	</c:if>
 		        	<li>
-		        		<a href="">Hotlines</a>
+		        		<a href="hotlines">Hotlines</a>
 		        	</li>
 		        </ul>
 		    </div>
