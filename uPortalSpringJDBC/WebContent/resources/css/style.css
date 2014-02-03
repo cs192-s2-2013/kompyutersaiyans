@@ -21,6 +21,7 @@ td {
 	border: 1px solid #ff0000;
 	padding: 8px;
 	margin: 16px;
+	margin-top: 50px;
 	width: 300px;
 	font-size: small;
 }
@@ -41,11 +42,14 @@ td {
 	border: thick;
 }
 
-.formdiv{
+.form-fields{
 	padding:4px;
 }
 .comment{
 	position:absolute;
 	float:right;
 	width:300px;
+}
+.formdiv{
+	margin-top:150px;
 }
