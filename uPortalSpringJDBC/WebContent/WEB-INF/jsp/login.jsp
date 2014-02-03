@@ -10,21 +10,22 @@
 			</div>
 		</c:if>
 		
-		</br>
-		<form name='f' id="rform" action="<c:url value='/j_spring_security_check' />"
-		method='POST' class="pure-form">
-			<div onload='document.f.j_username.focus();'>
-				<div class="formdiv">
-					<input type='text' name='j_username' value='' class="pure-input-1-3" placeholder="Username">
+		<div class="formdiv">
+			<form name='f' id="rform" action="<c:url value='/j_spring_security_check' />"
+			method='POST' class="pure-form">
+				<div onload='document.f.j_username.focus();'>
+					<div class="form-fields">
+						<input type='text' name='j_username' value='' class="pure-input-1-3" placeholder="Username">
+					</div>
+					<div class="form-fields">
+						<input type='password' name='j_password' class="pure-input-1-3" placeholder="Password"/>
+					</div>
+					<div class="form-fields">
+						<button type="submit" class="pure-button pure-input-1-3 pure-button-primary" value="Submit" style="background: #8e44ad; border-radius: 5px;">Sign in</button>
+					</div>
 				</div>
-				<div class="formdiv">
-					<input type='password' name='j_password' class="pure-input-1-3" placeholder="Password"/>
-				</div>
-				<div class="formdiv">
-					<button type="submit" class="pure-button pure-input-1-3 pure-button-primary" value="Submit" style="background: #8e44ad; border-radius: 5px;">Sign in</button>
-				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 	
 </t:genericpage>
