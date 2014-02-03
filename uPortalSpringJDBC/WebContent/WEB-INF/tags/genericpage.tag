@@ -6,13 +6,13 @@
 <html>
 	<t:head title="${title}"></t:head>
 	
-	<body style="background:#FFF8DC;">
+	<body style="background:#FFFAF0;">
 	<center>
 		<div class="header" >
 		    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed" >
 		        <a class="pure-menu-heading" href="home" style="float:left; font-size: 25px;">uPortal</a> 
-				<c:if test="${username == null}">
-		        	<ul style="float:right;">
+		        <ul style="float:right;">
+		        	<c:if test="${username == null}">
 		        		<li>
 			            	<a href="home">Home</a>
 			            </li>
@@ -22,15 +22,16 @@
 			            <li>
 							<a href="login">Sign in</a>
 			            </li>
-		        	</ul>
-		        </c:if>
-		        <c:if test="${username != null}">
-		        	<ul style="float:right;">
-		        		<li>
+		       		</c:if>
+		       		 <c:if test="${username != null}">
+		       		 	<li>
 		        			<a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
 		        		</li>
-		        	</ul>
-		        </c:if>
+		        	</c:if>
+		        	<li>
+		        		<a href="">Hotlines</a>
+		        	</li>
+		        </ul>
 		    </div>
 		</div>
 			<c:if test="${msg_success == true}"><div id="message">Sign up success. You can now login. </div></c:if> 
