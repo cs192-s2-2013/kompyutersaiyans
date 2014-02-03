@@ -3,4 +3,5 @@
 
 <t:userpage title="Private Page">
 	<div id="message">${message}.</div>	
+	<a href="map">View UP Map</a>
 </t:userpage>

@@ -20,20 +20,6 @@ public class UserDaoImpl implements UserDao {
 	
 	@Autowired
 	DataSource dataSource;
-
-	/*public void insertData(User user) {
-
-		String sql = "INSERT INTO user "
-				+ "(firstname, lastname, email, username, password) VALUES (?,?,?,?,?);";
-
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-
-		jdbcTemplate.update(
-				sql,
-				new Object[] { user.getFirstName(), user.getLastName(),
-						user.getEmail(), user.getUsername(), user.getPassword() });
-
-	}*/
 	
 	public int insertData(User user) {
 		
