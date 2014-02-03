@@ -49,6 +49,15 @@ public class HomePageController {
 	 return "public";
  }
  
+ @RequestMapping("/hotlines")
+ public String hotlinesPage(ModelMap model, Principal principal){
+	 if(principal != null){
+		 String name = principal.getName();
+			model.addAttribute("username", name);
+	 	}
+	 return "hotlines";
+ }
+ 
  @ExceptionHandler(Exception.class)
  public String handleError(HttpServletRequest req, Exception exception) {
    return "redirect:/notfound";
