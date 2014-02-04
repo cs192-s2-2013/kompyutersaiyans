@@ -31,6 +31,9 @@
 		        	<li>
 		        		<a href="hotlines">Hotlines</a>
 		        	</li>
+		        	<li>
+		        		<a href="description">Applications</a>
+		        	</li>
 		        </ul>
 		    </div>
 		</div>
