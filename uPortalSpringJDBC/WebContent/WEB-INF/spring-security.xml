@@ -8,9 +8,10 @@
  
 	<http auto-config="true">
 		<intercept-url pattern="/home*" access="IS_AUTHENTICATED_ANONYMOUSLY, ROLE_USER" />
-		<intercept-url pattern="/welcome*" access="ROLE_USER" />
-		<intercept-url pattern="/private*" access="ROLE_USER" />
+		<intercept-url pattern="/welcome*" access="ROLE_USER, ROLE_ADMIN" />
+		<intercept-url pattern="/private*" access="ROLE_USER, ROLE_ADMIN" />
 		<intercept-url pattern="/getList*" access="ROLE_ADMIN" />
+		<intercept-url pattern="/reset*" access="ROLE_ADMIN" />
 		<form-login login-page="/login" default-target-url="/welcome"
 			authentication-failure-url="/loginfailed" />
 		<logout logout-success-url="/logout" />

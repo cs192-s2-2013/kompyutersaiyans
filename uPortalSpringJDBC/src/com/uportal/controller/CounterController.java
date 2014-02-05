@@ -31,10 +31,13 @@ public class CounterController {
 	@RequestMapping("/reset")
 	public String checkCounter(
 			@CookieValue(value = "hitCounter", defaultValue = "0") Long hitCounter,
-			HttpServletResponse response) {
+			HttpServletResponse response, ModelMap model, Principal principal) {
 		hitCounter -= hitCounter;
 		Cookie cookie = new Cookie("hitCounter", hitCounter.toString());
 		response.addCookie(cookie);
+		String name = principal.getName();
+		model.addAttribute("username", name);
+		model.addAttribute("reset_success", "true");
 		return "home";
 	}
 
