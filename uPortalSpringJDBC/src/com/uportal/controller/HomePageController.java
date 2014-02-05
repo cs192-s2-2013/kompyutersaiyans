@@ -31,9 +31,9 @@ public class HomePageController {
 			model.addAttribute("username", name);
 			model.addAttribute("message", "Spring Security Custom Form example");
 	 	}
-	 	hitCounter++;
-		Cookie cookie = new Cookie("hitCounter", hitCounter.toString());
-		response.addCookie(cookie);
+		 hitCounter++;
+		Cookie counter = new Cookie("hitCounter", hitCounter.toString());
+		response.addCookie(counter);
 		return "home";
 
 	}

@@ -23,8 +23,8 @@ public class CounterController {
 				model.addAttribute("username", name);
 		 	}
 		
-		Cookie cookie = new Cookie("hitCounter", hitCounter.toString());
-		response.addCookie(cookie);
+		Cookie counter = new Cookie("hitCounter", hitCounter.toString());
+		response.addCookie(counter);
 		return "counter";
 	}
 	
@@ -33,8 +33,8 @@ public class CounterController {
 			@CookieValue(value = "hitCounter", defaultValue = "0") Long hitCounter,
 			HttpServletResponse response, ModelMap model, Principal principal) {
 		hitCounter -= hitCounter;
-		Cookie cookie = new Cookie("hitCounter", hitCounter.toString());
-		response.addCookie(cookie);
+		Cookie counter = new Cookie("hitCounter", hitCounter.toString());
+		response.addCookie(counter);
 		String name = principal.getName();
 		model.addAttribute("username", name);
 		model.addAttribute("reset_success", "true");
