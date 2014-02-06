@@ -9,10 +9,13 @@
 	<br/>
 	<div>
 		<h3>Online Classroom</h3>
+		App that lets you collaborate with your professor and classmates online! Come on and have your class online!
 		<h3>UP Map</h3>
+		Not yet familiar with the whereabouts of different places in UP Diliman? Try this app! Surely, it will help you how to go there as fast as possible!
 		<h3>Brain gym</h3>
+		We know that you are genius! Want to test your genius right now?
 		<h3>Study Buddy</h3>
-		
+		Having a hard time managing your study life with the many luring stuff meddling upon your studies? Study Buddy is your best friend!
 	
 		
 	</div>
