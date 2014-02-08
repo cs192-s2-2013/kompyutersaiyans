@@ -6,8 +6,10 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:genericpage title="Hit Counter">
-	<br />
-	<div>
+	<div class="headers">
+		<h1>Counter</h1>	
+	</div>
+	<div class="htln-div">
 	Number of visitors: <b> ${cookie.hitCounter.value} </b>
 	</div>
 </t:genericpage>
