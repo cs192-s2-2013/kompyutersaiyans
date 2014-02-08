@@ -6,7 +6,8 @@
 <html>
 	<t:head title="${title}"></t:head>
 	
-	<body style="background:#F0F8FF;">
+	
+	<body >
 		<div class="header" >
 		    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed" >
 		        <a class="pure-menu-heading" href="home" style="float:left; font-size: 25px;">uPortal</a> 
