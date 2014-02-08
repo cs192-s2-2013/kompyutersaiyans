@@ -20,7 +20,7 @@
 			</c:if>
 			<c:if test="${username == null}">
 				<div class="vis-siteNL">
-					You have to <a href="login" style="color: #8e44ad;">sign in</a> to view this site.
+					visit site ->
 				</div>	
 			</c:if>
 			<h3>UP Map</h3>
@@ -37,7 +37,7 @@
 			</c:if>
 			<c:if test="${username == null}">
 				<div class="vis-siteNL">
-					You have to <a href="login" style="color: #8e44ad;">sign in</a> to view this site.
+					visit site ->
 				</div>	
 			</c:if>
 			<h3>Study Buddy</h3>
