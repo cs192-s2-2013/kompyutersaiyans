@@ -26,7 +26,7 @@
 			<h3>UP Map</h3>
 			<p class="desc">Not yet familiar with the whereabouts of different places in UP Diliman? Try this app! Surely, it will help you how to go there as fast as possible!</p>
 			<div class="vis-site">
-				<a href="#" style="color: #8e44ad;">visit site -></a>
+				<a href="map" style="color: #8e44ad;">visit site -></a>
 			</div>
 			<h3>Brain gym</h3>
 			<p class="desc">We know that you are genius! Want to test your genius right now?</p>
