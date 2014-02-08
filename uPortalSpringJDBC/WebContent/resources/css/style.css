@@ -5,7 +5,7 @@ body {
 }
 		
 a,a:visited{
-	color: teal;
+	color: #bdc3c7;
 }
 td {
 	font-size: 15px;
@@ -93,4 +93,5 @@ ul {
 .vis-siteNL{
 	float:right;
 	font-size: 13px;
+	color: #95a5a6;
 }
