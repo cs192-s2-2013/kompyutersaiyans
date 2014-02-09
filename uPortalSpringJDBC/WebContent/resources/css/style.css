@@ -1,11 +1,11 @@
 body {
 	font-size: 20px;
-	color: teal;
+	color: #28324E;
 	font-family: Calibri;
 }
 		
 a,a:visited{
-	color: teal;
+	color: #A38F84;
 }
 td {
 	font-size: 15px;
@@ -51,5 +51,77 @@ td {
 	width:300px;
 }
 .formdiv{
-	margin-top:150px;
+	position:static;
+	margin-top:70px;
+}
+.errs{
+	margin-top: 50px;
+}
+.htln-left{
+	float:left;
+	width: 40%;
+	margin-left: 30px;
+}
+.htln-right{
+	float:right;
+	width: 40%;
+	margin-right: 30px;
+}
+
+ul {
+	list-style-type: none;
+}
+.headers{
+	margin: 0 auto;
+	margin-top:100px;
+	max-width: 72%;
+	text-align: center;
+	border-bottom: 1px solid #f3e1d4;
+}
+.cont-div{
+	max-width: 72%;
+	margin: 0 auto;
+}
+.desc{
+	margin-left: 20px;
+}
+.vis-site{
+	float:right;
+	font-size: 13px;
+	padding-right: 40px;
+	margin-bottom: 60px;
+}
+.vis-site a{
+	color: #8e44ad;
+	text-decoration: none;
+}
+.vis-siteNL{
+	float:right;
+	font-size: 13px;
+	color: #95a5a6;
+}
+#getstarted{
+	height: 70px;
+	width: 250px;
+	color: white;
+	background: #e74c3c;
+	border-radius: 5px;
+	font-size: 35px;
+	padding: 5px;
+}
+#apps-desc{
+	padding: 20px;
+}
+.apps-desc-div{
+	border-bottom: 1px solid #f3e1d4;
+	margin-bottom:60px;
+}
+.about-us{
+	border-top:1px solid #bdc3c7;
+	margin-bottom: 50px;
+}
+
+#about-indiv{
+	padding-left: 10px;
+	font-size: 18px;
 }
