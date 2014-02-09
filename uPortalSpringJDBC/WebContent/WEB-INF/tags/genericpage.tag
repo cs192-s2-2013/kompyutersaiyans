@@ -10,7 +10,7 @@
 	<body >
 		<div class="header" >
 		    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed" >
-		        <a class="pure-menu-heading" href="home" style="float:left; font-size: 25px;">uPortal</a> 
+		         <a class="pure-menu-heading" href="home" style="float:left; font-size: 25px;"><i class="fa fa-frown-o"></i> uPortal</a> 
 		        <ul style="float:right;">
 		        	<li>
 			            <a href="home">Home</a>
