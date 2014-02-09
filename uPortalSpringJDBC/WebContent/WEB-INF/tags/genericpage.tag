@@ -13,7 +13,7 @@
 		         <a class="pure-menu-heading" href="home" style="float:left; font-size: 25px;"><i class="fa fa-frown-o"></i> uPortal</a> 
 		        <ul style="float:right;">
 		        	<li>
-			            <a href="home">Home</a>
+			        	<a href="home">Home</a>
 			        </li>
 		        	<c:if test="${username == null}">
 			            <li>
