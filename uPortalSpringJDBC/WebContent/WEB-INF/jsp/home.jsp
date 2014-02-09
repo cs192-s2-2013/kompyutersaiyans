@@ -10,7 +10,7 @@
 	    <h1 class="banner-head">
 	        <span style= "padding-bottom: -10px;">UPortal</span><br>
 	        <span style="font-size: 40px;">Some catchy line.</span> <br>
-	        <button class="pure-button" id="getstarted">Get started <i class="fa fa-angle-double-right"></i></button>
+	        <a href="login"><button class="pure-button" id="getstarted">Get started <i class="fa fa-angle-double-right"></i></button></a>
 	    </h1>
 	</div>
 	<div class="cont-div">
