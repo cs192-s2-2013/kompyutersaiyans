@@ -10,7 +10,7 @@
 		<h1>Hotlines</h1>	
 	</div>
 	
-	<div class="htln-div">
+	<div class="cont-div" >
 		<div class="htln-left" >
 		 	<h3>UP Diliman Police</h3>
 			<ul>
