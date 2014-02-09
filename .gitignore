@@ -1,6 +1,7 @@
-/.metadata
-/Servers
-/uPortalSpringJDBC/build
-/uPortalSpringJDBC/.settings
-/uPortalSpringJDBC/.classpath
-/uPortalSpringJDBC/target
+.metadata
+Servers
+uPortalSpringJDBC/build
+uPortalSpringJDBC/.settings
+uPortalSpringJDBC/.classpath
+uPortalSpringJDBC/target
+uPortalSpringJDBC/.settings/org.eclipse.wst.common.project.facet.core.xml
