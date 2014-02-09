@@ -1,11 +1,11 @@
 body {
 	font-size: 20px;
-	color: teal;
+	color: #28324E;
 	font-family: Calibri;
 }
 		
 a,a:visited{
-	color: #bdc3c7;
+	color: #A38F84;
 }
 td {
 	font-size: 15px;
@@ -73,13 +73,13 @@ ul {
 }
 .headers{
 	margin: 0 auto;
-	margin-top:50px;
-	max-width: 900px;
+	margin-top:100px;
+	max-width: 72%;
 	text-align: center;
-	border-bottom: 1px solid #C8EFFE;
+	border-bottom: 1px solid #f3e1d4;
 }
-.htln-div{
-	max-width: 900px;
+.cont-div{
+	max-width: 72%;
 	margin: 0 auto;
 }
 .desc{
@@ -88,10 +88,40 @@ ul {
 .vis-site{
 	float:right;
 	font-size: 13px;
+	padding-right: 40px;
+	margin-bottom: 60px;
+}
+.vis-site a{
 	color: #8e44ad;
+	text-decoration: none;
 }
 .vis-siteNL{
 	float:right;
 	font-size: 13px;
 	color: #95a5a6;
+}
+#getstarted{
+	height: 70px;
+	width: 250px;
+	color: white;
+	background: #e74c3c;
+	border-radius: 5px;
+	font-size: 35px;
+	padding: 5px;
+}
+#apps-desc{
+	padding: 20px;
+}
+.apps-desc-div{
+	border-bottom: 1px solid #f3e1d4;
+	margin-bottom:60px;
+}
+.about-us{
+	border-top:1px solid #bdc3c7;
+	margin-bottom: 50px;
+}
+
+#about-indiv{
+	padding-left: 10px;
+	font-size: 18px;
 }
