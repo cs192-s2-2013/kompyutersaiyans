@@ -10,7 +10,7 @@
 	    <h1 class="banner-head">
 	        <span style= "padding-bottom: -10px;">uPortal</span><br>
 	        <span style="font-size: 40px;">Some catchy line.</span> <br>
-	        <a href="login"><button class="pure-button" id="getstarted">Get started <i class="fa fa-angle-double-right"></i></button></a>
+	        <a href="register"><button class="pure-button" id="getstarted">Get started <i class="fa fa-angle-double-right"></i></button></a>
 	    </h1>
 	</div>
 	<div class="cont-div">
@@ -53,7 +53,7 @@
 				</div> 
 				<div class="pure-u-2-3">
 					<h3>Brain Gym</h3>
-					<p id="apps-desc">We know that you are genius! Want to test your genius right now? Kailangan pa dugtungan kasi nasisira yung format pag masyado maikli</p>
+					<p id="apps-desc">We know that you are genius! Want to test your genius right now?</p>
 					<div class="vis-site">
 						<c:if test="${username != null}">
 							<a href="#">visit site <i class="fa fa-arrow-right"></i></a>
@@ -93,9 +93,9 @@
 					<p id="about-indiv">Blah blah blah. Something about Denise Alyssa Francisco. Lala lala lala</p>
 				</div>
 				<div class="pure-u-1-3">
-					<h4>Mark Navata</h4>
+					<h4>Mark Paolo Navata</h4>
 					<img src=<c:url value="/resources/imgs/troll3.png"/> width="250" height="250">
-					<p id="about-indiv">Blah blah blah. Something about Mark Navata. Lala lala lala</p>
+					<p id="about-indiv">Blah blah blah. Something about Mark Paolo Navata. Lala lala lala</p>
 				</div>
 				<div class="pure-u-1-3">
 					<h4>Joshua Frank Rayo</h4>
