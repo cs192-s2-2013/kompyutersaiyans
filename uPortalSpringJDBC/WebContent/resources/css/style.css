@@ -73,7 +73,7 @@ td {
 }
 
 .form-fields{
-	padding:4px;
+	padding:6px;
 }
 .comment{
 	position:absolute;
@@ -145,6 +145,7 @@ ul {
 .apps-desc-div{
 	border-bottom: 1px solid #f3e1d4;
 	margin-bottom:60px;
+	min-width: 100%;
 }
 .about-us{
 	border-top:1px solid #bdc3c7;
