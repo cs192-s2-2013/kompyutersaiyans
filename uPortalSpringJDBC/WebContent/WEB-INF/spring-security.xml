@@ -7,9 +7,9 @@
 	http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
  
 	<http auto-config="true">
-		<intercept-url pattern="/home*" access="IS_AUTHENTICATED_ANONYMOUSLY, ROLE_USER" />
-		<intercept-url pattern="/welcome*" access="ROLE_USER, ROLE_ADMIN" />
-		<intercept-url pattern="/private*" access="ROLE_USER, ROLE_ADMIN" />
+		<intercept-url pattern="/home*" access="IS_AUTHENTICATED_ANONYMOUSLY, ROLE_GENERAL" />
+		<intercept-url pattern="/welcome*" access="ROLE_GENERAL, ROLE_ADMIN" />
+		<intercept-url pattern="/private*" access="ROLE_GENERAL, ROLE_ADMIN" />
 		<intercept-url pattern="/getList*" access="ROLE_ADMIN" />
 		<intercept-url pattern="/reset*" access="ROLE_ADMIN" />
 		<form-login login-page="/login" default-target-url="/welcome"
@@ -24,11 +24,11 @@
 				
 				users-by-username-query="
 					select username,password,enabled 
-					from user where USERNAME=?" 
+					from users where USERNAME=?" 
 					
 				authorities-by-username-query="
-					select username,access 
-					from user where USERNAME=?  "
+					select u.username, r.role from users u, userRoles ur, roles r
+		      		where u.userid = ur.userid and r.roleid = ur.roleid and u.username =?  "
 			/>
 		</authentication-provider>
 	</authentication-manager>

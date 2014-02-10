@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao {
 	
 	public int insertData(User user) {
 		
-		if(!isDBinit)//initialize db; create table; create user
+		/*if(!isDBinit)//initialize db; create table; create user
 		{
 			try
 			{
@@ -48,16 +48,15 @@ public class UserDaoImpl implements UserDao {
 				e.printStackTrace();
 			}
 			isDBinit = true;
-		}
+		}*/
 		
-		boolean t = true;
-		String sql = "INSERT INTO user "
-				+ "(firstname, lastname, email, username, password) VALUES (?,?,?,?,?);";
+		String sql = "INSERT INTO users "
+				+ "(firstname, lastname, email, username, password ) VALUES (?,?,?,?,?);";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		final String usernameCheck = "select count(*) from user where username = ?;";
+		final String usernameCheck = "select count(*) from users where username = ?;";
 		int usernameResult= jdbcTemplate.queryForInt(usernameCheck, new Object[]{String.valueOf(user.getUsername())});
-		final String emailCheck = "select count(*) from user where email = ?;";
+		final String emailCheck = "select count(*) from users where email = ?;";
 		int emailResult= jdbcTemplate.queryForInt(emailCheck, new Object[]{String.valueOf(user.getEmail())});
 		
 		if (usernameResult == 0 && emailResult == 0){
@@ -67,6 +66,18 @@ public class UserDaoImpl implements UserDao {
 					sql,
 					new Object[] { user.getFirstName(), user.getLastName(),
 							user.getEmail(), user.getUsername(), hashedPassword });
+			sql = "select userid from users where username = ?";
+			int userid = (int)jdbcTemplate.queryForInt(
+					sql, new Object[] { user.getUsername() });
+			sql = "select roleid from roles where role = 'ROLE_GENERAL'";
+			int roleid = (int)jdbcTemplate.queryForInt(sql);
+			sql = "INSERT INTO userRoles" 
+					+ "(userid, roleid) VALUES (?,?)";
+			
+			jdbcTemplate.update(
+					sql,
+					new Object[] {userid, roleid}
+					);
 			return 0;
 		}
 		
@@ -86,7 +97,7 @@ public class UserDaoImpl implements UserDao {
 
 	public List<User> getUserList() {
 		ArrayList<User> userList = new ArrayList<User>();
-		String sql = "select * from user";
+		String sql = "select * from users";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		userList = (ArrayList<User>) jdbcTemplate.query(sql, new UserRowMapper());
@@ -95,7 +106,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void deleteData(String userid) {
-		String sql = "delete from user where userid=" + userid;
+		String sql = "delete from users where userid=" + userid;
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		jdbcTemplate.update(sql);
 
@@ -104,7 +115,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void updateData(User user) {
 
-		String sql = "UPDATE user set firstname = ?,lastname = ?, email = ?, username = ?, password = ? where userid = ?;";
+		String sql = "UPDATE users set firstname = ?,lastname = ?, email = ?, username = ?, password = ? where userid = ?;";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
 		jdbcTemplate.update(
@@ -117,7 +128,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUser(String id) {
 		List<User> userList = new ArrayList<User>();
-		String sql = "select * from user where userid= " + id;
+		String sql = "select * from users where userid= " + id;
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		userList = jdbcTemplate.query(sql, new UserRowMapper());
 		return userList.get(0);
