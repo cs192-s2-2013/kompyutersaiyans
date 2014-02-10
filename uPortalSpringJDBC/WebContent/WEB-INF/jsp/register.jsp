@@ -25,12 +25,14 @@
 					<form:input path="email" class="pure-input-1-3" placeholder="Email address" required="true"/>
 					<label style="color: red; font-style: italic; font-size: small; width:200px;" class=comment>
 						<form:errors path="email" /><c:if test="${msg_failed == 2}">Email is already taken.</c:if>
+						<form:errors path="email" /><c:if test="${msg_failed == 3}">Email is already taken.</c:if>
 					</label>
 				</div>
 				<div class="form-fields">
 					<form:input path="username" class="pure-input-1-3" placeholder="Username" required="true"/>
 					<label style="color: red; font-style: italic; font-size: small; width:200px;" class=comment>
 						<form:errors path="username" /><c:if test="${msg_failed == 1}">Username is already taken.</c:if>
+						<form:errors path="username" /><c:if test="${msg_failed == 3}">Username is already taken.</c:if>
 					</label>
 				</div>
 				<div class="form-fields">
