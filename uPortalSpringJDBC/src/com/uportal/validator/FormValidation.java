@@ -24,6 +24,7 @@ public class FormValidation implements Validator {
  String STRING_PATTERN = "[a-zA-Z\\s]+";  
  String MOBILE_PATTERN = "[0-9]{10}";   
  String ALPHA_NUMERIC = "[A-Za-z0-9]+";
+ String NAME_PATTERN = "[A-Za-z0-9\\s]+";
   
  @Override  
  public void validate(Object target, Errors errors) {  
@@ -36,7 +37,8 @@ public class FormValidation implements Validator {
   
 // input string contains characters only  
   if (!(user.getFirstName() != null && user.getFirstName().isEmpty())) {  
-   pattern = Pattern.compile(STRING_PATTERN);  
+   //pattern = Pattern.compile(STRING_PATTERN);  
+   pattern = Pattern.compile(NAME_PATTERN);  
    matcher = pattern.matcher(user.getFirstName());  
    if (!matcher.matches()) {  
     errors.rejectValue("firstName", "firstName.containNonChar",  
