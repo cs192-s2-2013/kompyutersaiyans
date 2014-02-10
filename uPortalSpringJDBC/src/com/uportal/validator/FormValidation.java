@@ -35,13 +35,11 @@ public class FormValidation implements Validator {
   ValidationUtils.rejectIfEmpty(errors, "firstName", "required.firstName",  
     "First name is required.");  
   
-// input string contains characters only  
   if (!(user.getFirstName() != null && user.getFirstName().isEmpty())) {  
-   //pattern = Pattern.compile(STRING_PATTERN);  
    pattern = Pattern.compile(NAME_PATTERN);  
    matcher = pattern.matcher(user.getFirstName());  
    if (!matcher.matches()) {  
-    errors.rejectValue("firstName", "firstName.containNonChar",  
+    errors.rejectValue("firstName", "firstName.containNonAlphaNumeric",  
       "Enter a valid name");  
    }  
   } 
@@ -49,10 +47,10 @@ public class FormValidation implements Validator {
   ValidationUtils.rejectIfEmpty(errors, "lastName", "required.lastName",  
 		  "Last name is required.");  
   if (!(user.getLastName() != null && user.getLastName().isEmpty())) {  
-	   pattern = Pattern.compile(STRING_PATTERN);  
+	   pattern = Pattern.compile(NAME_PATTERN);  
 	   matcher = pattern.matcher(user.getLastName());  
 	   if (!matcher.matches()) {  
-	    errors.rejectValue("lastName", "lastName.containNonChar",  
+	    errors.rejectValue("lastName", "lastName.containNonAlphaNumeric",  
 	      "Enter a valid name");  
 	   }  
 	  } 
