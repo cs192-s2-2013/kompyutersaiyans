@@ -1554,7 +1554,7 @@ since IE8 won't execute CSS that contains a CSS3 selector.
 
 .pure-menu a,
 .pure-menu .pure-menu-can-have-children > li:after {
-    color: #777;
+    color: #A38F84;
 }
 
 .pure-menu .pure-menu-can-have-children > li:hover:after {
