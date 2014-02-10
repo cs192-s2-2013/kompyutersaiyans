@@ -46,7 +46,11 @@ public class RegistrationController {
 	  }else{
 		  user = (User) result.getModel().get("user");  
 		 int unique =  userService.insertData(user);
-		 if (unique == 1){
+		 if(unique == 3){
+			 model.addAttribute("msg_failed", "3");
+			 return "register";
+		 }
+		 else if (unique == 1){
 			 model.addAttribute("msg_failed", "1");
 			 return "register";
 		 }else if (unique == 2){

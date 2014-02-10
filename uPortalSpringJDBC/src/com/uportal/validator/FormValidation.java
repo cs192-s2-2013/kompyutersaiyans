@@ -24,6 +24,8 @@ public class FormValidation implements Validator {
  String STRING_PATTERN = "[a-zA-Z\\s]+";  
  String MOBILE_PATTERN = "[0-9]{10}";   
  String ALPHA_NUMERIC = "[A-Za-z0-9]+";
+ String NAME_PATTERN = "[A-Za-z0-9\\s]+";
+ String PASSWORD_PATTERN = "[A-Za-z0-9\\s\\p{Punct}]+";
   
  @Override  
  public void validate(Object target, Errors errors) {  
@@ -34,12 +36,11 @@ public class FormValidation implements Validator {
   ValidationUtils.rejectIfEmpty(errors, "firstName", "required.firstName",  
     "First name is required.");  
   
-// input string contains characters only  
   if (!(user.getFirstName() != null && user.getFirstName().isEmpty())) {  
-   pattern = Pattern.compile(STRING_PATTERN);  
+   pattern = Pattern.compile(NAME_PATTERN);  
    matcher = pattern.matcher(user.getFirstName());  
    if (!matcher.matches()) {  
-    errors.rejectValue("firstName", "firstName.containNonChar",  
+    errors.rejectValue("firstName", "firstName.containNonAlphaNumeric",  
       "Enter a valid name");  
    }  
   } 
@@ -47,10 +48,10 @@ public class FormValidation implements Validator {
   ValidationUtils.rejectIfEmpty(errors, "lastName", "required.lastName",  
 		  "Last name is required.");  
   if (!(user.getLastName() != null && user.getLastName().isEmpty())) {  
-	   pattern = Pattern.compile(STRING_PATTERN);  
+	   pattern = Pattern.compile(NAME_PATTERN);  
 	   matcher = pattern.matcher(user.getLastName());  
 	   if (!matcher.matches()) {  
-	    errors.rejectValue("lastName", "lastName.containNonChar",  
+	    errors.rejectValue("lastName", "lastName.containNonAlphaNumeric",  
 	      "Enter a valid name");  
 	   }  
 	  } 
@@ -64,7 +65,7 @@ public class FormValidation implements Validator {
    matcher = pattern.matcher(user.getEmail());  
    if (!matcher.matches()) {  
     errors.rejectValue("email", "email.incorrect",  
-      "Enter a correct email");  
+      "Enter a valid email");  
    }  
   }  
   
@@ -77,7 +78,7 @@ public class FormValidation implements Validator {
 	   matcher = pattern.matcher(user.getUsername());  
 	   if (!matcher.matches()) {  
 	    errors.rejectValue("username", "username.containNonChar",  
-	      "Enter a username");  
+	      "Enter a valid username");  
 	   }  
 	   
 	   if (user.getUsername().toString().length() < 8) {  
@@ -90,11 +91,11 @@ public class FormValidation implements Validator {
     "required.password", "Password is required.");  
   
   if (!(user.getPassword() != null && user.getPassword().isEmpty())) {  
-	   pattern = Pattern.compile(ALPHA_NUMERIC);  
+	   pattern = Pattern.compile(PASSWORD_PATTERN);  
 	   matcher = pattern.matcher(user.getPassword());  
 	   if (!matcher.matches()) {  
 	    errors.rejectValue("password", "password.containNonChar",  
-	      "Enter an alphanumeric password");  
+	      "Enter a valid password");  
 	   }  
 	   
 	   if (user.getPassword().toString().length() < 8) {  

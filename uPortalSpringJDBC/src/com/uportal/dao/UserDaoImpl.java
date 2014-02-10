@@ -70,6 +70,10 @@ public class UserDaoImpl implements UserDao {
 			return 0;
 		}
 		
+		else if (usernameResult > 0 && emailResult > 0){
+			return 3;
+		}
+
 		else if (usernameResult > 0){
 			return 1;
 		}
