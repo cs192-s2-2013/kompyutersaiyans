@@ -21,7 +21,6 @@ public class HomePageController {
 
  @Autowired
  UserService userService;
-
  	
  @RequestMapping(value="/home", method = RequestMethod.GET )
 	public String homePage(ModelMap model, Principal principal,@CookieValue(value = "hitCounter", defaultValue = "0") Long hitCounter,

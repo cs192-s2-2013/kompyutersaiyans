@@ -53,6 +53,21 @@
 						<option value="instructor">Instructor</option>
 					</select>
 				</div>
+				<div class="form-fields" id="college"><form:select path="college"> 
+					<form:option label="Select College" value="null"/>
+					<form:options items="${model.colleges}" itemLabel="label" itemValue="value" /> 
+					</form:select>
+				</div>
+				<div class="form-fields" id="department"><form:select path="department"> 
+					<form:option label="Select Department" value="null"/>
+					<form:options items="${model.departments}" itemLabel="label" itemValue="value" /> 
+					</form:select>
+				</div>
+				<div class="form-fields" id="course"><form:select path="course"> 
+					<form:option label="Select Courses" value="null"/>
+					<form:options items="${model.courses}" itemLabel="label" itemValue="value" /> 
+					</form:select>
+				</div>
 				<div class="form-fields">
 					<button type="submit" class="pure-button pure-input-1-3 pure-button-primary" value="Save" style="background: #8e44ad; border-radius: 5px;">Submit</button>
 				</div>

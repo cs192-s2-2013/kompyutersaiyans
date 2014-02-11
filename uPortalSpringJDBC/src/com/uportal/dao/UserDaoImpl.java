@@ -8,8 +8,6 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.crypto.bcrypt.*;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 
 import com.uportal.domain.User;
@@ -51,7 +49,7 @@ public class UserDaoImpl implements UserDao {
 		}*/
 		
 		String sql = "INSERT INTO users "
-				+ "(firstname, lastname, email, username, password ) VALUES (?,?,?,?,?);";
+				+ "(firstname, lastname, email, username, password, collegeid, departmentid, courseid ) VALUES (?,?,?,?,?,?,?,?);";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		final String usernameCheck = "select count(*) from users where username = ?;";
@@ -65,7 +63,7 @@ public class UserDaoImpl implements UserDao {
 			jdbcTemplate.update(
 					sql,
 					new Object[] { user.getFirstName(), user.getLastName(),
-							user.getEmail(), user.getUsername(), hashedPassword });
+							user.getEmail(), user.getUsername(), hashedPassword, user.getCollege(), user.getDepartment(), user.getCourse() });
 			sql = "select userid from users where username = ?";
 			int userid = (int)jdbcTemplate.queryForInt(
 					sql, new Object[] { user.getUsername() });
@@ -128,7 +126,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUser(String id) {
 		List<User> userList = new ArrayList<User>();
-		String sql = "select * from users where userid= " + id;
+		String sql = "select userid,firstname,lastname,email,username,password,college,department,course from users where userid= " + id;
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		userList = jdbcTemplate.query(sql, new UserRowMapper());
 		return userList.get(0);

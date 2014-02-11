@@ -14,6 +14,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult; 
 
 import com.uportal.domain.User;
+import com.uportal.domain.ValueTuple;
+import com.uportal.services.ResourceService;
 import com.uportal.services.UserService;
 import com.uportal.validator.FormValidation;
 
@@ -22,7 +24,18 @@ public class RegistrationController {
 
  @Autowired
  UserService userService;
+ @Autowired
+ ResourceService resourceService;
 
+ private void setOptions(ModelMap model){
+	 List<ValueTuple> collegeList = resourceService.getCollegeList();
+	 List<ValueTuple> deptList =  resourceService.getDeptList();
+	 List<ValueTuple> courseList = resourceService.getCourseList();
+	 
+	 model.addAttribute("colleges", collegeList);
+	 model.addAttribute("departments", deptList);
+	 model.addAttribute("courses", courseList);
+ }
  
  @RequestMapping("/register")
  public ModelAndView registerUser(@ModelAttribute User user, ModelMap model, Principal principal) {
@@ -31,35 +44,39 @@ public class RegistrationController {
 			model.addAttribute("username", name);
 			return new ModelAndView("home");
 	 	}
-	 Map<String, List<User>> map = new HashMap<String, List<User>>();
-	 return new ModelAndView("register", "map", map);
+	 setOptions(model);
+	 return new ModelAndView("register", "model", model);
  }
 
  @RequestMapping("/submit")  
- public String saveForm(User user, BindingResult result, ModelMap model, Principal principal) {  
+ public ModelAndView saveForm(User user, BindingResult result, ModelMap model, Principal principal) {  
 	  FormValidation formValidation = new FormValidation();  
 	  
 	  formValidation.validate(user, result);  
 	  
-	  if (result.hasErrors()) {    
-	   return "register";  
+	  if (result.hasErrors()) { 
+		  setOptions(model);
+		  return new ModelAndView("register", "model", model);
 	  }else{
 		  user = (User) result.getModel().get("user");  
 		 int unique =  userService.insertData(user);
 		 if(unique == 3){
+			 setOptions(model);
 			 model.addAttribute("msg_failed", "3");
-			 return "register";
+			 return new ModelAndView("register", "model", model);
 		 }
 		 else if (unique == 1){
+			 setOptions(model);
 			 model.addAttribute("msg_failed", "1");
-			 return "register";
+			 return new ModelAndView("register", "model", model);
 		 }else if (unique == 2){
+			 setOptions(model);
 			 model.addAttribute("msg_failed", "2");
-			 return "register";
+			 return new ModelAndView("register", "model", model);
 		 }else{
 		  System.out.println(user.getUserId()); 
 			 model.addAttribute("msg_success", "true");
-			 return "home";
+			 return new ModelAndView("home");
 		 }
 	  }
 	   
