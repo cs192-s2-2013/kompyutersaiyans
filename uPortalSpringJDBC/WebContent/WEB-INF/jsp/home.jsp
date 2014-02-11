@@ -9,7 +9,7 @@
 	<div class="banner">
 	    <h1 class="banner-head">
 	        <span style= "padding-bottom: -10px;">uPortal</span><br>
-	        <span style="font-size: 40px;">Some catchy line.</span> <br>
+	        <span style="font-size: 40px;">The Growing Portal.</span> <br>
 	        <a href="register" title="register now"><button class="pure-button" id="getstarted">Get started <i class="fa fa-angle-double-right"></i></button></a>
 	    </h1>
 	</div>
