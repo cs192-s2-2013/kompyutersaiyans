@@ -129,6 +129,8 @@ ul {
 	float:right;
 	font-size: 13px;
 	color: #95a5a6;
+	pointer-events: none;
+    cursor: default;
 }
 #getstarted{
 	height: 70px;
