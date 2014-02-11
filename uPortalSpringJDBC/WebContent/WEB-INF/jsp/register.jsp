@@ -46,6 +46,14 @@
 					</label>
 				</div>
 				<div class="form-fields">
+					<select>
+						<option value="none">Select account type</option>					
+						<option value="general">General</option>
+						<option value="student">Student</option>
+						<option value="instructor">Instructor</option>
+					</select>
+				</div>
+				<div class="form-fields">
 					<button type="submit" class="pure-button pure-input-1-3 pure-button-primary" value="Save" style="background: #8e44ad; border-radius: 5px;">Submit</button>
 				</div>
 			</form:form>

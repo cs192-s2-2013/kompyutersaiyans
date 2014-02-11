@@ -10,7 +10,7 @@
 	    <h1 class="banner-head">
 	        <span style= "padding-bottom: -10px;">uPortal</span><br>
 	        <span style="font-size: 40px;">Some catchy line.</span> <br>
-	        <a href="register"><button class="pure-button" id="getstarted">Get started <i class="fa fa-angle-double-right"></i></button></a>
+	        <a href="register" title="register now"><button class="pure-button" id="getstarted">Get started <i class="fa fa-angle-double-right"></i></button></a>
 	    </h1>
 	</div>
 	<div class="cont-div">
@@ -24,7 +24,7 @@
 					<p id="apps-desc">App that lets you collaborate with your professor and classmates online! Come on and have your class online!</p>
 					<div class="vis-site">
 						<c:if test="${username != null}">
-							<a href="#">visit site <i class="fa fa-arrow-right"></i></a>
+							<a href="#" title="visit Online Classroom">visit site <i class="fa fa-arrow-right"></i></a>
 						</c:if>
 						<c:if test="${username == null}">
 							<span class="vis-siteNL">visit site <i class="fa fa-arrow-right"></i></span>
@@ -38,7 +38,7 @@
 					<h3>UP Map</h3>
 					<p id="apps-desc">Not yet familiar with the whereabouts of different places in UP Diliman? Try this app! Surely, it will help you how to go there as fast as possible!</p>
 					<div class="vis-site">
-						<a href="map">visit site <i class="fa fa-arrow-right"></i></a>
+						<a href="map" title="visit UP Map">visit site <i class="fa fa-arrow-right"></i></a>
 					</div>
 				</div> 
 				<div class="pure-u-1-3" style="font-size: 45px;">
@@ -56,7 +56,7 @@
 					<p id="apps-desc">We know that you are genius! Want to test your genius right now?</p>
 					<div class="vis-site">
 						<c:if test="${username != null}">
-							<a href="#">visit site <i class="fa fa-arrow-right"></i></a>
+							<a href="#" title="visit Brain Gym">visit site <i class="fa fa-arrow-right"></i></a>
 						</c:if>
 						<c:if test="${username == null}">
 							<span class="vis-siteNL">visit site <i class="fa fa-arrow-right"></i></span>
@@ -69,7 +69,7 @@
 				<h3>Study Buddy</h3>
 				<p id="apps-desc">Having a hard time managing your study life with the many luring stuff meddling upon your studies? Study Buddy is your best friend!</p>
 				<div class="vis-site">
-					<a href="#">visit site <i class="fa fa-arrow-right"></i></a>
+					<a href="#" title="visit Study Buddy">visit site <i class="fa fa-arrow-right"></i></a>
 				</div>
 			</div> 
 			<div class="pure-u-1-3" style="font-size: 45px; margin-bottom: 80px;">
