@@ -158,3 +158,18 @@ ul {
 	padding-left: 10px;
 	font-size: 18px;
 }
+
+.form-fields select{
+	padding: 0.5em 0.6em;
+   	line-height: 1;
+   	-webkit-appearance: none;
+   	overflow: hidden;
+   	background: url('imgs/down.png') no-repeat 98.7%50% #fff;
+   	border: 1px solid #ccc;
+   	color: #000;
+   	font-family: arial;
+   	vertical-align: middle;
+   	font-size: 0.8em;
+   	border-radius: 4px;
+   	width: 33%;
+}
