@@ -1,4 +1,4 @@
-create database uportaldb;
+create database if not exists uportaldb;
 use uportaldb;
 
 drop user java@localhost;
