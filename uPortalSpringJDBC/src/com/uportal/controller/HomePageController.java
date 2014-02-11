@@ -65,7 +65,14 @@ public class HomePageController {
 	 	}
 	 return "hotlines";
  }
- 
+ @RequestMapping("/AdminPage")
+ public String AdminPage(ModelMap model, Principal principal){
+	 if(principal != null){
+		 String name = principal.getName();
+			model.addAttribute("username", name);
+	 	}
+	 return "AdminPage";
+ }
  @RequestMapping("/description")
  public String descriptionsPage(ModelMap model, Principal principal){
 	 if(principal != null){
