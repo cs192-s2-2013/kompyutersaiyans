@@ -19,6 +19,9 @@ public class UserExtractor implements ResultSetExtractor<User> {
   user.setEmail(resultSet.getString(4));  
   user.setUsername(resultSet.getString(5));
   user.setPassword(resultSet.getString(6));
+  user.setCollege(resultSet.getString(8));
+  user.setDepartment(resultSet.getString(9));
+  user.setCourse(resultSet.getString(10));
     
   return user;  
  }  

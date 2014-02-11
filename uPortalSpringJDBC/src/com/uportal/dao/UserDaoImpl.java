@@ -69,14 +69,14 @@ public class UserDaoImpl implements UserDao {
 			sql = "select userid from users where username = ?";
 			int userid = (int)jdbcTemplate.queryForInt(
 					sql, new Object[] { user.getUsername() });
-			sql = "select roleid from roles where role = 'ROLE_GENERAL'";
-			int roleid = (int)jdbcTemplate.queryForInt(sql);
+			sql = "select typeid from userTypes where typename = 'GENERAL'";
+			int typeid = (int)jdbcTemplate.queryForInt(sql);
 			sql = "INSERT INTO userRoles" 
-					+ "(userid, roleid) VALUES (?,?)";
+					+ "(userid, typeid) VALUES (?,?)";
 			
 			jdbcTemplate.update(
 					sql,
-					new Object[] {userid, roleid}
+					new Object[] {userid, typeid}
 					);
 			return 0;
 		}
