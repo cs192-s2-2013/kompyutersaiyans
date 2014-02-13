@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@attribute name="title" required="true"%>
 
+<html>
 <head>
 	<link rel="stylesheet" href=<c:url value="/resources/css/all.css"/>>
 	<link rel="stylesheet" type="text/css" href=<c:url value="/resources/css/ie.css"/>>
@@ -12,4 +13,5 @@
 	<script type="text/javascript" src= <c:url value = "/resources/js/jquery.main.js"/>></script>
 	<title>${title} - uPortal</title>
 </head>
- src=<c:url value="/resources/images/img1.jpg"/>
+<%--  src=<c:url value="/resources/images/img1.jpg"/> --%>
+ </html>
