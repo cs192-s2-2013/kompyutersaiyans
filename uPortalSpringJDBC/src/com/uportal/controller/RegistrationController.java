@@ -28,13 +28,8 @@ public class RegistrationController {
  ResourceService resourceService;
 
  private void setOptions(ModelMap model){
-	 List<ValueTuple> collegeList = resourceService.getCollegeList();
-	 List<ValueTuple> deptList =  resourceService.getDeptList();
-	 List<ValueTuple> courseList = resourceService.getCourseList();
-	 
-	 model.addAttribute("colleges", collegeList);
-	 model.addAttribute("departments", deptList);
-	 model.addAttribute("courses", courseList);
+	
+	 model.addAttribute("resourceService", resourceService);
  }
  
  @RequestMapping("/register")

@@ -15,12 +15,17 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 	
 	@Override
-	public List<ValueTuple> getDeptList(){
-		return resourcedao.getDeptList();
+	public List<ValueTuple> getDeptList(int collegeid){
+		return resourcedao.getDeptList(collegeid);
 	}
 	
 	@Override
 	public List<ValueTuple> getCourseList(){
 		return resourcedao.getCourseList();
+	}
+	
+	@Override
+	public int getDeptCount(int collegeid){
+		return resourcedao.getDeptCount(collegeid);
 	}
 }

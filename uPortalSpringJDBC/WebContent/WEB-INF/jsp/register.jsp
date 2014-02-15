@@ -7,11 +7,30 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:genericpage title="Sign up">
-	<div class="headers">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		function OnChange(dropdown, id)
+		{
+		    var myindex  = dropdown.selectedIndex;
+		    var value = dropdown.options[myindex].value;
+		    
+		    if(id == 'college'){
+		    	for(var c = 1; c <= 25; c++){
+		    		document.getElementById('d'+c).value = 'null';
+			    	document.getElementById('d'+c).style.display = 'none';
+			    	if(c == value){
+			    		document.getElementById('d'+c).style.display = 'block';
+			    	}
+		    	}
+		    }
+		}
+	</script>
+	
+	<div class="headers" style="margin-bottom: -50px; ">
 		<h1>Register</h1>	
 	</div>
 	<center>
-		<div class="formdiv">
+		<div class="formdiv" >
 			<form:form method="post" action="/submit" modelAttribute="user" commandName="user" id="rform" class="pure-form">	
 				<div class="form-fields">
 					<form:input path="firstName" class="pure-input-1-3" placeholder="First name" required="true" maxlength="50"/>
@@ -53,21 +72,23 @@
 						<option value="instructor">Instructor</option>
 					</select>
 				</div>
-				<div class="form-fields" id="college"><form:select path="college"> 
+				<div class="form-fields"><form:select  id="college" path="college" onchange = "OnChange(this.form.college, 'college')"> 
 					<form:option label="Select College" value="null"/>
-					<form:options items="${model.colleges}" itemLabel="label" itemValue="value" /> 
+					<form:options items="${model.resourceService.getCollegeList()}" itemLabel="label" itemValue="value" /> 
 					</form:select>
 				</div>
-				<div class="form-fields" id="department"><form:select path="department"> 
-					<form:option label="Select Department" value="null"/>
-					<form:options items="${model.departments}" itemLabel="label" itemValue="value" /> 
+				<div class="form-fields" id="department">
+				<c:forEach var="i" begin="1" end="25">
+					<form:select path="department" id="d${i}" style="display:none"> 
+						<form:option label="Select Department" value="null"/>
+						<form:options items="${model.resourceService.getDeptList(i)}" itemLabel="label" itemValue="value" />
 					</form:select>
+				</c:forEach> 
+					 
 				</div>
-				<div class="form-fields" id="course"><form:select path="course"> 
-					<form:option label="Select Courses" value="null"/>
-					<form:options items="${model.courses}" itemLabel="label" itemValue="value" /> 
-					</form:select>
-				</div>
+				<script type="text/javascript">
+				
+			</script>
 				<div class="form-fields">
 					<button type="submit" class="pure-button pure-input-1-3 pure-button-primary" value="Save" style="background: #8e44ad; border-radius: 5px;">Submit</button>
 				</div>

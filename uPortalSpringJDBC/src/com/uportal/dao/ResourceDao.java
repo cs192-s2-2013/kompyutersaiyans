@@ -5,6 +5,7 @@ import com.uportal.domain.ValueTuple;
 
 public interface ResourceDao {
 	public List<ValueTuple> getCollegeList();
-	public List<ValueTuple> getDeptList();
+	public List<ValueTuple> getDeptList(int collegeid);
 	public List<ValueTuple> getCourseList();
+	public int getDeptCount(int collegeid);
 }

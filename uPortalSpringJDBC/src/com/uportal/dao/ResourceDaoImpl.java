@@ -23,9 +23,9 @@ public class ResourceDaoImpl implements ResourceDao{
 		return collegeList;
 	}
 	
-	public List<ValueTuple> getDeptList() {
+	public List<ValueTuple> getDeptList(int collegeid) {
 		ArrayList<ValueTuple> deptList = new ArrayList<ValueTuple>();
-		String sql = "select deptid,deptname,collegeid from departments";
+		String sql = "select deptid,deptname,collegeid from departments where collegeid=" + collegeid;
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		deptList = (ArrayList<ValueTuple>) jdbcTemplate.query(sql, new ValueTupleRowMapper());
@@ -39,5 +39,11 @@ public class ResourceDaoImpl implements ResourceDao{
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		courseList = (ArrayList<ValueTuple>) jdbcTemplate.query(sql, new ValueTupleRowMapper());
 		return courseList;
+	}
+	
+	public int getDeptCount(int collegeid){
+		String sql = "select count(*) from departments where collegeid=" + collegeid;
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		return jdbcTemplate.queryForInt(sql);
 	}
 }

@@ -47,9 +47,10 @@ public class UserDaoImpl implements UserDao {
 			}
 			isDBinit = true;
 		}*/
-		
+		String department = user.getDepartment();
+		String dept = department.replaceAll("[^0-9]", "");
 		String sql = "INSERT INTO users "
-				+ "(firstname, lastname, email, username, password, collegeid, departmentid, courseid ) VALUES (?,?,?,?,?,?,?,?);";
+				+ "(firstname, lastname, email, username, password, collegeid, departmentid ) VALUES (?,?,?,?,?,?,?);";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		final String usernameCheck = "select count(*) from users where username = ?;";
@@ -63,7 +64,7 @@ public class UserDaoImpl implements UserDao {
 			jdbcTemplate.update(
 					sql,
 					new Object[] { user.getFirstName(), user.getLastName(),
-							user.getEmail(), user.getUsername(), hashedPassword, user.getCollege(), user.getDepartment(), user.getCourse() });
+							user.getEmail(), user.getUsername(), hashedPassword, user.getCollege(), Integer.parseInt(dept) });
 			sql = "select userid from users where username = ?";
 			int userid = (int)jdbcTemplate.queryForInt(
 					sql, new Object[] { user.getUsername() });
