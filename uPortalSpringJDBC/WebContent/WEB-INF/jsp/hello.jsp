@@ -6,5 +6,8 @@
 	<div id="message">
 		${message}, ${username}!
 	</div>
+	<div id="message">
+		<a href='req_admin'>Request as admin</a>
+	</div>
 </t:userpage>
 	
