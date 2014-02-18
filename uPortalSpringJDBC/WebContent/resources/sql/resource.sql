@@ -1,6 +1,6 @@
 create table if not exists colleges(
 	collegeid int not null auto_increment,
-	collegename varchar(50) not null,
+	collegename varchar(55) not null,
 	primary key (collegeid)
 )ENGINE = InnoDB;
 insert into colleges (collegename) value ('College of Arts and Letters');
@@ -30,7 +30,7 @@ grant all privileges on uportaldb.colleges to 'java'@'localhost' with grant opti
 create table if not exists departments(
 	collegeid int not null,
 	deptid int not null auto_increment,
-	deptname varchar(50),
+	deptname varchar(70),
 	primary key (deptid),
 	constraint fk_collegeid foreign key (collegeid)
 	references colleges(collegeid)
@@ -103,7 +103,7 @@ grant all privileges on uportaldb.departments to 'java'@'localhost' with grant o
 create table if not exists courses(
 	deptid int not null,
 	courseid int not null auto_increment,
-	coursename varchar(50) not null,
+	coursename varchar(55) not null,
 	primary key (courseid),
 	constraint fk_deptid foreign key (deptid)
 	references departments(deptid)
