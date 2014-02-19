@@ -195,10 +195,15 @@
 								<div class="text-section">
 									<h1>Settings</h1>
 									<p>Configure admin control panel here</p>
+									<c:if test="${reset_success == true}">
+									<p><b>The hit counter was successfully reseted</b></p>
+									</c:if>
+									
 									</br>
 									<p><u>Hit Counter</u></p>
 									<p>Number of visitors: <b> ${cookie.hitCounter.value} </b></p>
-									<p><b><a href='#'>Reset counter</a></b></p>
+									<p><b><a href="reset">Reset counter</a></b></p>
+									
 								</div>
 							</article>
 						</div>
