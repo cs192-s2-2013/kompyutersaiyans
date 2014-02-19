@@ -125,12 +125,12 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User getUser(String id) {
+	public User getUser(String username) {
 		List<User> userList = new ArrayList<User>();
-		String sql = "select userid,firstname,lastname,email,username,password,college,department,course from users where userid= " + id;
+		String sql = "select userid,firstname,lastname,email,username,password,collegeid,departmentid,courseid from users where username= \"" + username+ "\"";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		userList = jdbcTemplate.query(sql, new UserRowMapper());
 		return userList.get(0);
 	}
-
+	
 }
