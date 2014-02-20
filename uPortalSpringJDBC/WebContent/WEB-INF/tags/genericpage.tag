@@ -43,7 +43,6 @@
 					Sign up success. You can now login.
 				</div>
 			</c:if>
-			<c:if test="${reset_success == true}"><div id="message">The hit counter was successfully reseted </div></c:if>  
 		<jsp:doBody/>
 	</body>
 </html>

@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
 <t:adminpage title="${title}"></t:adminpage>
 	<body>
 		<header>
@@ -62,10 +63,130 @@
 							</article>
 						</div>
 						<div id="tab-3" class="tab">
-							
+							<style>  
+								    body {  
+								     font-size: 20px;  
+								     color: teal;  
+								     font-family: Calibri;  
+								    }  
+								      
+								    td {  
+								     font-size: 15px;  
+								     color: black;  
+								     width: 100px;  
+								     height: 22px;  
+								     text-align: center;  
+								    }  
+								    .heading {  
+								     font-size: 18px;  
+								     color: white;  
+								     font: bold;  
+								     background-color: orange;  
+								     border: thick;  
+								    }  
+								    </style>  
+								    </head>  
+								    <body>  
+								     <center>  
+								        
+								       
+								       
+								     <b>Admin List | uPortal </b>  
+								       
+								      
+								         
+								        
+								      
+								      <table border="1">  
+								       <tr>  
+								        <td class="heading">User Id</td>  
+								        <td class="heading">First Name</td>  
+								        <td class="heading">Last Name</td>  
+								        <td class="heading">Email</td>  
+								        <td class="heading">Username</td>
+								        <td class="heading">Password</td>  
+								        <td class="heading">Edit</td>  
+								        <td class="heading">Delete</td>  
+								       </tr>  
+								       <c:forEach var="user" items="${userList}">  
+								        <tr>  
+								         <td>${user.userId}</td>  
+								         <td>${user.firstName}</td>  
+								         <td>${user.lastName}</td>  
+								         <td>${user.email}</td>  
+								         <td>${user.username}</td>  
+								         <td>${user.password}</td>
+								         <td><a href="edit?userid=${user.userId}">Edit</a></td>  
+								         <td><a href="delete?userid=${user.userId}">Delete</a></td>  
+								        </tr>  
+								       </c:forEach>  
+								       <tr><td colspan="7"><a href="register">Add New User</a></td></tr>  
+								      </table>  
+								      
+								     </center>  
 						</div>
 						<div id="tab-4" class="tab">
-							
+							         <style>  
+							    body {  
+							     font-size: 20px;  
+							     color: teal;  
+							     font-family: Calibri;  
+							    }  
+							      
+							    td {  
+							     font-size: 15px;  
+							     color: black;  
+							     width: 100px;  
+							     height: 22px;  
+							     text-align: center;  
+							    }  
+							    .heading {  
+							     font-size: 18px;  
+							     color: white;  
+							     font: bold;  
+							     background-color: orange;  
+							     border: thick;  
+							    }  
+							    </style>  
+							    </head>  
+							    <body>  
+							     <center>  
+							        
+							       
+							       
+							     <b>User List | uPortal </b>  
+							       
+							      
+							         
+							        
+							      
+							      <table border="1">  
+							       <tr>  
+							        <td class="heading">User Id</td>  
+							        <td class="heading">First Name</td>  
+							        <td class="heading">Last Name</td>  
+							        <td class="heading">Email</td>  
+							        <td class="heading">Username</td>
+							        <td class="heading">Password</td>  
+							        <td class="heading">Edit</td>  
+							        <td class="heading">Delete</td>  
+							       </tr>  
+							       <c:forEach var="user" items="${userList}">  
+							        <tr>  
+							         <td>${user.userId}</td>  
+							         <td>${user.firstName}</td>  
+							         <td>${user.lastName}</td>  
+							         <td>${user.email}</td>  
+							         <td>${user.username}</td>  
+							         <td>${user.password}</td>
+							         <td><a href="edit?userid=${user.userId}">Edit</a></td>  
+							         <td><a href="delete?userid=${user.userId}">Delete</a></td>  
+							        </tr>  
+							       </c:forEach>  
+							       <tr><td colspan="7"><a href="register">Add New User</a></td></tr>  
+							      </table>  
+							      
+							     </center>  
 							
 						</div>
 						
@@ -74,10 +195,15 @@
 								<div class="text-section">
 									<h1>Settings</h1>
 									<p>Configure admin control panel here</p>
+									<c:if test="${reset_success == true}">
+									<p><b>The hit counter was successfully reseted</b></p>
+									</c:if>
+									
 									</br>
 									<p><u>Hit Counter</u></p>
 									<p>Number of visitors: <b> ${cookie.hitCounter.value} </b></p>
-									<p><b><a href='#'>Reset counter</a></b></p>
+									<p><b><a href="reset">Reset counter</a></b></p>
+									
 								</div>
 							</article>
 						</div>

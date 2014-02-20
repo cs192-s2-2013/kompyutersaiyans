@@ -35,10 +35,13 @@ public class CounterController {
 		hitCounter -= hitCounter;
 		Cookie counter = new Cookie("hitCounter", hitCounter.toString());
 		response.addCookie(counter);
-		String name = principal.getName();
-		model.addAttribute("username", name);
+		if(principal != null)
+		{
+			String name = principal.getName();
+			model.addAttribute("username", name);
+		}
 		model.addAttribute("reset_success", "true");
-		return "home";
+		return "AdminPage";
 	}
 
 }
