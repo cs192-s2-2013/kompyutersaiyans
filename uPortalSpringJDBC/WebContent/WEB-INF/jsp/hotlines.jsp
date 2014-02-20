@@ -13,15 +13,16 @@
 	
 	<div class="cont-div" >
 		<div class="htln-left" >
-		
 			<c:forEach var="hotline" items="${hotlineList}">
-				<h4><c:out value="${hotline.getValue()}"/></h4>
+				<h4><c:out value="${hotline.getLabel()}"/></h4>
 				<ul>
-					<li><c:out value="${hotline.getLabel()}"/></li>
+					<li><c:out value="${hotline.getTelInfo()}"/></li>
 				</ul>
 			</c:forEach>
-			
-		 	<h4>UP Diliman Police</h4>
+		</div>
+		
+		<div class="htln-right">
+			<h4>UP Diliman Police</h4>
 			<ul>
 				<li>9283615</li>
 				<li>9818500 loc 4008 (Radio Room)</li>
@@ -47,9 +48,7 @@
 				<li>436-0948</li>
 				<li>924-3101</li>
 			</ul>
-		</div>
 		
-		<div class="htln-right">
 			<h4>Philippine National Red Cross Quezon City Chapter</h4>
 			<ul>
 				<li>920-3672</li>

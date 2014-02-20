@@ -64,7 +64,6 @@ public class ResourceDaoImpl implements ResourceDao{
 		String sql = "select * from hotlines";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		hotlines = (ArrayList<ValueTuple>) jdbcTemplate.query(sql, new ValueTupleRowMapper());
-		System.out.println("hello");
 		return hotlines;
 	}
 }

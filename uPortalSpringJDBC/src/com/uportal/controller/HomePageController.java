@@ -79,10 +79,6 @@ public class HomePageController {
 	 return "public";
  }
  
- private void setOptions(ModelMap model){	
-	 model.addAttribute("resourceService", resourceService);
- }
- 
  @RequestMapping("/hotlines")
  public String hotlinesPage(ModelMap model, Principal principal){
 	 if(principal != null){
