@@ -8,4 +8,6 @@ public interface ResourceDao {
 	public List<ValueTuple> getDeptList(int collegeid);
 	public List<ValueTuple> getCourseList();
 	public int getDeptCount(int collegeid);
+	public String getDept(int deptid);
+	public String getCollege(int collegeid);
 }

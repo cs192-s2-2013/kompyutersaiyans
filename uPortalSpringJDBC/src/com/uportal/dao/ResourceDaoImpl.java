@@ -46,4 +46,16 @@ public class ResourceDaoImpl implements ResourceDao{
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		return jdbcTemplate.queryForInt(sql);
 	}
+	
+	public String getDept(int deptid){
+		String sql= "select deptname from departments where deptid="+ deptid;
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		return jdbcTemplate.queryForObject(sql, String.class);
+	}
+	
+	public String getCollege(int collegeid){
+		String sql= "select collegename from colleges where collegeid="+ collegeid;
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		return jdbcTemplate.queryForObject(sql, String.class);
+	}
 }

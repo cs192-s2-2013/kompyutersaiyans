@@ -28,4 +28,13 @@ public class ResourceServiceImpl implements ResourceService {
 	public int getDeptCount(int collegeid){
 		return resourcedao.getDeptCount(collegeid);
 	}
+	
+	@Override
+	public String getDept(int deptid){
+		return resourcedao.getDept(deptid);
+	}
+	
+	public String getCollege(int collegeid){
+		return resourcedao.getCollege(collegeid);
+	}
 }
