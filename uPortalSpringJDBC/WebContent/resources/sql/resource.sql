@@ -189,3 +189,12 @@ insert into courses (deptid, coursename) value (51, 'BS Library Science');
 
 grant all privileges on uportaldb.courses to 'java'@'localhost' with grant option;
 
+create table hitcounter(
+     page varchar(50) not null,
+     views int default 0,
+     primary key(page)
+)ENGINE = InnoDB;
+
+insert into hitcounter(page,views) value ('homepage', 0);
+
+grant all privileges on uportaldb.hitcounter to 'java'@'localhost' with grant option;

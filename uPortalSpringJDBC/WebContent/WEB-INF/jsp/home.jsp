@@ -114,7 +114,7 @@
 	<div class="footer l-box">
 	    <div class="pure-g-r">
 	    	<div class="pure-u-1-6">
-	    		<p>hits: ${cookie.hitCounter.value}</p>
+	    		<p>hits: ${homePageCounter}</p>
 	    	</div>
 	    	<div class="pure-u-2-3">
 	    		<p>&copy; Kompyuter Saiyans 2013</p>

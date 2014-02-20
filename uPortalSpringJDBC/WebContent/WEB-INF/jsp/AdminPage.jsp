@@ -201,7 +201,7 @@
 									
 									</br>
 									<p><u>Hit Counter</u></p>
-									<p>Number of visitors: <b> ${cookie.hitCounter.value} </b></p>
+									<p>Number of visitors: <b> ${homePageCounter} </b></p>
 									<p><b><a href="reset">Reset counter</a></b></p>
 									
 								</div>

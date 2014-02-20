@@ -5,8 +5,10 @@ import java.security.Principal;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,18 +23,32 @@ public class HomePageController {
 
  @Autowired
  UserService userService;
- 	
+ 
+ @Autowired
+ DataSource dataSource;
+ 
  @RequestMapping(value="/home", method = RequestMethod.GET )
+    
+   /*
 	public String homePage(ModelMap model, Principal principal,@CookieValue(value = "hitCounter", defaultValue = "0") Long hitCounter,
-			HttpServletResponse response ) {
+			HttpServletResponse response ) { */
+ 	public String homePage(ModelMap model, Principal principal) {
 	 	if(principal != null){
 	 		String name = principal.getName();
 			model.addAttribute("username", name);
 			model.addAttribute("message", "Spring Security Custom Form example");
 	 	}
-		 hitCounter++;
+	 	/*
+		hitCounter++;
 		Cookie counter = new Cookie("hitCounter", hitCounter.toString());
-		response.addCookie(counter);
+		response.addCookie(counter); 
+		*/
+		String sql = "select views from hitcounter where page=\'homepage\'";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		int newViews = jdbcTemplate.queryForInt(sql)+1;
+		String updateCounter = "update hitcounter set views="+newViews+" where page=\'homepage\'";
+		jdbcTemplate.update(updateCounter);
+		model.addAttribute("homePageCounter", newViews);
 		return "home";
 
 	}
@@ -70,6 +86,9 @@ public class HomePageController {
 		 String name = principal.getName();
 			model.addAttribute("username", name);
 	 	}
+	 String sql = "select views from hitcounter where page=\'homepage\'";
+	 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+	 model.addAttribute("homePageCounter", jdbcTemplate.queryForInt(sql));
 	 return "AdminPage";
  }
  @RequestMapping("/description")

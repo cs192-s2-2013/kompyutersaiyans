@@ -10,6 +10,6 @@
 		<h1>Counter</h1>	
 	</div>
 	<div class="htln-div">
-	Number of visitors: <b> ${cookie.hitCounter.value} </b>
+	Number of visitors: <b> ${homePageCounter} </b>
 	</div>
 </t:genericpage>
