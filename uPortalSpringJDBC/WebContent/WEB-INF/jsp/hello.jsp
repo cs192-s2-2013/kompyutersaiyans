@@ -23,10 +23,20 @@
 		</div>
 	</div>
 	<div id="prof-links">	
-		<a href="#"><button class="pure-button"><i class="fa fa-laptop"></i><br>UP Maps</button></a>
-		<a href="#"><button class="pure-button"><i class="fa fa-money"></i><br>Study Buddy</button></a>
-		<a href="#"><button class="pure-button"><i class="fa fa-youtube-play"></i><br>Brain Gym</button></a>
-		<a href="#"><button class="pure-button"><i class="fa fa-cut"></i><br>Online Classroom</button></a>
+		<a href="#" title="visit UP Map"><button class="pure-button"><i class="fa fa-laptop"></i><br>UP Map</button></a>
+		<a href="#" title="visit Study Buddy"><button class="pure-button"><i class="fa fa-money"></i><br>Study Buddy</button></a>
+		<c:if test="${college == 'College of Engineering' || college == 'College of Science'}">
+			<a href="#" title="visit Brain Gym"><button class="pure-button"><i class="fa fa-youtube-play"></i><br>Brain Gym</button></a>
+		</c:if>
+		<c:if test="${college != 'College of Engineering' && college != 'College of Science'}">
+			<button class="pure-button" title="available to College of Engineering and Science students only" disabled><i class="fa fa-youtube-play"></i><br>Brain Gym</button>
+		</c:if>
+		<c:if test="${department == 'Department of Computer Science'}">
+			<a href="#" title="visit Online Classroom"><button class="pure-button"><i class="fa fa-cut"></i><br>Online Classroom</button></a>
+		</c:if>
+		<c:if test="${department != 'Department of Computer Science'}">
+			<button class="pure-button" title="available to DCS students only" disabled><i class="fa fa-cut"></i><br>Online Classroom</button>
+		</c:if>
 	</div>
 </t:userpage>
 	
