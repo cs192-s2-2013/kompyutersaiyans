@@ -22,5 +22,11 @@
 			</div>
 		</div>
 	</div>
+	<div id="prof-links">	
+		<a href="#"><button class="pure-button"><i class="fa fa-laptop"></i><br>UP Maps</button></a>
+		<a href="#"><button class="pure-button"><i class="fa fa-money"></i><br>Study Buddy</button></a>
+		<a href="#"><button class="pure-button"><i class="fa fa-youtube-play"></i><br>Brain Gym</button></a>
+		<a href="#"><button class="pure-button"><i class="fa fa-cut"></i><br>Online Classroom</button></a>
+	</div>
 </t:userpage>
 	
