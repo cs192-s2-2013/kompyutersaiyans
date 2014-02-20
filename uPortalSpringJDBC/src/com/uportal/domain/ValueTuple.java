@@ -1,13 +1,10 @@
 package com.uportal.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class ValueTuple {
 	public int value;
 	public String label;
 	public String telInfo;
+	public String[] telInfos;
 	public int foreign;
 	
 	public void setValue(int value){
@@ -28,10 +25,15 @@ public class ValueTuple {
 	
 	public void setTelInfo(String info){
 		this.telInfo = info;
+		this.telInfos = info.split("\\*");
 	}
 	
 	public String getTelInfo(){
 		return telInfo;
+	}
+	
+	public String[] getTelInfos(){
+		return telInfos;
 	}
 	
 	public void setForeign(int foreign){

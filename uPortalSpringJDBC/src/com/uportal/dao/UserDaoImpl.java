@@ -21,32 +21,6 @@ public class UserDaoImpl implements UserDao {
 	DataSource dataSource;
 	
 	public int insertData(User user) {
-		
-		/*if(!isDBinit)//initialize db; create table; create user
-		{
-			try
-			{
-				System.out.println("DB init");
-				Connection cxn = DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","");
-				Statement st = cxn.createStatement();
-				System.out.println("connection established");
-				st.execute("CREATE DATABASE IF NOT EXISTS userdb;");
-				st.execute("USE userdb;");
-				st.execute("CREATE table if not exists user (	    userid int not null auto_increment,    firstname varchar(255) DEFAULT null,    lastname varchar(255) DEFAULT null,    email varchar(255) DEFAULT null,    username varchar(255) DEFAULT null,    password varchar(255) DEFAULT null,    primary key (userid));");
-				st.execute("alter table userdb.user add column enabled tinyint(1) default true;");
-				st.execute("alter table userdb.user add column access varchar(50) default 'ROLE_USER';");
-				st.execute("CREATE user 'java'@'localhost' identified by 'eclipseisabitch';");
-				st.execute("grant all privileges on userdb to 'java'@'localhost' with grant option;");
-				st.execute("INSERT INTO `user` (`firstname`, `lastname`, `email`, `username`, `password`) VALUES ('Sherlyne', 'Francia', 'sherlyne@francia.com', 'sherlyne', 'francia'),	('Denise', 'Francisco', 'denise@francisco.com', 'denise', 'francisco'),	('Erwin', 'Sanchez', 'erwin@sanchez.com', 'erwin', 'sanchex'),	('Frank', 'Rayo', 'frank@rayo.com', 'frank', 'rayo'),	('Mark', 'Navata', 'mark@navata.com', 'mark', 'navata');");
-				cxn.close();
-				System.out.println("OK");
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-			isDBinit = true;
-		}*/
 		String department = user.getDepartment();
 		String dept = department.replaceAll("[^0-9]", "");
 		String sql = "INSERT INTO users "
@@ -58,7 +32,7 @@ public class UserDaoImpl implements UserDao {
 		final String emailCheck = "select count(*) from users where email = ?;";
 		int emailResult= jdbcTemplate.queryForInt(emailCheck, new Object[]{String.valueOf(user.getEmail())});
 		
-		if (usernameResult == 0 && emailResult == 0){
+		if (usernameResult == 0 && emailResult == 0 && dept != ""){
 			ShaPasswordEncoder passwordEncoder = new ShaPasswordEncoder();
 			String hashedPassword = passwordEncoder.encodePassword(user.getPassword(),null);
 			jdbcTemplate.update(
