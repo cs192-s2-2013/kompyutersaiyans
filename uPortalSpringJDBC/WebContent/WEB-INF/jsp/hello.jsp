@@ -15,8 +15,8 @@
 					<div class="info">Username: ${user.getUsername()}</div>
 					<div class="info">Email: ${user.getEmail()}</div>
 					<div class="info">Role: Wala pa ito. Lalalalalalalala</div>
-					<div class="info">College: Wala rin ito. Lalalalalala</div>
-					<div class="info">Department: Wala pa rin. Lalalalalala</div>
+					<div class="info">College: ${college}</div>
+					<div class="info">Department: ${department}</div>
 					<div class="info">Course: Lalalalalalala~~~~~~~ :))</div>
 				</div>
 			</div>
