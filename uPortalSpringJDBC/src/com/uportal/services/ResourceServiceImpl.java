@@ -25,6 +25,11 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 	
 	@Override
+	public List<ValueTuple> getHotlines(){
+		return resourcedao.getHotlines();
+	}
+	
+	@Override
 	public int getDeptCount(int collegeid){
 		return resourcedao.getDeptCount(collegeid);
 	}

@@ -1,6 +1,7 @@
 package com.uportal.controller;
 
 import java.security.Principal;
+import java.util.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.ModelMap;  
 
+import com.uportal.domain.ValueTuple;
+import com.uportal.services.ResourceService;
 import com.uportal.services.UserService;
 
 @Controller
@@ -27,6 +30,9 @@ public class HomePageController {
  @Autowired
  DataSource dataSource;
  
+ @Autowired
+ ResourceService resourceService;
+ 	
  @RequestMapping(value="/home", method = RequestMethod.GET )
     
    /*
@@ -76,7 +82,10 @@ public class HomePageController {
  public String hotlinesPage(ModelMap model, Principal principal){
 	 if(principal != null){
 		 String name = principal.getName();
-			model.addAttribute("username", name);
+		 model.addAttribute("username", name);
+		 List<ValueTuple> hotlines = new ArrayList<ValueTuple>();
+		 hotlines = resourceService.getHotlines();
+		 model.addAttribute("hotlines", hotlines);
 	 	}
 	 return "hotlines";
  }
@@ -84,7 +93,7 @@ public class HomePageController {
  public String AdminPage(ModelMap model, Principal principal){
 	 if(principal != null){
 		 String name = principal.getName();
-			model.addAttribute("username", name);
+		model.addAttribute("username", name);
 	 	}
 	 String sql = "select views from hitcounter where page=\'homepage\'";
 	 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
@@ -107,6 +116,15 @@ public class HomePageController {
 			model.addAttribute("username", name);
 	 	}
 	 return "map";
+ }
+ 
+ @RequestMapping("/userList")
+ public String userPage(ModelMap model, Principal principal){
+	 if(principal != null){
+		 String name = principal.getName();
+			model.addAttribute("username", name);
+	 	}
+	 return "userList";
  }
  
  @ExceptionHandler(Exception.class)
