@@ -20,8 +20,8 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 	
 	@Override
-	public List<ValueTuple> getCourseList(){
-		return resourcedao.getCourseList();
+	public List<ValueTuple> getCourseList(int deptid){
+		return resourcedao.getCourseList(deptid);
 	}
 	
 	@Override

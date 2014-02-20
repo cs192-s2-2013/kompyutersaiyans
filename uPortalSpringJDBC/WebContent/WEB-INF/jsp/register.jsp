@@ -11,10 +11,14 @@
 	<script type="text/javascript">
 		function OnChange(dropdown, id)
 		{
-		    var myindex  = dropdown.selectedIndex;
-		    var value = dropdown.options[myindex].value;
 		    
 		    if(id == 'college'){
+		    	var myindex  = dropdown.selectedIndex;
+			    var value = dropdown.options[myindex].value;
+			    for(var c = 1; c <= 57; c++){
+		    		document.getElementById('dp'+c).value = 'null';
+			    	document.getElementById('dp'+c).style.display = 'none';
+		    	}
 		    	for(var c = 1; c <= 25; c++){
 		    		document.getElementById('d'+c).value = 'null';
 			    	document.getElementById('d'+c).style.display = 'none';
@@ -22,6 +26,19 @@
 			    		document.getElementById('d'+c).style.display = 'block';
 			    	}
 		    	}
+		    }else if(id == 'department'){
+		    	var myindex  = dropdown.selectedIndex;
+			    var value = dropdown.options[myindex].value;
+		    	for(var c = 1; c <= 57; c++){
+		    		document.getElementById('dp'+c).value = 'null';
+			    	document.getElementById('dp'+c).style.display = 'none';
+			    	if(c == value){
+			    		document.getElementById('dp'+c).style.display = 'block';
+			    	}
+		    	}
+		    }else{
+		    	
+		    	document.write(myindex);
 		    }
 		}
 	</script>
@@ -65,12 +82,10 @@
 					</label>
 				</div>
 				<div class="form-fields">
-					<select>
-						<option value="none">Select account type</option>					
-						<option value="general">General</option>
-						<option value="student">Student</option>
-						<option value="instructor">Instructor</option>
-					</select>
+					<form:select id="role" path="role">
+						<form:option label="Student" value="STUDENT"/>
+						<form:option label="Faculty" value="FACULTY"/>
+					</form:select>
 				</div>
 				<div class="form-fields"><form:select  id="college" path="college" onchange = "OnChange(this.form.college, 'college')"> 
 					<form:option label="Select College" value="null"/>
@@ -79,13 +94,22 @@
 				</div>
 				<div class="form-fields" id="department">
 				<c:forEach var="i" begin="1" end="25">
-					<form:select path="department" id="d${i}" style="display:none"> 
+					<form:select path="department" id="d${i}" style="display:none" onchange = "OnChange(this.form.d${i}, 'department')"> 
 						<form:option label="Select Department" value="null"/>
 						<form:options items="${model.resourceService.getDeptList(i)}" itemLabel="label" itemValue="value" />
 					</form:select>
 				</c:forEach> 
 					 
 				</div>
+				<div class="form-fields" id="courses">
+					<c:forEach var="i" begin="1" end="57">
+						<form:select path="course" id="dp${i}" style="display:none"> 
+							<form:option label="Select Course" value="null"/>
+							<form:options items="${model.resourceService.getCourseList(i)}" itemLabel="label" itemValue="value" />
+						</form:select>
+					</c:forEach>  
+				</div>
+				
 				<script type="text/javascript">
 				
 			</script>

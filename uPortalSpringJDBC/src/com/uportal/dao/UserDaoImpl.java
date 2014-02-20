@@ -20,8 +20,10 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	DataSource dataSource;
 	
+	@SuppressWarnings("deprecation")
 	public int insertData(User user) {
 		String department = user.getDepartment();
+		System.out.println(department);
 		String dept = department.replaceAll("[^0-9]", "");
 		String sql = "INSERT INTO users "
 				+ "(firstname, lastname, email, username, password, collegeid, departmentid ) VALUES (?,?,?,?,?,?,?);";
@@ -61,8 +63,9 @@ public class UserDaoImpl implements UserDao {
 			sql = "select userid from users where username = ?";
 			int userid = (int)jdbcTemplate.queryForInt(
 					sql, new Object[] { user.getUsername() });
-			sql = "select typeid from userTypes where typename = '" + user.getRole() + "'";
-			int typeid = (int)jdbcTemplate.queryForInt(sql);
+			sql = "select typeid from userTypes where typename = ?";
+			System.out.println(user.getRole());
+			int typeid = (int)jdbcTemplate.queryForInt(sql, new Object[] { user.getRole() });
 			sql = "INSERT INTO userRoles" 
 					+ "(userid, typeid) VALUES (?,?)";
 			

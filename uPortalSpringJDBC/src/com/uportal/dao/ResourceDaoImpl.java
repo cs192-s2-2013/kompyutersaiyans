@@ -33,9 +33,9 @@ public class ResourceDaoImpl implements ResourceDao{
 		return deptList;
 	}
 	
-	public List<ValueTuple> getCourseList() {
+	public List<ValueTuple> getCourseList(int deptid) {
 		ArrayList<ValueTuple> courseList = new ArrayList<ValueTuple>();
-		String sql = "select courseid,coursename,deptid from courses";
+		String sql = "select courseid,coursename,deptid from courses where deptid=" + deptid;
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		courseList = (ArrayList<ValueTuple>) jdbcTemplate.query(sql, new ValueTupleRowMapper());
