@@ -6,17 +6,18 @@ import java.util.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.ModelMap;  
 
+import com.uportal.domain.User;
 import com.uportal.domain.ValueTuple;
 import com.uportal.services.ResourceService;
 import com.uportal.services.UserService;
@@ -26,35 +27,20 @@ public class HomePageController {
 
  @Autowired
  UserService userService;
- 
- @Autowired
- DataSource dataSource;
- 
  @Autowired
  ResourceService resourceService;
  	
  @RequestMapping(value="/home", method = RequestMethod.GET )
-    
-   /*
 	public String homePage(ModelMap model, Principal principal,@CookieValue(value = "hitCounter", defaultValue = "0") Long hitCounter,
-			HttpServletResponse response ) { */
- 	public String homePage(ModelMap model, Principal principal) {
+			HttpServletResponse response ) {
 	 	if(principal != null){
 	 		String name = principal.getName();
 			model.addAttribute("username", name);
 			model.addAttribute("message", "Spring Security Custom Form example");
 	 	}
-	 	/*
-		hitCounter++;
+		 hitCounter++;
 		Cookie counter = new Cookie("hitCounter", hitCounter.toString());
-		response.addCookie(counter); 
-		*/
-		String sql = "select views from hitcounter where page=\'homepage\'";
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		int newViews = jdbcTemplate.queryForInt(sql)+1;
-		String updateCounter = "update hitcounter set views="+newViews+" where page=\'homepage\'";
-		jdbcTemplate.update(updateCounter);
-		model.addAttribute("homePageCounter", newViews);
+		response.addCookie(counter);
 		return "home";
 
 	}
@@ -78,15 +64,19 @@ public class HomePageController {
 	 return "public";
  }
  
+ private void setOptions(ModelMap model){	
+	 model.addAttribute("resourceService", resourceService);
+ }
+ 
  @RequestMapping("/hotlines")
  public String hotlinesPage(ModelMap model, Principal principal){
 	 if(principal != null){
 		 String name = principal.getName();
 		 model.addAttribute("username", name);
-		 List<ValueTuple> hotlines = new ArrayList<ValueTuple>();
-		 hotlines = resourceService.getHotlines();
-		 model.addAttribute("hotlines", hotlines);
 	 	}
+	 List<ValueTuple> hotlineList = new ArrayList<ValueTuple>();
+	 hotlineList = resourceService.getHotlines();
+	 model.addAttribute("hotlineList", hotlineList);
 	 return "hotlines";
  }
  @RequestMapping("/AdminPage")
@@ -95,9 +85,6 @@ public class HomePageController {
 		 String name = principal.getName();
 		model.addAttribute("username", name);
 	 	}
-	 String sql = "select views from hitcounter where page=\'homepage\'";
-	 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-	 model.addAttribute("homePageCounter", jdbcTemplate.queryForInt(sql));
 	 return "AdminPage";
  }
  @RequestMapping("/description")

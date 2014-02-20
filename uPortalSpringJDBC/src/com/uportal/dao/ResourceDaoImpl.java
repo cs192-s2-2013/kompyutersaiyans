@@ -61,10 +61,10 @@ public class ResourceDaoImpl implements ResourceDao{
 	
 	public List<ValueTuple> getHotlines(){
 		ArrayList<ValueTuple> hotlines = new ArrayList<ValueTuple>();
-		String sql = "select name, info from hotlines";
-
+		String sql = "select * from hotlines";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		hotlines = (ArrayList<ValueTuple>) jdbcTemplate.query(sql, new ValueTupleRowMapper());
+		System.out.println("hello");
 		return hotlines;
 	}
 }

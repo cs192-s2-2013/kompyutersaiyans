@@ -14,10 +14,10 @@
 	<div class="cont-div" >
 		<div class="htln-left" >
 		
-			<c:forEach var="hotline" items="${hotlines}">
-				<h4><c:out value="${hotline.name}"/></h4>
+			<c:forEach var="hotline" items="${hotlineList}">
+				<h4><c:out value="${hotline.getValue()}"/></h4>
 				<ul>
-					<li><c:out value="${hotline.info}"/></li>
+					<li><c:out value="${hotline.getLabel()}"/></li>
 				</ul>
 			</c:forEach>
 			
