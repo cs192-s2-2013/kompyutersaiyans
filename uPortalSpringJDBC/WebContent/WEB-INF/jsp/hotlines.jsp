@@ -10,8 +10,17 @@
 		<h1>Hotlines</h1>	
 	</div>
 	
+	
 	<div class="cont-div" >
 		<div class="htln-left" >
+		
+			<c:forEach var="hotline" items="${hotlines}">
+				<h4><c:out value="${hotline.name}"/></h4>
+				<ul>
+					<li><c:out value="${hotline.info}"/></li>
+				</ul>
+			</c:forEach>
+			
 		 	<h4>UP Diliman Police</h4>
 			<ul>
 				<li>9283615</li>

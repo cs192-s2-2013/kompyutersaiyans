@@ -58,4 +58,13 @@ public class ResourceDaoImpl implements ResourceDao{
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		return jdbcTemplate.queryForObject(sql, String.class);
 	}
+	
+	public List<ValueTuple> getHotlines(){
+		ArrayList<ValueTuple> hotlines = new ArrayList<ValueTuple>();
+		String sql = "select name, info from hotlines";
+
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		hotlines = (ArrayList<ValueTuple>) jdbcTemplate.query(sql, new ValueTupleRowMapper());
+		return hotlines;
+	}
 }
