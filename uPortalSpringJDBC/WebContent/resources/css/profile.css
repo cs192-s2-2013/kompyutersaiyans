@@ -56,8 +56,8 @@
 }
 
 #prof-links{
-	margin-left: 40px;
-	margin-right: 40px;
+	margin-left: 6%;
+	margin-right: 6%;
 }
 
 #prof-links button{
@@ -67,9 +67,10 @@
 	border: hidden;
 	font-size: 30px;
 	background: #ecf0f1;
-	margin-left: 40px;
-	margin-right: 20px;
-	margin-bottom: 40px;
+	margin-left: 1.6%;
+	margin-right: 1.6%;
+	margin-bottom: 30px;
+	border: 3px solid #7f8c8d;
 }
 
 #prof-links button i{
