@@ -25,7 +25,31 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 	
 	@Override
+	public List<ValueTuple> getHotlines(){
+		return resourcedao.getHotlines();
+	}
+	
+	@Override
 	public int getDeptCount(int collegeid){
 		return resourcedao.getDeptCount(collegeid);
+	}
+	
+	@Override
+	public String getDept(int deptid){
+		return resourcedao.getDept(deptid);
+	}
+	
+	public String getCollege(int collegeid){
+		return resourcedao.getCollege(collegeid);
+	}
+
+	@Override
+	public int getHomePageCounter() {
+		return resourcedao.getHomePageCounter();
+	}
+
+	@Override
+	public void updateHomePageCounter(int views) {
+		resourcedao.updateHomePageCounter(views);
 	}
 }

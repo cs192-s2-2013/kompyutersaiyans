@@ -16,8 +16,9 @@ public class ValueTupleExtractor implements ResultSetExtractor<ValueTuple> {
 	  ValueTuple vt = new ValueTuple();  
 	  
 	  vt.setValue(resultSet.getInt(1)); 
-	  vt.setLabel(resultSet.getString(2)); 
+	  vt.setLabel(resultSet.getString(2));
 	  try{
+		  vt.setTelInfo(resultSet.getString("info"));
 		  vt.setForeign(resultSet.getInt(3));
 	  }catch(Exception e){
 		  //do nothing

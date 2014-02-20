@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
 		final String emailCheck = "select count(*) from users where email = ?;";
 		int emailResult= jdbcTemplate.queryForInt(emailCheck, new Object[]{String.valueOf(user.getEmail())});
 		
-		if (usernameResult == 0 && emailResult == 0){
+		if (usernameResult == 0 && emailResult == 0 && dept != ""){
 			ShaPasswordEncoder passwordEncoder = new ShaPasswordEncoder();
 			String hashedPassword = passwordEncoder.encodePassword(user.getPassword(),null);
 			if(user.getCollege().toString().equals("null")){
@@ -118,9 +118,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User getUser(String id) {
+	public User getUser(String username) {
 		List<User> userList = new ArrayList<User>();
-		String sql = "select userid,firstname,lastname,email,username,password,college,department,course from users where userid= " + id;
+		String sql = "select userid,firstname,lastname,email,username,password,collegeid,departmentid,courseid from users where username= \"" + username+ "\"";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		userList = jdbcTemplate.query(sql, new UserRowMapper());
 		return userList.get(0);

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 public class WelcomeController {
 	
-	@RequestMapping
+	@RequestMapping("/req_admin")
 	public String requestAdmin(ModelMap model, Principal principal ) {
 		String name = principal.getName();
 		model.addAttribute("username", name);
