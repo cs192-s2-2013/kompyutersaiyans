@@ -189,6 +189,14 @@
 							     </center>  
 							
 						</div>
+						<div id="tab-5" class="tab">
+							<article>
+								<div class="text-section">
+									<h1>Edit Site Contents</h1>
+									<p>Edit hotlines</p>
+								</div>
+							</article>
+						</div>
 						
 						<div id="tab-8" class="tab">
 							<article>
@@ -229,7 +237,10 @@
 						<a href="#tab-4" class="ico3"><span>Users</span><em></em></a>
 						<span class="tooltip"><span>Users</span></span>
 					</li>
-					
+					<li>
+						<a href="#tab-5" class="ico3"><span>Edit Site</span><em></em></a>
+						<span class="tooltip"><span>Edit Site</span></span>
+					</li>
 					
 					<li>
 						<a href="#tab-8" class="ico8"><span>Settings</span><em></em></a>

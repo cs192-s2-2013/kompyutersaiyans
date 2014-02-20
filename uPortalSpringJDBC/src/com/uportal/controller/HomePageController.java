@@ -87,7 +87,6 @@ public class HomePageController {
 	 List<ValueTuple> hotlineList1 = new ArrayList<ValueTuple>();
 	 List<ValueTuple> hotlineList2 = new ArrayList<ValueTuple>();
 	 int size = hotlineList.size(), y = (int) Math.ceil(size/2);
-	 System.out.println(y);
 	 for (int i=0; i<=y; i++){
 		 hotlineList1.add(hotlineList.get(i));
 	 }
