@@ -13,11 +13,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.uportal.services.ResourceService;
+
 @Controller
 public class CounterController {
 
 	@Autowired
-	DataSource dataSource;
+	ResourceService resourceService;
 	
 	/*
 	@RequestMapping("/counter")
@@ -42,9 +44,7 @@ public class CounterController {
 			 String name = principal.getName();
 				model.addAttribute("username", name);
 		 	}
-		String sql = "select views from hitcounter where page=\'homepage\'";
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		model.addAttribute("homePageCounter", jdbcTemplate.queryForInt(sql));
+		model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
 		return "counter";
 	}
 	
@@ -63,11 +63,8 @@ public class CounterController {
 			String name = principal.getName();
 			model.addAttribute("username", name);
 		}
-		String sql = "select views from hitcounter where page=\'homepage\'";
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		int newViews = 0;
-		String updateCounter = "update hitcounter set views="+newViews+" where page=\'homepage\'";
-		jdbcTemplate.update(updateCounter);
+		resourceService.updateHomePageCounter(newViews);
 		model.addAttribute("homePageCounter", newViews);
 		model.addAttribute("reset_success", "true");
 		return "AdminPage";

@@ -50,11 +50,8 @@ public class HomePageController {
  	 Cookie counter = new Cookie("hitCounter", hitCounter.toString());
  	 response.addCookie(counter);
 	 */
-	 String sql = "select views from hitcounter where page=\'homepage\'";
-	 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-	 int newViews = jdbcTemplate.queryForInt(sql)+1;
-	 String updateCounter = "update hitcounter set views="+newViews+" where page=\'homepage\'";
-	 jdbcTemplate.update(updateCounter);
+	 int newViews = resourceService.getHomePageCounter()+1;
+	 resourceService.updateHomePageCounter(newViews);
 	 model.addAttribute("homePageCounter", newViews);
 	 return "home";
 
@@ -97,9 +94,7 @@ public class HomePageController {
 		 String name = principal.getName();
 		 model.addAttribute("username", name);
 	 }
-	 String sql = "select views from hitcounter where page=\'homepage\'";
-	 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-	 model.addAttribute("homePageCounter", jdbcTemplate.queryForInt(sql));
+	 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
 	 return "AdminPage";
  }
  

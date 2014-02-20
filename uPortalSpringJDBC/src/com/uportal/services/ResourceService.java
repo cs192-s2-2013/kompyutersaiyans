@@ -11,4 +11,6 @@ public interface ResourceService {
 	public int getDeptCount(int collegeid);
 	public String getDept(int deptid);
 	public String getCollege(int collegeid);
+	public int getHomePageCounter();
+	public void updateHomePageCounter(int views);
 }

@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+
 import com.uportal.domain.ValueTuple;
 import com.uportal.jdbc.ValueTupleRowMapper;
 
@@ -65,5 +66,19 @@ public class ResourceDaoImpl implements ResourceDao{
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		hotlines = (ArrayList<ValueTuple>) jdbcTemplate.query(sql, new ValueTupleRowMapper());
 		return hotlines;
+	}
+
+	@Override
+	public int getHomePageCounter() {
+		String sql = "select views from hitcounter where page=\'homepage\'";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		return jdbcTemplate.queryForInt(sql);
+	}
+
+	@Override
+	public void updateHomePageCounter(int views) {
+		 String updateCounter = "update hitcounter set views="+views+" where page=\'homepage\'";
+		 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		 jdbcTemplate.update(updateCounter);
 	}
 }

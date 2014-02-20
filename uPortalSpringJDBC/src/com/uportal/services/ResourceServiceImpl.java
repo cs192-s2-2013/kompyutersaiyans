@@ -42,4 +42,14 @@ public class ResourceServiceImpl implements ResourceService {
 	public String getCollege(int collegeid){
 		return resourcedao.getCollege(collegeid);
 	}
+
+	@Override
+	public int getHomePageCounter() {
+		return resourcedao.getHomePageCounter();
+	}
+
+	@Override
+	public void updateHomePageCounter(int views) {
+		resourcedao.updateHomePageCounter(views);
+	}
 }
