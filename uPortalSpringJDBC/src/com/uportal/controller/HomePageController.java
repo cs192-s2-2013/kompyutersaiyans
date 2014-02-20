@@ -6,9 +6,11 @@ import java.util.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,21 +31,34 @@ public class HomePageController {
  UserService userService;
  @Autowired
  ResourceService resourceService;
- 	
+ @Autowired
+ DataSource dataSource;
+ 
+ 
+ /*
+ public String homePage(ModelMap model, Principal principal,@CookieValue(value = "hitCounter", defaultValue = "0") Long hitCounter,
+ HttpServletResponse response ) { */
  @RequestMapping(value="/home", method = RequestMethod.GET )
-	public String homePage(ModelMap model, Principal principal,@CookieValue(value = "hitCounter", defaultValue = "0") Long hitCounter,
-			HttpServletResponse response ) {
-	 	if(principal != null){
-	 		String name = principal.getName();
-			model.addAttribute("username", name);
-			model.addAttribute("message", "Spring Security Custom Form example");
-	 	}
-		 hitCounter++;
-		Cookie counter = new Cookie("hitCounter", hitCounter.toString());
-		response.addCookie(counter);
-		return "home";
+   public String homePage(ModelMap model, Principal principal) {
+	 if(principal != null){
+		 String name = principal.getName();
+		 model.addAttribute("username", name);
+		 model.addAttribute("message", "Spring Security Custom Form example");
+	 }
+	 /*
+ 	 hitCounter++;
+ 	 Cookie counter = new Cookie("hitCounter", hitCounter.toString());
+ 	 response.addCookie(counter);
+	 */
+	 String sql = "select views from hitcounter where page=\'homepage\'";
+	 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+	 int newViews = jdbcTemplate.queryForInt(sql)+1;
+	 String updateCounter = "update hitcounter set views="+newViews+" where page=\'homepage\'";
+	 jdbcTemplate.update(updateCounter);
+	 model.addAttribute("homePageCounter", newViews);
+	 return "home";
 
-	}
+ }
  
  @RequestMapping(value="/private", method = RequestMethod.GET)
 	public String privatePage(ModelMap model, Principal principal ) {
@@ -79,14 +94,19 @@ public class HomePageController {
 	 model.addAttribute("hotlineList", hotlineList);
 	 return "hotlines";
  }
+ 
  @RequestMapping("/AdminPage")
  public String AdminPage(ModelMap model, Principal principal){
 	 if(principal != null){
 		 String name = principal.getName();
-		model.addAttribute("username", name);
-	 	}
+		 model.addAttribute("username", name);
+	 }
+	 String sql = "select views from hitcounter where page=\'homepage\'";
+	 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+	 model.addAttribute("homePageCounter", jdbcTemplate.queryForInt(sql));
 	 return "AdminPage";
  }
+ 
  @RequestMapping("/description")
  public String descriptionsPage(ModelMap model, Principal principal){
 	 if(principal != null){
