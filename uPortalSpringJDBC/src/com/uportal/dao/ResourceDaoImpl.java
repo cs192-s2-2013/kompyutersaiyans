@@ -74,14 +74,12 @@ public class ResourceDaoImpl implements ResourceDao{
 		return hotlines;
 	}
 
-	@Override
 	public int getHomePageCounter() {
 		String sql = "select views from hitcounter where page=\'homepage\'";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		return jdbcTemplate.queryForInt(sql);
 	}
 
-	@Override
 	public void updateHomePageCounter(int views) {
 		 String updateCounter = "update hitcounter set views="+views+" where page=\'homepage\'";
 		 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);

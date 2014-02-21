@@ -35,8 +35,9 @@ public class LoginController {
 		}
 		if(user.getDepartment() != null){
 			System.out.println("blah");
-			String department= resourceService.getDept(Integer.parseInt(user.getDepartment()));
-			model.addAttribute("department", department);
+			String department= resourceService.getDept(Integer.parseInt(user.getDepartment())).trim();
+			if(department.length() > 0)
+				model.addAttribute("department", department);
 		}
 		if(user.getCourse() != null){
 			System.out.println("yehay");
