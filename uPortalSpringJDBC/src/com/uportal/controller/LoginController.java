@@ -36,20 +36,13 @@ public class LoginController {
 			model.addAttribute("college", college);
 		}
 		if(user.getDepartment() != null){
-<<<<<<< HEAD
-			String department= resourceService.getDept(Integer.parseInt(user.getDepartment()));
-			model.addAttribute("department", department);
-=======
-			System.out.println("blah");
 			String department= resourceService.getDept(Integer.parseInt(user.getDepartment())).trim();
 			if(department.length() > 0)
 				model.addAttribute("department", department);
 		}
 		if(user.getCourse() != null){
-			System.out.println("yehay");
 			String course= resourceService.getCourse(Integer.parseInt(user.getCourse()));
 			model.addAttribute("course", course);
->>>>>>> 897b4b8448585b4318d16f341af7bdccf4e354ce
 		}
 		return "hello";
  
