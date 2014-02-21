@@ -23,7 +23,6 @@ public class UserDaoImpl implements UserDao {
 	@SuppressWarnings("deprecation")
 	public int insertData(User user) {
 		String department = user.getDepartment();
-		System.out.println(department);
 		String dept = department.replaceAll("[^0-9]", "");
 		String sql = "INSERT INTO users "
 				+ "(firstname, lastname, email, username, password, collegeid, departmentid ) VALUES (?,?,?,?,?,?,?);";
@@ -46,7 +45,7 @@ public class UserDaoImpl implements UserDao {
 						sql,
 						new Object[] { user.getFirstName(), user.getLastName(),
 								user.getEmail(), user.getUsername(), hashedPassword});
-			}else if(user.getDepartment().toString().equals("null")){
+			}else if(dept.equals("")){
 				sql = "INSERT INTO users "
 						+ "(firstname, lastname, email, username, password, collegeid ) VALUES (?,?,?,?,?,?);";
 				jdbcTemplate.update(
@@ -64,7 +63,6 @@ public class UserDaoImpl implements UserDao {
 			int userid = (int)jdbcTemplate.queryForInt(
 					sql, new Object[] { user.getUsername() });
 			sql = "select typeid from userTypes where typename = ?";
-			System.out.println(user.getRole());
 			int typeid = (int)jdbcTemplate.queryForInt(sql, new Object[] { user.getRole() });
 			sql = "INSERT INTO userRoles" 
 					+ "(userid, typeid) VALUES (?,?)";

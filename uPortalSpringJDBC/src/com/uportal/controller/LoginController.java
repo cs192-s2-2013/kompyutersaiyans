@@ -26,12 +26,18 @@ public class LoginController {
 	public String printWelcome(ModelMap model, Principal principal ) {
 		String name = principal.getName();
 		User user= userService.getUser(name);
-		String college= resourceService.getCollege(Integer.parseInt(user.getCollege()));
-		String department= resourceService.getDept(Integer.parseInt(user.getDepartment()));
 		model.addAttribute("username", name);
 		model.addAttribute("user", user);
-		model.addAttribute("college", college);
-		model.addAttribute("department", department);
+		if(user.getCollege() != null){
+			System.out.println("lala");
+			String college= resourceService.getCollege(Integer.parseInt(user.getCollege()));
+			model.addAttribute("college", college);
+		}
+		if(user.getDepartment() != null){
+			System.out.println("blah");
+			String department= resourceService.getDept(Integer.parseInt(user.getDepartment()));
+			model.addAttribute("department", department);
+		}
 		return "hello";
  
 	}
