@@ -60,6 +60,12 @@ public class ResourceDaoImpl implements ResourceDao{
 		return jdbcTemplate.queryForObject(sql, String.class);
 	}
 	
+	public List<String> getRoles(int userid){
+		String sql = "select typename from userTypes, userRoles where userid=" + userid + " and userTypes.typeid = userRoles.typeid";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		return jdbcTemplate.queryForList(sql, String.class);
+	}
+	
 	public List<ValueTuple> getHotlines(){
 		ArrayList<ValueTuple> hotlines = new ArrayList<ValueTuple>();
 		String sql = "select * from hotlines";

@@ -1,6 +1,7 @@
 package com.uportal.dao;
 
 import java.util.List;
+
 import com.uportal.domain.ValueTuple;
 
 public interface ResourceDao {
@@ -11,6 +12,7 @@ public interface ResourceDao {
 	public int getDeptCount(int collegeid);
 	public String getDept(int deptid);
 	public String getCollege(int collegeid);
+	public List<String> getRoles(int userid);
 	public int getHomePageCounter();
 	public void updateHomePageCounter(int views);
 }

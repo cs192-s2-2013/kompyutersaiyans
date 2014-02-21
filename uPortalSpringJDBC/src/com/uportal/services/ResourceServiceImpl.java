@@ -1,8 +1,11 @@
 package com.uportal.services;
 
 import java.util.List;
+
 import com.uportal.domain.ValueTuple;
+
 import org.springframework.beans.factory.annotation.Autowired;  
+
 import com.uportal.dao.ResourceDao; 
 
 public class ResourceServiceImpl implements ResourceService {
@@ -39,8 +42,14 @@ public class ResourceServiceImpl implements ResourceService {
 		return resourcedao.getDept(deptid);
 	}
 	
+	@Override
 	public String getCollege(int collegeid){
 		return resourcedao.getCollege(collegeid);
+	}
+	
+	@Override
+	public List<String> getRoles(int userid){
+		return resourcedao.getRoles(userid);
 	}
 
 	@Override
