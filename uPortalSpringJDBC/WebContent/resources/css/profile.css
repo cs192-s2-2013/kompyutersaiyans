@@ -34,10 +34,11 @@
 
 .name{
 	text-transform: uppercase;
-	float:left;
+	text-align:left;
 	font-family: Arimo;
 	font-size: 25px;
 	margin-top: -8px;
+	min-width: 100%;
 }
 
 #pinfo{
