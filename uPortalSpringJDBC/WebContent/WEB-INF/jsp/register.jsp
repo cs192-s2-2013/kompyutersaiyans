@@ -27,7 +27,8 @@
 			    		if(document.getElementById('d'+c).length != 2){
 			    			document.getElementById('d'+c).style.display = 'block';	
 			    		}else{
-				    		document.getElementById('dp'+c).style.display = 'block';
+			    			var a = document.getElementById('d'+c).options[1].value;
+				    		document.getElementById('dp'+a).style.display = 'block';
 			    		}
 			    	}
 		    	}
