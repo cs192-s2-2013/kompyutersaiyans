@@ -14,10 +14,12 @@
 				<div class="details">
 					<div class="info">Username: ${user.getUsername()}</div>
 					<div class="info">Email: ${user.getEmail()}</div>
-					<div class="info">Role: Wala pa ito. Lalalalalalalala</div>
-					<div class="info">College: ${college}</div>
-					<div class="info">Department: ${department}</div>
-					<div class="info">Course: Lalalalalalala~~~~~~~ :))</div>
+					<div class="info">
+						Role: <c:forEach var="i" begin="0" end="${roles.size()-1}"> ${roles.get(i)} </c:forEach>
+					</div>
+					<c:if test="${college != null}"><div class="info">College: ${college}</div></c:if>
+					<c:if test="${department != null}"><div class="info">Department: ${department}</div></c:if>
+					<c:if test=""><div class="info">Course: Lalalalalalala~~~~~~~ :))</div></c:if>
 				</div>
 			</div>
 		</div>
