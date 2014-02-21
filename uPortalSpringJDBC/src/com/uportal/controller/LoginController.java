@@ -1,6 +1,7 @@
 package com.uportal.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,17 +27,22 @@ public class LoginController {
 	public String printWelcome(ModelMap model, Principal principal ) {
 		String name = principal.getName();
 		User user= userService.getUser(name);
+		List<String> roles= resourceService.getRoles(user.getUserId());
 		model.addAttribute("username", name);
 		model.addAttribute("user", user);
+		model.addAttribute("roles", roles);
 		if(user.getCollege() != null){
-			System.out.println("lala");
 			String college= resourceService.getCollege(Integer.parseInt(user.getCollege()));
 			model.addAttribute("college", college);
 		}
 		if(user.getDepartment() != null){
-			System.out.println("blah");
-			String department= resourceService.getDept(Integer.parseInt(user.getDepartment()));
-			model.addAttribute("department", department);
+			String department= resourceService.getDept(Integer.parseInt(user.getDepartment())).trim();
+			if(department.length() > 0)
+				model.addAttribute("department", department);
+		}
+		if(user.getCourse() != null){
+			String course= resourceService.getCourse(Integer.parseInt(user.getCourse()));
+			model.addAttribute("course", course);
 		}
 		return "hello";
  
