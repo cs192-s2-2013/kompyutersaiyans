@@ -14,16 +14,10 @@
 				<div class="details">
 					<div class="info">Username: ${user.getUsername()}</div>
 					<div class="info">Email: ${user.getEmail()}</div>
-<<<<<<< HEAD
 					<div class="info">
 						Role: <c:forEach var="i" begin="0" end="${roles.size()-1}"> ${roles.get(i)} </c:forEach>
 					</div>
-					<c:if test="${college != null}"><div class="info">College: ${college}</div></c:if>
-					<c:if test="${department != null}"><div class="info">Department: ${department}</div></c:if>
-					<c:if test=""><div class="info">Course: Lalalalalalala~~~~~~~ :))</div></c:if>
-=======
-					<div class="info">Role: Wala pa ito. Lalalalalalalala</div>
-					<c:if test="${college != null }">
+					<c:if test="${college != null}">
 						<div class="info">College: ${college}</div>
 					</c:if>
 					<c:if test="${department != null}">
@@ -32,7 +26,6 @@
 					<c:if test="${course != null}">
 						<div class="info">Course: ${course}</div>
 					</c:if>
->>>>>>> 897b4b8448585b4318d16f341af7bdccf4e354ce
 				</div>
 			</div>
 		</div>
