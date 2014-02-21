@@ -24,11 +24,11 @@
 			    	document.getElementById('d'+c).style.display = 'none';
 			    	
 			    	if(c == value ){
-			    		//if(document.getElementById('d'+c).length != 2){
+			    		if(document.getElementById('d'+c).length != 2){
 			    			document.getElementById('d'+c).style.display = 'block';	
-			    		//}else{
-			    		//	OnDeptChange(document.getElementById('d'+c));
-			    		//}
+			    		}else{
+				    		document.getElementById('dp'+c).style.display = 'block';
+			    		}
 			    	}
 		    	}
 		    }else if(id == 'department'){
@@ -44,17 +44,9 @@
 		    }
 		}
 		
-		function OnDeptChange(dropdown)
+		function OnDeptChange(c)
 		{
-	    	var myindex  = dropdown.selectedIndex;
-		    var value = dropdown.options[myindex].value;
-	    	for(var c = 1; c <= 77; c++){
-	    		document.getElementById('dp'+c).value = 'null';
-		    	document.getElementById('dp'+c).style.display = 'none';
-		    	if(c == value){
-		    		document.getElementById('dp'+c).style.display = 'block';
-		    	}
-		    }
+		   
 		}
 	</script>
 	

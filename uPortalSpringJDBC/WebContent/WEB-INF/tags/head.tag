@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href=<c:url value="/resources/css/pure.css"/>>
 	<link rel="stylesheet" type="text/css" href=<c:url value="/resources/css/style.css"/>>
 	<link rel="stylesheet" type="text/css" href=<c:url value="/resources/css/pricing.css"/>>
-	<link rel="stylesheet" type="text/css" href=<c:url value="/resources/css/profile.css"/>>
 	<link rel="stylesheet" href=<c:url value="/resources/font-awesome/css/font-awesome.min.css"/>>
 	<title>${title} - uPortal</title>
 </head>

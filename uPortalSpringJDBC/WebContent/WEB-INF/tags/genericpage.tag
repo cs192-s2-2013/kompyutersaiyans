@@ -5,15 +5,17 @@
 
 <html>
 	<t:head title="${title}"></t:head>
-	<body>
+	
+	
+	<body >
 		<div class="header" >
 		    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed" >
 		         <a class="pure-menu-heading" href="home" style="float:left; font-size: 25px;"><i class="fa fa-frown-o"></i> uPortal</a> 
 		        <ul style="float:right;">
+		        	<li>
+			        	<a href="home">Home</a>
+			        </li>
 		        	<c:if test="${username == null}">
-		        		<li>
-				        	<a href="home">Home</a>
-				        </li>
 			            <li>
 			            		<a href="register">Sign up</a>
 			            </li>
@@ -21,17 +23,12 @@
 							<a href="login">Sign in</a>
 			            </li>
 		       		</c:if>
-		       		<c:if test="${username != null}">
-		       		 	<li>
-		        			<a href="<c:url value="welcome" />" >Profile</a>
-		        		</li>
-		        	</c:if>
 		        	<li>
 		        		<a href="hotlines">Hotlines</a>
 		        	</li>
 		        	<c:if test="${username != null}">
 		       		 	<li>
-		        			<a href="<c:url value="/j_spring_security_logout" />" >Logout</a>
+		        			<a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
 		        		</li>
 		        	</c:if>
 		        </ul>
@@ -43,6 +40,7 @@
 					Sign up success. You can now login.
 				</div>
 			</c:if>
+			<c:if test="${reset_success == true}"><div id="message">The hit counter was successfully reseted </div></c:if>  
 		<jsp:doBody/>
 	</body>
 </html>
