@@ -15,9 +15,15 @@
 					<div class="info">Username: ${user.getUsername()}</div>
 					<div class="info">Email: ${user.getEmail()}</div>
 					<div class="info">Role: Wala pa ito. Lalalalalalalala</div>
-					<div class="info">College: ${college}</div>
-					<div class="info">Department: ${department}</div>
-					<div class="info">Course: Lalalalalalala~~~~~~~ :))</div>
+					<c:if test="${college != null }">
+						<div class="info">College: ${college}</div>
+					</c:if>
+					<c:if test="${department != null}">
+						<div class="info">Department: ${department}</div>
+					</c:if>
+					<c:if test="${course != null}">
+						<div class="info">Course: ${course}</div>
+					</c:if>
 				</div>
 			</div>
 		</div>

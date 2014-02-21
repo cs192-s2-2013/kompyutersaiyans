@@ -38,6 +38,11 @@ public class LoginController {
 			String department= resourceService.getDept(Integer.parseInt(user.getDepartment()));
 			model.addAttribute("department", department);
 		}
+		if(user.getCourse() != null){
+			System.out.println("yehay");
+			String course= resourceService.getCourse(Integer.parseInt(user.getCourse()));
+			model.addAttribute("course", course);
+		}
 		return "hello";
  
 	}

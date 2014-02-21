@@ -71,6 +71,7 @@ public class RegistrationController {
 		 }else{
 		  System.out.println(user.getUserId()); 
 			 model.addAttribute("msg_success", "true");
+			 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
 			 return new ModelAndView("home");
 		 }
 	  }
