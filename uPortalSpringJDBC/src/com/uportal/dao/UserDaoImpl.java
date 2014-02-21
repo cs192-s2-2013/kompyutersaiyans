@@ -24,8 +24,10 @@ public class UserDaoImpl implements UserDao {
 	public int insertData(User user) {
 		String department = user.getDepartment();
 		String dept = department.replaceAll("[^0-9]", "");
+		String course = user.getCourse();
+		String courseid = course.replaceAll("[^0-9]", "");
 		String sql = "INSERT INTO users "
-				+ "(firstname, lastname, email, username, password, collegeid, departmentid ) VALUES (?,?,?,?,?,?,?);";
+				+ "(firstname, lastname, email, username, password, collegeid, departmentid, courseid ) VALUES (?,?,?,?,?,?,?,?);";
 		
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
@@ -47,16 +49,16 @@ public class UserDaoImpl implements UserDao {
 								user.getEmail(), user.getUsername(), hashedPassword});
 			}else if(dept.equals("")){
 				sql = "INSERT INTO users "
-						+ "(firstname, lastname, email, username, password, collegeid ) VALUES (?,?,?,?,?,?);";
+						+ "(firstname, lastname, email, username, password, collegeid, courseid ) VALUES (?,?,?,?,?,?,?);";
 				jdbcTemplate.update(
 						sql,
 						new Object[] { user.getFirstName(), user.getLastName(),
-								user.getEmail(), user.getUsername(), hashedPassword, user.getCollege() });
+								user.getEmail(), user.getUsername(), hashedPassword, user.getCollege(), Integer.parseInt(courseid) });
 			}else{
 				jdbcTemplate.update(
 						sql,
 						new Object[] { user.getFirstName(), user.getLastName(),
-								user.getEmail(), user.getUsername(), hashedPassword, user.getCollege(), Integer.parseInt(dept) });
+								user.getEmail(), user.getUsername(), hashedPassword, user.getCollege(), Integer.parseInt(dept), Integer.parseInt(courseid) });
 			}
 			
 			sql = "select userid from users where username = ?";

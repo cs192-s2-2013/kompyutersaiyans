@@ -48,6 +48,12 @@ public class ResourceDaoImpl implements ResourceDao{
 		return jdbcTemplate.queryForInt(sql);
 	}
 	
+	public String getCourse(int courseid){
+		String sql = "select coursename from courses where courseid=" + courseid;
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		return jdbcTemplate.queryForObject(sql, String.class);
+	}
+	
 	public String getDept(int deptid){
 		String sql= "select deptname from departments where deptid="+ deptid;
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
@@ -74,14 +80,12 @@ public class ResourceDaoImpl implements ResourceDao{
 		return hotlines;
 	}
 
-	@Override
 	public int getHomePageCounter() {
 		String sql = "select views from hitcounter where page=\'homepage\'";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		return jdbcTemplate.queryForInt(sql);
 	}
 
-	@Override
 	public void updateHomePageCounter(int views) {
 		 String updateCounter = "update hitcounter set views="+views+" where page=\'homepage\'";
 		 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);

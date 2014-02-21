@@ -15,30 +15,45 @@
 		    if(id == 'college'){
 		    	var myindex  = dropdown.selectedIndex;
 			    var value = dropdown.options[myindex].value;
-			    for(var c = 1; c <= 57; c++){
+			    for(var c = 1; c <= 77; c++){
 		    		document.getElementById('dp'+c).value = 'null';
 			    	document.getElementById('dp'+c).style.display = 'none';
 		    	}
 		    	for(var c = 1; c <= 25; c++){
 		    		document.getElementById('d'+c).value = 'null';
 			    	document.getElementById('d'+c).style.display = 'none';
-			    	if(c == value){
-			    		document.getElementById('d'+c).style.display = 'block';
+			    	
+			    	if(c == value ){
+			    		//if(document.getElementById('d'+c).length != 2){
+			    			document.getElementById('d'+c).style.display = 'block';	
+			    		//}else{
+			    		//	OnDeptChange(document.getElementById('d'+c));
+			    		//}
 			    	}
 		    	}
 		    }else if(id == 'department'){
 		    	var myindex  = dropdown.selectedIndex;
 			    var value = dropdown.options[myindex].value;
-		    	for(var c = 1; c <= 57; c++){
+		    	for(var c = 1; c <= 77; c++){
 		    		document.getElementById('dp'+c).value = 'null';
 			    	document.getElementById('dp'+c).style.display = 'none';
 			    	if(c == value){
 			    		document.getElementById('dp'+c).style.display = 'block';
 			    	}
 		    	}
-		    }else{
-		    	
-		    	document.write(myindex);
+		    }
+		}
+		
+		function OnDeptChange(dropdown)
+		{
+	    	var myindex  = dropdown.selectedIndex;
+		    var value = dropdown.options[myindex].value;
+	    	for(var c = 1; c <= 77; c++){
+	    		document.getElementById('dp'+c).value = 'null';
+		    	document.getElementById('dp'+c).style.display = 'none';
+		    	if(c == value){
+		    		document.getElementById('dp'+c).style.display = 'block';
+		    	}
 		    }
 		}
 	</script>
@@ -102,7 +117,7 @@
 					 
 				</div>
 				<div class="form-fields" id="courses">
-					<c:forEach var="i" begin="1" end="57">
+					<c:forEach var="i" begin="1" end="77">
 						<form:select path="course" id="dp${i}" style="display:none"> 
 							<form:option label="Select Course" value="null"/>
 							<form:options items="${model.resourceService.getCourseList(i)}" itemLabel="label" itemValue="value" />

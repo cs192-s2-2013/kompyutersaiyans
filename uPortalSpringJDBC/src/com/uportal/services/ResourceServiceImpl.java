@@ -38,6 +38,11 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 	
 	@Override
+	public String getCourse(int courseid) {
+		return resourcedao.getCourse(courseid);
+	}
+	
+	@Override
 	public String getDept(int deptid){
 		return resourcedao.getDept(deptid);
 	}
@@ -61,4 +66,6 @@ public class ResourceServiceImpl implements ResourceService {
 	public void updateHomePageCounter(int views) {
 		resourcedao.updateHomePageCounter(views);
 	}
+
+	
 }

@@ -10,6 +10,7 @@ public interface ResourceDao {
 	public List<ValueTuple> getCourseList(int deptid);
 	public List<ValueTuple> getHotlines();
 	public int getDeptCount(int collegeid);
+	public String getCourse(int courseid);
 	public String getDept(int deptid);
 	public String getCollege(int collegeid);
 	public List<String> getRoles(int userid);
