@@ -17,7 +17,7 @@
 					<div class="info">
 						Role: <c:forEach var="i" begin="0" end="${roles.size()-1}"> ${roles.get(i)} </c:forEach>
 					</div>
-					<c:if test="${college != null}">
+					<c:if test="${college != null }">
 						<div class="info">College: ${college}</div>
 					</c:if>
 					<c:if test="${department != null}">
