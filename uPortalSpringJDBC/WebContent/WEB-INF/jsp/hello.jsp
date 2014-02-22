@@ -2,16 +2,16 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:userpage title="Welcome">
-	<div class="pbanner">
+	<div class="pbanner" >
 		<div class="pure-g-r" id="pcont-div">
 			<div id="prof-pic" class="pure-u-2-5">
-				<img src=<c:url value="/resources/imgs/profile.jpeg"/>>
+				<img src=<c:url value="/resources/imgs/cat.gif"/>>
 			</div>
-			<div class="pure-u-2-3" id="pinfo">
-				<div class="name">
+			<div class="pure-u-2-3" id="pinfo" style="font-family: 'Istok Web', sans-serif;">
+				<div class="name" >
 					<h1>${user.getFirstName()} ${user.getLastName()}</h1>
 				</div>
-				<div class="details">
+				<div class="details " id="det">
 					<div class="info">Username: ${user.getUsername()}</div>
 					<div class="info">Email: ${user.getEmail()}</div>
 					<div class="info">
@@ -30,20 +30,20 @@
 			</div>
 		</div>
 	</div>
-	<div id="prof-links">	
-		<a href="#" title="visit UP Map"><button class="pure-button"><i class="fa fa-laptop"></i><br>UP Map</button></a>
-		<a href="#" title="visit Study Buddy"><button class="pure-button"><i class="fa fa-money"></i><br>Study Buddy</button></a>
-		<c:if test="${college == 'College of Engineering' || college == 'College of Science'}">
-			<a href="#" title="visit Brain Gym"><button class="pure-button"><i class="fa fa-youtube-play"></i><br>Brain Gym</button></a>
+	<div class="pure-g-r" id="prof-links">	
+		<a class="pure-u-1-4" href="#" title="visit UP Map"><button class="pure-button"><i class="fa fa-laptop"></i><br>UP Map</button></a>
+		<a class="pure-u-1-4" href="#" title="visit Study Buddy"><button class="pure-button"><i class="fa fa-money"></i><br>Study Buddy</button></a>
+		<c:if test="${college == 'College of Engineering' || college == 'College of Science' || roles.get(0) == 'GOD'}">
+			<a class="pure-u-1-4" href="#" title="visit Brain Gym"><button class="pure-button"><i class="fa fa-youtube-play"></i><br>Brain Gym</button></a>
 		</c:if>
-		<c:if test="${college != 'College of Engineering' && college != 'College of Science'}">
-			<button class="pure-button" title="available to College of Engineering and Science students only" disabled><i class="fa fa-youtube-play"></i><br>Brain Gym</button>
+		<c:if test="${college != 'College of Engineering' && college != 'College of Science' && roles.get(0) != 'GOD'}">
+			<span class="pure-u-1-4"><button  class="pure-u-1-4 pure-button" title="available to College of Engineering and Science students only" disabled><i class="fa fa-youtube-play"></i><br>Brain Gym</button></span>
 		</c:if>
-		<c:if test="${department == 'Department of Computer Science'}">
-			<a href="#" title="visit Online Classroom"><button class="pure-button"><i class="fa fa-cut"></i><br>Online Classroom</button></a>
+		<c:if test="${department == 'Department of Computer Science' ||  roles.get(0) == 'GOD'}">
+			<a class="pure-u-1-4" href="#" title="visit Online Classroom"><button class="pure-button"><i class="fa fa-cut"></i><br>Classroom</button></a>
 		</c:if>
-		<c:if test="${department != 'Department of Computer Science'}">
-			<button class="pure-button" title="available to DCS students only" disabled><i class="fa fa-cut"></i><br>Online Classroom</button>
+		<c:if test="${department != 'Department of Computer Science' &&  roles.get(0) != 'GOD'}">
+			<span class="pure-u-1-4"><button class="pure-u-1-4 pure-button" title="available to DCS students only" disabled><i class="fa fa-cut"></i><br>Classroom</button></span>
 		</c:if>
 	</div>
 </t:userpage>

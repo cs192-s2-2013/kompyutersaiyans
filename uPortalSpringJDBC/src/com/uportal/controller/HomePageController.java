@@ -41,9 +41,7 @@ public class HomePageController {
  @RequestMapping(value="/home", method = RequestMethod.GET )
    public String homePage(ModelMap model, Principal principal) {
 	 if(principal != null){
-		 String name = principal.getName();
-		 model.addAttribute("username", name);
-		 model.addAttribute("message", "Spring Security Custom Form example");
+		 return "redirect:/welcome";
 	 }
 	 /*
  	 hitCounter++;

@@ -1,11 +1,13 @@
 .pbanner {
-    background: url('imgs/lala.jpg') 0 0 no-repeat fixed;
+    background: url('imgs/bg.jpg') 0 0 no-repeat fixed;
     text-align: center;
     background-size: cover;
     width: 100%;
     margin-top: 2em;
-    margin-bottom: 3em;
+    margin-bottom: 1em;
     display: table;
+    height: 300px!important;
+    
 }
 
 
@@ -21,8 +23,8 @@
 }
 
 #prof-pic img{
-	width: 270px;
-	height: 270px;
+	width: 150px;
+	height: 150px;
 	border-radius: 135px;
 	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
@@ -35,25 +37,30 @@
 .name{
 	text-transform: uppercase;
 	text-align:left;
-	font-family: Arimo;
-	font-size: 25px;
+	font-size: 20px;
 	margin-top: -8px;
 	min-width: 100%;
+	color: white;
 }
 
 #pinfo{
 	margin-top: 25px;
+	
+}
+
+#det{
+	margin-top: -35px;
 }
 
 .details{
-	margin-top: -15px;
-	float: left;
+	margin-top: -30px;
+	font-size: 17px;
 	text-align: left;
 }
 
 .info{
 	padding: 3px;
-	font-family: sans-serif;
+	color: white;
 }
 
 #prof-links{
