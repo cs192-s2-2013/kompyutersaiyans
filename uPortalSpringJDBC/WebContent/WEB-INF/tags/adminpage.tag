@@ -12,4 +12,4 @@
 	<script type="text/javascript" src= <c:url value = "/resources/js/jquery.main.js"/>></script>
 	<title>${title} - uPortal</title>
 </head>
- src=<c:url value="/resources/images/img1.jpg"/>
+<%--  src=<c:url value="/resources/images/img1.jpg"/> --%>
