@@ -12,17 +12,22 @@
 		    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed" >
 		         <a class="pure-menu-heading" href="home" style="float:left; font-size: 25px;"><i class="fa fa-frown-o"></i> uPortal</a> 
 		        <ul style="float:right;">
-		        	<li>
-			        	<a href="home">Home</a>
-			        </li>
-		        	<c:if test="${username == null}">
-			            <li>
-			            		<a href="register">Sign up</a>
-			            </li>
-			            <li>
-							<a href="login">Sign in</a>
-			            </li>
-		       		</c:if>
+		        		<c:if test="${username == null}">
+							<li>
+								<a href="home">Home</a>
+							</li>
+							<li>
+								<a href="register">Sign up</a>
+							</li>
+							<li>
+								<a href="login">Sign in</a>
+							</li>
+						</c:if>
+						<c:if test="${username != null}">
+							<li>
+								<a href="<c:url value="welcome" />" >Profile</a>
+							</li>
+						</c:if>
 		        	<li>
 		        		<a href="hotlines">Hotlines</a>
 		        	</li>
