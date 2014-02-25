@@ -85,7 +85,6 @@
 								     border: thick;  
 								    }  
 								    </style>  
-								    </head>  
 								    <body>  
 								     <center>  
 								        
@@ -148,7 +147,6 @@
 							     border: thick;  
 							    }  
 							    </style>  
-							    </head>  
 							    <body>  
 							     <center>  
 							        
@@ -191,10 +189,52 @@
 						</div>
 						<div id="tab-5" class="tab">
 							<article>
-								<div class="text-section">
-									<h1>Edit Site Contents</h1>
-									<p>Edit hotlines</p>
-								</div>
+								<style>  
+								    body {  
+								     font-size: 20px;  
+								     color: teal;  
+								     font-family: Calibri;  
+								    }  
+								      
+								    td {  
+								     font-size: 15px;  
+								     color: black;  
+								     width: 100px;  
+								     height: 22px;  
+								     text-align: center;  
+								    }  
+								    .heading {  
+								     font-size: 18px;  
+								     color: white;  
+								     font: bold;  
+								     background-color: orange;  
+								     border: thick;  
+								    }  
+								    </style>  
+								    <body>  
+								     <center> 
+								     <b>Hotline List | uPortal </b> 
+								      <table border="1">  
+								       <tr>  
+								        <td class="heading">Id</td>  
+								        <td class="heading">Entity Name</td>  
+								        <td class="heading">Numbers</td>  
+								       </tr>  
+								       <c:forEach var="tel" items="${hotlineList}">
+								        <tr>  
+								         <td>${tel.getValue()}</td>  
+								         <td>${tel.getLabel()}</td>  
+								         <td>${tel.getTelInfo()}</td>
+								         <td><a href="editNum?id=${user.userId}">Edit</a></td>  
+								         <td><a href="deleteNum?id=${user.userId}">Delete</a></td>  
+								        </tr>  
+								       </c:forEach>  
+								       <tr><td colspan="7"><a href="">add new hotline</a></td></tr>  
+								      </table>  
+								     </center>  
+								 <ul class="states">
+									<li class="warning">When editing hotline numbers, please separate them with asterisk.</li>
+								</ul>
 							</article>
 						</div>
 						
@@ -238,8 +278,8 @@
 						<span class="tooltip"><span>Users</span></span>
 					</li>
 					<li>
-						<a href="#tab-5" class="ico3"><span>Edit Site</span><em></em></a>
-						<span class="tooltip"><span>Edit Site</span></span>
+						<a href="#tab-5" class="ico3"><span>Edit Hotlines</span><em></em></a>
+						<span class="tooltip"><span>Edit Hotlines</span></span>
 					</li>
 					
 					<li>

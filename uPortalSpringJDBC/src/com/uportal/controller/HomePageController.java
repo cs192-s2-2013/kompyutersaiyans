@@ -102,6 +102,9 @@ public class HomePageController {
 		 String name = principal.getName();
 		 model.addAttribute("username", name);
 	 }
+	 List<ValueTuple> hotlineList = new ArrayList<ValueTuple>();
+	 hotlineList = resourceService.getHotlines();
+	 model.addAttribute("hotlineList", hotlineList);
 	 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
 	 return "AdminPage";
  }
