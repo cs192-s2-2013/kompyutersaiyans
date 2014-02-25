@@ -214,11 +214,18 @@
 								    <body>  
 								     <center> 
 								     <b>Hotline List | uPortal </b> 
-								      <table border="1">  
+								     <hr/>
+								      <table border="1" width="95%">  
+								      <col width="5%">
+								      <col width="25%">
+								      <col width="60%">
+								      <col width="5%">
+								      <col width="5%">
 								       <tr>  
 								        <td class="heading">Id</td>  
 								        <td class="heading">Entity Name</td>  
-								        <td class="heading">Numbers</td>  
+								        <td class="heading">Description</td>  
+								        <td class="heading" colspan="2">Options</td>
 								       </tr>  
 								       <c:forEach var="tel" items="${hotlineList}">
 								        <tr>  
@@ -229,7 +236,7 @@
 								         <td><a href="deleteNum?id=${user.userId}">Delete</a></td>  
 								        </tr>  
 								       </c:forEach>  
-								       <tr><td colspan="7"><a href="">add new hotline</a></td></tr>  
+								       <tr><td colspan="5"><a href="">add new hotline</a></td></tr>  
 								      </table>  
 								     </center>  
 								 <ul class="states">
