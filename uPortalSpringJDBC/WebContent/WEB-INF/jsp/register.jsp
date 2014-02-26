@@ -118,6 +118,10 @@
 					</c:forEach>  
 				</div>
 				
+				<div>
+					${captcha} ${captchaerror}
+				</div>
+				
 				<script type="text/javascript">
 				
 			</script>

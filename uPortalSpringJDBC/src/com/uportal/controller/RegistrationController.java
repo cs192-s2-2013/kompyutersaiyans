@@ -19,6 +19,12 @@ import com.uportal.services.ResourceService;
 import com.uportal.services.UserService;
 import com.uportal.validator.FormValidation;
 
+import net.tanesha.recaptcha.ReCaptcha;
+import net.tanesha.recaptcha.ReCaptchaFactory;
+import javax.servlet.http.HttpServletRequest;
+import net.tanesha.recaptcha.ReCaptchaImpl;
+import net.tanesha.recaptcha.ReCaptchaResponse;
+
 @Controller
 public class RegistrationController {
 
@@ -40,40 +46,85 @@ public class RegistrationController {
 			return new ModelAndView("home");
 	 	}
 	 setOptions(model);
+	 ReCaptcha c = ReCaptchaFactory.newReCaptcha( "6LfsB-8SAAAAAMQiNUW6seghBabYwe9LtIWPU0zT", "6LfsB-8SAAAAAJvyqyyWYo9M6kmS_iJH3GC3YGxU", false);
+	 model.addAttribute("captcha", c.createRecaptchaHtml(null, null));
 	 return new ModelAndView("register", "model", model);
  }
 
  @RequestMapping("/submit")  
- public ModelAndView saveForm(User user, BindingResult result, ModelMap model, Principal principal) {  
+ public ModelAndView saveForm(User user, BindingResult result, ModelMap model, Principal principal, HttpServletRequest request) {  
 	  FormValidation formValidation = new FormValidation();  
 	  
 	  formValidation.validate(user, result);  
 	  
 	  if (result.hasErrors()) { 
 		  setOptions(model);
+		  ReCaptcha c = ReCaptchaFactory.newReCaptcha( "6LfsB-8SAAAAAMQiNUW6seghBabYwe9LtIWPU0zT", "6LfsB-8SAAAAAJvyqyyWYo9M6kmS_iJH3GC3YGxU", false);
+		  model.addAttribute("captcha", c.createRecaptchaHtml(null, null));
 		  return new ModelAndView("register", "model", model);
-	  }else{
-		  user = (User) result.getModel().get("user");  
-		 int unique =  userService.insertData(user);
-		 if(unique == 3){
-			 setOptions(model);
-			 model.addAttribute("msg_failed", "3");
-			 return new ModelAndView("register", "model", model);
-		 }
-		 else if (unique == 1){
-			 setOptions(model);
-			 model.addAttribute("msg_failed", "1");
-			 return new ModelAndView("register", "model", model);
-		 }else if (unique == 2){
-			 setOptions(model);
-			 model.addAttribute("msg_failed", "2");
-			 return new ModelAndView("register", "model", model);
-		 }else{
-		  System.out.println(user.getUserId()); 
-			 model.addAttribute("msg_success", "true");
-			 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
-			 return new ModelAndView("home");
-		 }
+	  }
+	  else
+	  {
+		  try
+		  {
+			  ReCaptchaImpl captcha = new ReCaptchaImpl();
+		      captcha.setPrivateKey("6LfsB-8SAAAAAJvyqyyWYo9M6kmS_iJH3GC3YGxU");
+		      String challenge = request.getParameter("recaptcha_challenge_field");
+		      String uresponse = request.getParameter("recaptcha_response_field");
+		      ReCaptchaResponse reCaptchaResponse =
+		                captcha.checkAnswer(request.getRemoteAddr(),
+		                challenge, uresponse
+		            );
+			 if(reCaptchaResponse.isValid())
+			 {
+				 user = (User) result.getModel().get("user");  
+				 int unique =  userService.insertData(user);
+				 if(unique == 3){
+					 setOptions(model);
+					 model.addAttribute("msg_failed", "3");
+					 ReCaptcha c = ReCaptchaFactory.newReCaptcha( "6LfsB-8SAAAAAMQiNUW6seghBabYwe9LtIWPU0zT", "6LfsB-8SAAAAAJvyqyyWYo9M6kmS_iJH3GC3YGxU", false);
+					 model.addAttribute("captcha", c.createRecaptchaHtml(null, null));
+					 return new ModelAndView("register", "model", model);
+				 }
+				 else if (unique == 1){
+					 setOptions(model);
+					 model.addAttribute("msg_failed", "1");
+					 ReCaptcha c = ReCaptchaFactory.newReCaptcha( "6LfsB-8SAAAAAMQiNUW6seghBabYwe9LtIWPU0zT", "6LfsB-8SAAAAAJvyqyyWYo9M6kmS_iJH3GC3YGxU", false);
+					 model.addAttribute("captcha", c.createRecaptchaHtml(null, null));
+					 return new ModelAndView("register", "model", model);
+				 }
+				 else if (unique == 2){
+					 setOptions(model);
+					 model.addAttribute("msg_failed", "2");
+					 ReCaptcha c = ReCaptchaFactory.newReCaptcha( "6LfsB-8SAAAAAMQiNUW6seghBabYwe9LtIWPU0zT", "6LfsB-8SAAAAAJvyqyyWYo9M6kmS_iJH3GC3YGxU", false);
+					 model.addAttribute("captcha", c.createRecaptchaHtml(null, null));
+					 return new ModelAndView("register", "model", model);
+				 }
+				 else{
+				  System.out.println(user.getUserId()); 
+					 model.addAttribute("msg_success", "true");
+					 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
+					 return new ModelAndView("home");
+				 }
+			 }
+			 else
+			 {
+				 setOptions(model);
+				 ReCaptcha c = ReCaptchaFactory.newReCaptcha( "6LfsB-8SAAAAAMQiNUW6seghBabYwe9LtIWPU0zT", "6LfsB-8SAAAAAJvyqyyWYo9M6kmS_iJH3GC3YGxU", false);
+				 model.addAttribute("captcha", c.createRecaptchaHtml(null, null));
+				 model.addAttribute("captchaerror", "Captcha validation failed");
+				 return new ModelAndView("register", "model", model);
+			 }
+		  }
+		  catch(Exception e)
+		  {
+			  setOptions(model);
+			  ReCaptcha c = ReCaptchaFactory.newReCaptcha( "6LfsB-8SAAAAAMQiNUW6seghBabYwe9LtIWPU0zT", "6LfsB-8SAAAAAJvyqyyWYo9M6kmS_iJH3GC3YGxU", false);
+			  model.addAttribute("captcha", c.createRecaptchaHtml(null, null));
+			  model.addAttribute("captchaerror", "Captcha validation failed");
+			  return new ModelAndView("register", "model", model);
+		  }
+		 
 	  }
 	   
  }  
