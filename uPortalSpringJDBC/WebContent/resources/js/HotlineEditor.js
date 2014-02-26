@@ -3,6 +3,7 @@ function Add(){
         "<tr>"+
         "<td><input type='text'/></td>"+
         "<td><input type='text'/></td>"+
+        "<td><input type='text'/></td>"+
         "<td><button class='btnSave'>Save</button><button class='btnDelete'>Delete</button></td>"+
         "</tr>");
      
@@ -12,10 +13,12 @@ function Add(){
 
 function Save(){
     var par = $(this).parent().parent(); //tr
-    var tdName = par.children("td:nth-child(1)");
-    var tdInfo = par.children("td:nth-child(2)");
-    var tdButtons = par.children("td:nth-child(3)");
+    var tdID = par.children("td:nth-child(1)");
+    var tdName = par.children("td:nth-child(2)");
+    var tdInfo = par.children("td:nth-child(3)");
+    var tdButtons = par.children("td:nth-child(4)");
  
+    tdID.html(tdID.children("input[type=text]").val());
     tdName.html(tdName.children("input[type=text]").val());
     tdInfo.html(tdInfo.children("input[type=text]").val());
     tdButtons.html("<button class='btnEdit'>Edit</button><button class='btnDelete'>Delete</button>");
@@ -26,10 +29,12 @@ function Save(){
 
 function Edit(){
     var par = $(this).parent().parent(); //tr
-    var tdName = par.children("td:nth-child(1)");
-    var tdInfo = par.children("td:nth-child(2)");
-    var tdButtons = par.children("td:nth-child(3)");
- 
+    var tdID = par.children("td:nth-child(1)");
+    var tdName = par.children("td:nth-child(2)");
+    var tdInfo = par.children("td:nth-child(3)");
+    var tdButtons = par.children("td:nth-child(4)");
+
+    tdID.html("<input type='text' id='txtID' value='"+tdID.html()+"'/>");
     tdName.html("<input type='text' id='txtName' value='"+tdName.html()+"'/>");
     tdInfo.html("<input type='text' id='txtInfo' value='"+tdInfo.html()+"'/>");
     tdButtons.html("<button class='btnSave'>Save</button>");

@@ -272,10 +272,12 @@
 								     <b>Hotline List | uPortal </b> 
 								     <hr/>
 								      <table border="1" width="95%" id="tblData">  
+								      <col width="5%">
 								      <col width="30%">
-								      <col width="60%">
+								      <col width="55%">
 								      <col width="10%">
 								       <tr>  
+								        <td class="heading">ID</td>
 								        <td class="heading">Entity Name</td>  
 								        <td class="heading">Description</td>  
 								        <td class="heading">Options</td>
@@ -284,6 +286,7 @@
 								       <tbody>
 								       <c:forEach var="tel" items="${hotlineList}">
 								        <tr>  
+								       	 <td>${tel.getValue()}</td>
 								         <td>${tel.getLabel()}</td>  
 								         <td>${tel.getTelInfo()}</td>
 								         <td><button class="btnEdit">Edit</button><button class="btnDelete">Delete</button></td>
