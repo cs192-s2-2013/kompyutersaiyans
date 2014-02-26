@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.uportal.domain.AdminRequest;
 import com.uportal.domain.User;
 import com.uportal.domain.ValueTuple;
+import com.uportal.services.AdminRequestService;
 import com.uportal.services.ResourceService;
 import com.uportal.services.UserService;
 
@@ -28,6 +29,9 @@ public class AdminController {
 	
 	@Autowired
 	 ResourceService resourceService;
+	
+	@Autowired
+	AdminRequestService adminRequestService;
 	
 	@RequestMapping("/getList")
 	 public ModelAndView getUserLIst() {
@@ -83,7 +87,14 @@ public class AdminController {
 	 @RequestMapping("/decline_admin")
 	 public String declineAdmin(@RequestParam String userid, @RequestParam String typeid) {
 		 System.out.println(userid + " " + typeid);
-		 userService.deleteAdminRequest(userid,typeid);
+		 adminRequestService.deleteAdminRequest(userid,typeid);
+		 return "redirect:/requestList";
+	 }
+	 
+	 @RequestMapping("/approve_admin")
+	 public String approveAdmin(@RequestParam String userid, @RequestParam String typeid) {
+		 adminRequestService.addAdmin(userid,typeid);
+		 adminRequestService.deleteAdminRequest(userid, typeid);
 		 return "redirect:/requestList";
 	 }
 }

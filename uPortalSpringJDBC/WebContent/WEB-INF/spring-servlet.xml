@@ -34,6 +34,9 @@
  
  <bean id="resourceDao" class="com.uportal.dao.ResourceDaoImpl" />
  <bean id="resourceService" class="com.uportal.services.ResourceServiceImpl" />
+ 
+ <bean id="adminRequestDao" class="com.uportal.dao.AdminRequestDaoImpl" />
+ <bean id="adminRequestService" class="com.uportal.services.AdminRequestServiceImpl" />
 
  <!-- declare datasource bean -->
  <bean id="dataSource"

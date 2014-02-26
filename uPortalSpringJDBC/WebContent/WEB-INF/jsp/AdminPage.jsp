@@ -175,11 +175,13 @@
 								        <tr>  
 								         <td>${request.username}</td>  
 								         <td>${request.typename}</td>  
-								         <td><a href="#">Approve</a></td>  
+								         <td><a href="approve_admin?userid=${request.userid}&typeid=${request.typeid}">Approve</a></td>  
 								         <td><a href="decline_admin?userid=${request.userid}&typeid=${request.typeid}">Decline</a></td>  
 								        </tr>  
 								       </c:forEach>  
-								       <tr><td colspan="7"> </td></tr>  
+								       <c:if test="${numberOfAdminRequests == 0}">
+								       	<tr><td colspan="4">No pending admin requests </td></tr>  
+								       </c:if>
 								      </table>  
 								      
 								     </center>  

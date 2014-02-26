@@ -9,6 +9,4 @@ public interface UserDao {
 	public void updateData(User user);
 	public void deleteData(String id);
 	public User getUser(String username);
-	public int addAdminRequest(int userid,int typeid);
-	public void deleteAdminRequest(String userid,String typeid);
 }

@@ -39,16 +39,4 @@ public class UserServiceImpl implements UserService {
     
  }  
  
- @Override
- public int addAdminRequest(int userid,int typeid) {
-	 return userdao.addAdminRequest(userid,typeid);
- }
- 
- @Override
- public void deleteAdminRequest(String userid,String typeid) {
-	 userdao.deleteAdminRequest(userid,typeid);
- }
-  
-  
-   
 }  

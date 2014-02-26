@@ -129,26 +129,5 @@ public class UserDaoImpl implements UserDao {
 		return userList.get(0);
 	}
 	
-	@Override
-	public int addAdminRequest(int userid, int typeid) {
-		String checkduplicate = "select count(*) from adminRequests where userid=" + userid + " and typeid=" + typeid;
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		int count = jdbcTemplate.queryForInt(checkduplicate);
-		if(count > 0)
-			return count;
-		else
-		{
-			String sql = "insert into adminRequests(userid,typeid) values (" + userid + "," + typeid + ")";
-			jdbcTemplate.update(sql);
-			return 0;
-		}
-	}
-	
-	@Override
-	public void deleteAdminRequest(String userid,String typeid) {
-		String sql = "delete from adminRequests where userid=" + userid + " and typeid=" + typeid;
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		jdbcTemplate.update(sql);
-	}
 
 }
