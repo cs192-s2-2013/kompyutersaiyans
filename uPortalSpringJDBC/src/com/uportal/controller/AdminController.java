@@ -1,16 +1,23 @@
 package com.uportal.controller;
 
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.ui.ModelMap;  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.uportal.domain.AdminRequest;
 import com.uportal.domain.User;
+import com.uportal.domain.ValueTuple;
+import com.uportal.services.ResourceService;
 import com.uportal.services.UserService;
 
 @Controller
@@ -18,6 +25,9 @@ import com.uportal.services.UserService;
 public class AdminController {
 	@Autowired
 	 UserService userService;
+	
+	@Autowired
+	 ResourceService resourceService;
 	
 	@RequestMapping("/getList")
 	 public ModelAndView getUserLIst() {
@@ -50,5 +60,23 @@ public class AdminController {
 	  System.out.println("userid = " + userid);
 	  userService.deleteData(userid);
 	  return "redirect:/getList";
+	 }
+	 
+	 @RequestMapping("/requests")
+	 public String request(ModelMap model, Principal principal) {
+		 model.addAttribute("request", "true");
+		 if(principal != null){
+			 String name = principal.getName();
+			 model.addAttribute("username", name);
+		 }
+		 List<ValueTuple> hotlineList = new ArrayList<ValueTuple>();
+		 hotlineList = resourceService.getHotlines();
+		 model.addAttribute("hotlineList", hotlineList);
+		 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
+		 model.addAttribute("numberOfAdminRequests", resourceService.getNumberOfAdminRequests());
+		 List<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
+		 adminRequestList = resourceService.getAdminRequestList();
+		 model.addAttribute("adminRequestList", adminRequestList);
+		 return "AdminPage";
 	 }
 }

@@ -198,3 +198,14 @@ create table hitcounter(
 insert into hitcounter(page,views) value ('homepage', 0);
 
 grant all privileges on uportaldb.hitcounter to 'java'@'localhost' with grant option;
+
+create table adminRequests(
+	userid int not null,
+	typeid int not null,
+	constraint fk_re_userid foreign key (userid)
+	references users(userid),
+	constraint fk_re_typeid foreign key (typeid)
+	references userTypes(typeid)
+)ENGINE = InnoDB;
+
+grant all privileges on uportaldb.adminRequests to 'java'@'localhost' with grant option;

@@ -17,7 +17,13 @@
 						<nav class="links">
 							<ul>
 								
-								<li><a href="#" class="ico2">Requests<span class="num">1</span></a></li>
+								<li>
+									<a href="requests" class="ico2">Requests
+										<c:if test="${numberOfAdminRequests > 0}">
+											<span class="num">${numberOfAdminRequests}</span>
+										</c:if>
+									</a>
+								</li>
 							</ul>
 						</nav>
 						<div class="profile-box">
@@ -124,6 +130,62 @@
 								      
 								     </center>  
 						</div>
+						<div id="tab-9" class="tab">
+							<style>  
+								    body {  
+								     font-size: 20px;  
+								     color: teal;  
+								     font-family: Calibri;  
+								    }  
+								      
+								    td {  
+								     font-size: 15px;  
+								     color: black;  
+								     width: 100px;  
+								     height: 22px;  
+								     text-align: center;  
+								    }  
+								    .heading {  
+								     font-size: 18px;  
+								     color: white;  
+								     font: bold;  
+								     background-color: orange;  
+								     border: thick;  
+								    }  
+								    </style>  
+								    <body>  
+								     <center>  
+								        
+								       
+								       
+								     <b>Admin Request | uPortal </b>  
+								       
+								      
+								         
+								        
+								      
+								      <table border="1">  
+								       <tr>  
+								        <td class="heading">Username</td>  
+								        <td class="heading">Typename</td>  
+								        <td class="heading">Approve</td>  
+								        <td class="heading">Decline</td>  
+								       </tr>  
+								       <c:forEach var="request" items="${adminRequestList}">  
+								        <tr>  
+								         <td>${request.username}</td>  
+								         <td>${request.typename}</td>  
+								         <td><a href="#">Approve</a></td>  
+								         <td><a href="#">Decline</a></td>  
+								        </tr>  
+								       </c:forEach>  
+								       <tr><td colspan="7"> </td></tr>  
+								      </table>  
+								      
+								     </center>  
+						</div>
+						
+						
 						<div id="tab-4" class="tab">
 							         <style>  
 							    body {  
@@ -268,10 +330,18 @@
 			<aside id="sidebar">
 				
 				<ul class="tabset buttons">
-					<li class="active">
-						<a href="#tab-1" class="ico1"><span>Dashboard</span><em></em></a>
-						<span class="tooltip"><span>Dashboard</span></span>
-					</li>
+					<c:if test="${request != true}">
+						<li class="active">
+							<a href="#tab-1" class="ico1"><span>Dashboard</span><em></em></a>
+							<span class="tooltip"><span>Dashboard</span></span>
+						</li>
+					</c:if>
+					<c:if test="${request == true}">
+						<li>
+							<a href="#tab-1" class="ico1"><span>Dashboard</span><em></em></a>
+							<span class="tooltip"><span>Dashboard</span></span>
+						</li>
+					</c:if>
 					<li>
 						<a href="#tab-2" class="ico4"><span>Applications</span><em></em></a>
 						<span class="tooltip"><span>Applications</span></span>
@@ -280,6 +350,18 @@
 						<a href="#tab-3" class="ico3"><span>Admins</span><em></em></a>
 						<span class="tooltip"><span>Admins</span></span>
 					</li>
+					<c:if test="${request == true}">
+						<li class="active">
+							<a href="#tab-9" class="ico3"><span>Admin Requests</span><em></em></a>
+							<span class="tooltip"><span>Admin Requests</span></span>
+						</li>
+					</c:if>
+					<c:if test="${request != true}">
+						<li>
+							<a href="#tab-9" class="ico3"><span>Admin Requests</span><em></em></a>
+							<span class="tooltip"><span>Admin Requests</span></span>
+						</li>
+					</c:if>
 					<li>
 						<a href="#tab-4" class="ico3"><span>Users</span><em></em></a>
 						<span class="tooltip"><span>Users</span></span>
@@ -293,6 +375,8 @@
 						<a href="#tab-8" class="ico8"><span>Settings</span><em></em></a>
 						<span class="tooltip"><span>Settings</span></span>
 					</li>
+					
+					
 				</ul>
 				
 			</aside>

@@ -2,6 +2,7 @@ package com.uportal.dao;
 
 import java.util.List;
 
+import com.uportal.domain.AdminRequest;
 import com.uportal.domain.ValueTuple;
 
 public interface ResourceDao {
@@ -16,4 +17,6 @@ public interface ResourceDao {
 	public List<String> getRoles(int userid);
 	public int getHomePageCounter();
 	public void updateHomePageCounter(int views);
+	public int getNumberOfAdminRequests();
+	public List<AdminRequest> getAdminRequestList();
 }

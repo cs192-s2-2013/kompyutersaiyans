@@ -2,6 +2,7 @@ package com.uportal.services;
 
 import java.util.List;
 
+import com.uportal.domain.AdminRequest;
 import com.uportal.domain.ValueTuple;
 
 import org.springframework.beans.factory.annotation.Autowired;  
@@ -67,5 +68,14 @@ public class ResourceServiceImpl implements ResourceService {
 		resourcedao.updateHomePageCounter(views);
 	}
 
+	@Override
+	public int getNumberOfAdminRequests() {
+		return resourcedao.getNumberOfAdminRequests();
+	}
+	
+	@Override
+	public List<AdminRequest> getAdminRequestList(){
+		return resourcedao.getAdminRequestList();
+	}
 	
 }
