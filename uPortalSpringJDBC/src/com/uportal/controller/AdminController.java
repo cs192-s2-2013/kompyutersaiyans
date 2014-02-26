@@ -62,7 +62,7 @@ public class AdminController {
 	  return "redirect:/getList";
 	 }
 	 
-	 @RequestMapping("/requests")
+	 @RequestMapping("/requestList")
 	 public String request(ModelMap model, Principal principal) {
 		 model.addAttribute("request", "true");
 		 if(principal != null){
@@ -78,5 +78,12 @@ public class AdminController {
 		 adminRequestList = resourceService.getAdminRequestList();
 		 model.addAttribute("adminRequestList", adminRequestList);
 		 return "AdminPage";
+	 }
+	 
+	 @RequestMapping("/decline_admin")
+	 public String declineAdmin(@RequestParam String userid, @RequestParam String typeid) {
+		 System.out.println(userid + " " + typeid);
+		 userService.deleteAdminRequest(userid,typeid);
+		 return "redirect:/requestList";
 	 }
 }

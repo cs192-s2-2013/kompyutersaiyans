@@ -46,5 +46,8 @@
 			<span class="pure-u-1-4"><button class="pure-u-1-4 pure-button" title="available to DCS students only" disabled><i class="fa fa-cut"></i><br>Classroom</button></span>
 		</c:if>
 	</div>
+	<div align="center">
+		<a href="request">Request to be an admin</a>
+	</div>
 </t:userpage>
 	

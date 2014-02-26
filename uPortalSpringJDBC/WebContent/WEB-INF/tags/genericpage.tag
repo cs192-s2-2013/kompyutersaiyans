@@ -50,6 +50,19 @@
 					Sign up success. You can now login.
 				</div>
 			</c:if>
+			<c:if test="${request_success == true}">
+				<div id="message" class="modalWindow">
+					<span style="float: right; margin-top:-40px; margin-right: -40px;"><a href="#message"><i class="fa fa-times"></i></a></span>
+					Your request was successfully sent
+				</div>
+			</c:if>
+			<c:if test="${request_failure == true}">
+				<div id="message" class="modalWindow">
+					<span style="float: right; margin-top:-40px; margin-right: -40px;"><a href="#message"><i class="fa fa-times"></i></a></span>
+					Your have already sent a request for this application
+				</div>
+			</c:if>
+			
 			<c:if test="${reset_success == true}"><div id="message">The hit counter was successfully reseted </div></c:if>  
 		<jsp:doBody/>
 	</body>

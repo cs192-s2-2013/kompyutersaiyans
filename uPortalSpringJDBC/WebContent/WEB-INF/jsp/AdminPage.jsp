@@ -18,7 +18,7 @@
 							<ul>
 								
 								<li>
-									<a href="requests" class="ico2">Requests
+									<a href="requestList" class="ico2">Requests
 										<c:if test="${numberOfAdminRequests > 0}">
 											<span class="num">${numberOfAdminRequests}</span>
 										</c:if>
@@ -176,7 +176,7 @@
 								         <td>${request.username}</td>  
 								         <td>${request.typename}</td>  
 								         <td><a href="#">Approve</a></td>  
-								         <td><a href="#">Decline</a></td>  
+								         <td><a href="decline_admin?userid=${request.userid}&typeid=${request.typeid}">Decline</a></td>  
 								        </tr>  
 								       </c:forEach>  
 								       <tr><td colspan="7"> </td></tr>  

@@ -72,7 +72,7 @@ public class LoginController {
 		return "login";
  
 	}
- 
+	
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logout(ModelMap model) {
 		model.addAttribute("homePageCounter", resourceService.getHomePageCounter());

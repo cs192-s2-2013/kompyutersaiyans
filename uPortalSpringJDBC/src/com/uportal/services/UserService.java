@@ -11,5 +11,6 @@ public interface UserService {
  public void deleteData(String id);  
  public User getUser(String username);  
  public void updateData(User user);
-  
+ public int addAdminRequest(int userid,int typeid);
+ public void deleteAdminRequest(String userid,String typeid);
 }  
