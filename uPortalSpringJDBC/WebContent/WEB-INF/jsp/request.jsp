@@ -12,25 +12,83 @@
 	
 	
 	<div class="cont-div" >
-		<div>
-			<a href="request_portal">Request to be a PORTAL admin</a>
-		</div>
-		<br>
-		<div>
-			<a href="request_maps">Request to be a UP MAP admin</a>
-		</div>
-		<br>
-		<div>
-			<a href="request_buddy">Request to be a STUDY BUDDY admin</a>
-		</div>
-		<br>
-		<div>
-			<a href="request_class">Request to be an ONLINE CLASSROOM admin</a>
-		</div>
+		<c:if test="${isPortalAdmin == true}">
+			<div>
+				You are already a PORTAL Admin
+			</div>
+			<br>
+		</c:if>
+		<c:if test="${isMapAdmin == true}">
+			<div>
+				You are already a UP MAP Admin
+			</div>
+			<br>
+		</c:if>
+		<c:if test="${isBuddyAdmin == true}">
+			<div>
+				You are already a STUDY BUDDY Admin
+			</div>
+			<br>
+		</c:if>
+		<c:if test="${department == 'Department of Computer Science'}">
+			<c:if test="${isClassAdmin == true}">
+				<div>
+					You are already an ONLINE CLASSROOM Admin
+				</div>
 				<br>
-		<div>
-			<a href="request_gym">Request to be a BRAIN GYM admin</a>
-		</div>
+			</c:if>
+		</c:if>
+		<c:if test="${college == 'College of Engineering' || college == 'College of Science'}">
+			<c:if test="${isGymAdmin == true}">
+				<div>
+					You are already a BRAIN GYM Admin
+				</div>
+				<br>
+			</c:if>
+		</c:if>
+		
+	
+		<c:if test="${isPortalAdmin != true}">
+			<div>
+				<a href="request_portal">Request to be a PORTAL admin</a>
+			</div>
+			<br>
+		</c:if>
+		
+		<c:if test="${isMapAdmin != true}">
+			<div>
+				<a href="request_maps">Request to be a UP MAP admin</a>
+			</div>
+			<br>
+		</c:if>
+
+		
+		<c:if test="${isBuddyAdmin != true}">
+			<div>
+				<a href="request_buddy">Request to be a STUDY BUDDY admin</a>
+			</div>
+			<br>
+		</c:if>
+
+		<c:if test="${department == 'Department of Computer Science'}">
+			<c:if test="${isClassAdmin != true}">
+				<div>
+					<a href="request_class">Request to be an ONLINE CLASSROOM admin</a>
+				</div>
+				<br>
+			</c:if>
+		</c:if>
+		
+		<c:if test="${college == 'College of Engineering' || college == 'College of Science'}">
+			<c:if test="${isGymAdmin != true}">
+				<div>
+					<a href="request_gym">Request to be a BRAIN GYM admin</a>
+				</div>
+				<br>
+			</c:if>
+		</c:if>
+
+		
 		
 	</div>
 

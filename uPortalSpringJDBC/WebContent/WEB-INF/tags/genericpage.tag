@@ -56,7 +56,7 @@
 					Your request was successfully sent
 				</div>
 			</c:if>
-			<c:if test="${request_failure == true}">
+			<c:if test="${request_success != true && request_success != null}">
 				<div id="message" class="modalWindow">
 					<span style="float: right; margin-top:-40px; margin-right: -40px;"><a href="#message"><i class="fa fa-times"></i></a></span>
 					Your have already sent a request for this application
