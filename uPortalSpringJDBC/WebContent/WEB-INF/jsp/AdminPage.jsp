@@ -282,25 +282,24 @@
 								      <table border="1" width="95%" id="tblData">  
 								      <col width="30%">
 								      <col width="60%">
-								      <col width="5%">
-								      <col width="5%">
+								      <col width="10%">
 								       <tr>  
 								        <td class="heading">Entity Name</td>  
 								        <td class="heading">Description</td>  
-								        <td class="heading" colspan="2">Options</td>
+								        <td class="heading">Options</td>
 								       </tr>  
-								       <c:forEach var="tel" items="${hotlineList}">
+								       
 								       <tbody>
+								       <c:forEach var="tel" items="${hotlineList}">
 								        <tr>  
 								         <td>${tel.getLabel()}</td>  
 								         <td>${tel.getTelInfo()}</td>
-								         <td><a href="editNum?id=${user.userId}">Edit</a></td>  
-								         <td><a href="deleteNum?id=${user.userId}">Delete</a></td>  
-								        </tr> 
-								       </tbody> 
-								       </c:forEach>  
-								       <tr><td colspan="5"><button id="btnAdd">add new</button></td></tr>  
+								         <td><button class="btnEdit">Edit</button><button class="btnDelete">Delete</button></td>
+								        </tr>  
+								       </c:forEach>
+								       </tbody>    
 								      </table>  
+								      <button id="btnAdd">add new</button>
 								     </center>  
 								 <ul class="states">
 									<li class="warning">When editing hotline numbers, please separate them with asterisk.</li>
@@ -317,11 +316,13 @@
 									<p><b>The hit counter was successfully reseted</b></p>
 									</c:if>
 									
-									</br>
+									<br/>
 									<p><u>Hit Counter</u></p>
 									<p>Number of visitors: <b> ${homePageCounter} </b></p>
 									<p><b><a href="reset">Reset counter</a></b></p>
 									
+									<br/>
+									<p>Edit hotlines via PhpMyAdmin <a href="http://localhost/phpmyadmin/sql.php?db=uportaldb&table=hotlines&server=1&target=&token=91bbb9b8a6c80cc5f21072e153a3401c#PMAURL-0:sql.php?db=uportaldb&table=hotlines&server=1&target=&token=91bbb9b8a6c80cc5f21072e153a3401c">here</a></p>
 								</div>
 							</article>
 						</div>
