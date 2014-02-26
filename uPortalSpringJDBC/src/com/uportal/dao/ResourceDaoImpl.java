@@ -95,18 +95,4 @@ public class ResourceDaoImpl implements ResourceDao{
 		 jdbcTemplate.update(updateCounter);
 	}
 	
-	public int getNumberOfAdminRequests(){
-		String sql = "select count(*) from adminRequests";
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		return jdbcTemplate.queryForInt(sql);
-	}
-	
-	public List<AdminRequest> getAdminRequestList(){
-		ArrayList<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
-		String sql = "select users.userid,userTypes.typeid,username,typename from adminRequests,users,userTypes where adminRequests.userid=users.userid and userTypes.typeid=adminRequests.typeid";
-
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		adminRequestList = (ArrayList<AdminRequest>) jdbcTemplate.query(sql, new AdminRequestRowMapper());
-		return adminRequestList;
-	}
 }

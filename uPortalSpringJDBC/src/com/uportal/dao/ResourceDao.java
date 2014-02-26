@@ -17,6 +17,4 @@ public interface ResourceDao {
 	public List<String> getRoles(int userid);
 	public int getHomePageCounter();
 	public void updateHomePageCounter(int views);
-	public int getNumberOfAdminRequests();
-	public List<AdminRequest> getAdminRequestList();
 }

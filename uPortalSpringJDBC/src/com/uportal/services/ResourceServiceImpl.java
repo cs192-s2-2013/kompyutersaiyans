@@ -68,14 +68,5 @@ public class ResourceServiceImpl implements ResourceService {
 		resourcedao.updateHomePageCounter(views);
 	}
 
-	@Override
-	public int getNumberOfAdminRequests() {
-		return resourcedao.getNumberOfAdminRequests();
-	}
-	
-	@Override
-	public List<AdminRequest> getAdminRequestList(){
-		return resourcedao.getAdminRequestList();
-	}
 	
 }

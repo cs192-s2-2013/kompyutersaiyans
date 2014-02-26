@@ -22,6 +22,7 @@ import org.springframework.ui.ModelMap;
 import com.uportal.domain.User;
 import com.uportal.domain.ValueTuple;
 import com.uportal.domain.AdminRequest;
+import com.uportal.services.AdminRequestService;
 import com.uportal.services.ResourceService;
 import com.uportal.services.UserService;
 
@@ -32,6 +33,8 @@ public class HomePageController {
  UserService userService;
  @Autowired
  ResourceService resourceService;
+ @Autowired
+ AdminRequestService adminRequestService;
  @Autowired
  DataSource dataSource;
  
@@ -113,10 +116,13 @@ public class HomePageController {
 	 hotlineList = resourceService.getHotlines();
 	 model.addAttribute("hotlineList", hotlineList);
 	 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
-	 model.addAttribute("numberOfAdminRequests", resourceService.getNumberOfAdminRequests());
+	 model.addAttribute("numberOfAdminRequests", adminRequestService.getNumberOfAdminRequests());
 	 List<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
-	 adminRequestList = resourceService.getAdminRequestList();
+	 adminRequestList = adminRequestService.getAdminRequestList();
 	 model.addAttribute("adminRequestList", adminRequestList);
+	 List<AdminRequest> adminList = new ArrayList<AdminRequest>();
+	 adminList = adminRequestService.getAdminList();
+	 model.addAttribute("adminList", adminList);
 	 return "AdminPage";
  }
  

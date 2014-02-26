@@ -77,10 +77,13 @@ public class AdminController {
 		 hotlineList = resourceService.getHotlines();
 		 model.addAttribute("hotlineList", hotlineList);
 		 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
-		 model.addAttribute("numberOfAdminRequests", resourceService.getNumberOfAdminRequests());
+		 model.addAttribute("numberOfAdminRequests", adminRequestService.getNumberOfAdminRequests());
 		 List<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
-		 adminRequestList = resourceService.getAdminRequestList();
+		 adminRequestList = adminRequestService.getAdminRequestList();
 		 model.addAttribute("adminRequestList", adminRequestList);
+		 List<AdminRequest> adminList = new ArrayList<AdminRequest>();
+		 adminList = adminRequestService.getAdminList();
+		 model.addAttribute("adminList", adminList);
 		 return "AdminPage";
 	 }
 	 
@@ -96,5 +99,11 @@ public class AdminController {
 		 adminRequestService.addAdmin(userid,typeid);
 		 adminRequestService.deleteAdminRequest(userid, typeid);
 		 return "redirect:/requestList";
+	 }
+	 
+	 @RequestMapping("/delete_admin")
+	 public String deleteAdmin(@RequestParam String userid, @RequestParam String typeid, ModelMap model) {
+		 model.addAttribute("seeAdminList", "true");
+		 return "AdminPage";
 	 }
 }
