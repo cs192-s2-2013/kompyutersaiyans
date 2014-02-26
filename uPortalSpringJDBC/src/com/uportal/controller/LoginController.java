@@ -31,6 +31,8 @@ public class LoginController {
 		model.addAttribute("username", name);
 		model.addAttribute("user", user);
 		model.addAttribute("roles", roles);
+		if(roles.indexOf("GOD") >= 0)
+			 model.addAttribute("isAdmin", true);
 		if(user.getCollege() != null){
 			String college= resourceService.getCollege(Integer.parseInt(user.getCollege()));
 			model.addAttribute("college", college);

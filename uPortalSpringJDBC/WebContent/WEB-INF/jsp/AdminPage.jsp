@@ -22,7 +22,7 @@
 						</nav>
 						<div class="profile-box">
 							<span class="profile">
-								<a href="#" class="section">
+								<a href="welcome" class="section">
 									<img class="image" src=<c:url value="/resources/images/img1.jpg"/> width="26" height="26" />
 									<span class="text-box">
 										Welcome
@@ -31,7 +31,7 @@
 								</a>
 							</span>
 							
-							<a href="#" class="btn-on">Log Out</a>
+							<a href="<c:url value="/j_spring_security_logout" />" class="btn-on">Log Out</a>
 							
 						</div>
 					</div>

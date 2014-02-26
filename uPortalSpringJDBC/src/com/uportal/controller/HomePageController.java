@@ -79,6 +79,10 @@ public class HomePageController {
 	 if(principal != null){
 		 String name = principal.getName();
 		 model.addAttribute("username", name);
+		 User user= userService.getUser(name);
+		 List<String> roles= resourceService.getRoles(user.getUserId());
+		 if(roles.indexOf("GOD") >= 0)
+			 model.addAttribute("isAdmin", "true");
 	 	}
 	 List<ValueTuple> hotlineList = new ArrayList<ValueTuple>();
 	 hotlineList = resourceService.getHotlines();
@@ -93,6 +97,8 @@ public class HomePageController {
 	 }
 	 model.addAttribute("hotlineList1", hotlineList1);
 	 model.addAttribute("hotlineList2", hotlineList2);
+
+	 
 	 return "hotlines";
  }
  
@@ -104,8 +110,6 @@ public class HomePageController {
 	 }
 	 List<ValueTuple> hotlineList = new ArrayList<ValueTuple>();
 	 hotlineList = resourceService.getHotlines();
-	 model.addAttribute("hotlineList", hotlineList);
-	 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
 	 return "AdminPage";
  }
  

@@ -23,6 +23,11 @@
 								<a href="login">Sign in</a>
 							</li>
 						</c:if>
+						<c:if test="${isAdmin == true}">
+							<li>
+								<a href="AdminPage">Admin Page</a>
+							</li>
+						</c:if>
 						<c:if test="${username != null}">
 							<li>
 								<a href="<c:url value="welcome" />" >Profile</a>
