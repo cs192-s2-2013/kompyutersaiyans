@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.uportal.domain.ValueTuple;
 import com.uportal.jdbc.ValueTupleRowMapper;
-
 import com.uportal.domain.AdminRequest;
 import com.uportal.jdbc.AdminRequestRowMapper;
 
@@ -95,4 +94,9 @@ public class ResourceDaoImpl implements ResourceDao{
 		 jdbcTemplate.update(updateCounter);
 	}
 	
+	public void updateHotline(int ID, String name, String info){
+		String sql = "update hotlines set id="+ID+", name='"+"', info='"+"' where 1";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		jdbcTemplate.update(sql);
+	}
 }

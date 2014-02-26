@@ -68,5 +68,8 @@ public class ResourceServiceImpl implements ResourceService {
 		resourcedao.updateHomePageCounter(views);
 	}
 
-	
+	@Override
+	public void updateHotline(int ID, String name, String info){
+		resourcedao.updateHotline(ID, name, info);
+	}
 }
