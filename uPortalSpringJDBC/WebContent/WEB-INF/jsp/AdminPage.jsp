@@ -104,29 +104,21 @@
 								      
 								      <table border="1">  
 								       <tr>  
-								        <td class="heading">User Id</td>  
-								        <td class="heading">First Name</td>  
-								        <td class="heading">Last Name</td>  
-								        <td class="heading">Email</td>  
-								        <td class="heading">Username</td>
-								        <td class="heading">Password</td>  
-								        <td class="heading">Edit</td>  
+								        <td class="heading">Username</td>  
+								        <td class="heading">Typename</td>  
 								        <td class="heading">Delete</td>  
 								       </tr>  
-								       <c:forEach var="user" items="${userList}">  
+								       <c:forEach var="admin" items="${adminList}">  
 								        <tr>  
-								         <td>${user.userId}</td>  
-								         <td>${user.firstName}</td>  
-								         <td>${user.lastName}</td>  
-								         <td>${user.email}</td>  
-								         <td>${user.username}</td>  
-								         <td>${user.password}</td>
-								         <td><a href="edit?userid=${user.userId}">Edit</a></td>  
-								         <td><a href="delete?userid=${user.userId}">Delete</a></td>  
+								         <td>${admin.username}</td>  
+								         <td>${admin.typename}</td>  
+								         <td><a href="delete_admin?userid=${admin.userid}&typeid=${admin.typeid}">Delete</a></td>    
 								        </tr>  
 								       </c:forEach>  
-								       <tr><td colspan="7"><a href="register">Add New User</a></td></tr>  
-								      </table>  
+								       <c:if test="${adminList.size() == 0}">
+								       	<tr><td colspan="4">No admins </td></tr>  
+								       </c:if>
+								      </table>   
 								      
 								     </center>  
 						</div>
@@ -332,13 +324,13 @@
 			<aside id="sidebar">
 				
 				<ul class="tabset buttons">
-					<c:if test="${request != true}">
+					<c:if test="${request != true && seeAdminList != true}">
 						<li class="active">
 							<a href="#tab-1" class="ico1"><span>Dashboard</span><em></em></a>
 							<span class="tooltip"><span>Dashboard</span></span>
 						</li>
 					</c:if>
-					<c:if test="${request == true}">
+					<c:if test="${request == true || seeAdminList == true}">
 						<li>
 							<a href="#tab-1" class="ico1"><span>Dashboard</span><em></em></a>
 							<span class="tooltip"><span>Dashboard</span></span>
@@ -348,10 +340,18 @@
 						<a href="#tab-2" class="ico4"><span>Applications</span><em></em></a>
 						<span class="tooltip"><span>Applications</span></span>
 					</li>
-					<li>
-						<a href="#tab-3" class="ico3"><span>Admins</span><em></em></a>
-						<span class="tooltip"><span>Admins</span></span>
-					</li>
+					<c:if test="${seeAdminList == true}">
+						<li class="active">
+							<a href="#tab-3" class="ico3"><span>Admins</span><em></em></a>
+							<span class="tooltip"><span>Admins</span></span>
+						</li>
+					</c:if>
+					<c:if test="${seeAdminList != true}">
+						<li>
+							<a href="#tab-3" class="ico3"><span>Admins</span><em></em></a>
+							<span class="tooltip"><span>Admins</span></span>
+						</li>
+					</c:if>
 					<c:if test="${request == true}">
 						<li class="active">
 							<a href="#tab-9" class="ico3"><span>Admin Requests</span><em></em></a>

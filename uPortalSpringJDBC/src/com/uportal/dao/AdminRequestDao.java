@@ -11,4 +11,5 @@ public interface AdminRequestDao {
 	 public int getNumberOfAdminRequests();
 	 public List<AdminRequest> getAdminRequestList();
 	 public List<AdminRequest> getAdminList();
+	 public void deleteAdmin(String userid, String typeid);
 }

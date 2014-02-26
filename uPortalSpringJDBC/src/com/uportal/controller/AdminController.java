@@ -102,8 +102,24 @@ public class AdminController {
 	 }
 	 
 	 @RequestMapping("/delete_admin")
-	 public String deleteAdmin(@RequestParam String userid, @RequestParam String typeid, ModelMap model) {
+	 public String deleteAdmin(@RequestParam String userid, @RequestParam String typeid, ModelMap model, Principal principal) {
+		 adminRequestService.deleteAdmin(userid,typeid);
 		 model.addAttribute("seeAdminList", "true");
+		 if(principal != null){
+			 String name = principal.getName();
+			 model.addAttribute("username", name);
+		 }
+		 List<ValueTuple> hotlineList = new ArrayList<ValueTuple>();
+		 hotlineList = resourceService.getHotlines();
+		 model.addAttribute("hotlineList", hotlineList);
+		 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
+		 model.addAttribute("numberOfAdminRequests", adminRequestService.getNumberOfAdminRequests());
+		 List<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
+		 adminRequestList = adminRequestService.getAdminRequestList();
+		 model.addAttribute("adminRequestList", adminRequestList);
+		 List<AdminRequest> adminList = new ArrayList<AdminRequest>();
+		 adminList = adminRequestService.getAdminList();
+		 model.addAttribute("adminList", adminList);
 		 return "AdminPage";
 	 }
 }

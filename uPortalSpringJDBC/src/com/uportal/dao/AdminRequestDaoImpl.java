@@ -74,5 +74,10 @@ public class AdminRequestDaoImpl implements AdminRequestDao {
 		return adminRequestList;
 	}
 	
-	
+	@Override
+	public void deleteAdmin(String userid, String typeid){
+		String sql = "delete from userRoles where userid=" + userid + " and typeid=" + typeid;
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		jdbcTemplate.update(sql);
+	}
 }
