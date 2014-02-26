@@ -279,28 +279,27 @@
 								     <center> 
 								     <b>Hotline List | uPortal </b> 
 								     <hr/>
-								      <table border="1" width="95%">  
-								      <col width="5%">
-								      <col width="25%">
+								      <table border="1" width="95%" id="tblData">  
+								      <col width="30%">
 								      <col width="60%">
 								      <col width="5%">
 								      <col width="5%">
 								       <tr>  
-								        <td class="heading">Id</td>  
 								        <td class="heading">Entity Name</td>  
 								        <td class="heading">Description</td>  
 								        <td class="heading" colspan="2">Options</td>
 								       </tr>  
 								       <c:forEach var="tel" items="${hotlineList}">
+								       <tbody>
 								        <tr>  
-								         <td>${tel.getValue()}</td>  
 								         <td>${tel.getLabel()}</td>  
 								         <td>${tel.getTelInfo()}</td>
 								         <td><a href="editNum?id=${user.userId}">Edit</a></td>  
 								         <td><a href="deleteNum?id=${user.userId}">Delete</a></td>  
-								        </tr>  
+								        </tr> 
+								       </tbody> 
 								       </c:forEach>  
-								       <tr><td colspan="5"><a href="">add new hotline</a></td></tr>  
+								       <tr><td colspan="5"><button id="btnAdd">add new</button></td></tr>  
 								      </table>  
 								     </center>  
 								 <ul class="states">
