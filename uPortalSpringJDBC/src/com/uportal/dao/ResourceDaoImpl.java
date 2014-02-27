@@ -95,7 +95,23 @@ public class ResourceDaoImpl implements ResourceDao{
 	}
 	
 	public void updateHotline(String id, String name, String info){
-		String sql = "update hotlines set id="+id+", name='"+name+"', info='"+info+"' where 1";
+		String sql = "select * from hotlines where id="+id+"";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		ArrayList<ValueTuple> result = new ArrayList<ValueTuple>();
+		result = (ArrayList<ValueTuple>) jdbcTemplate.query(sql, new ValueTupleRowMapper());
+		if (result.size() > 0){
+			String sqlupdate = "update hotlines set name='"+name+"', info='"+info+"' where id="+id;
+			jdbcTemplate.update(sqlupdate);
+		}
+		else{
+			String sqlinsert = "insert into hotlines values("+id+",'"+name+"','"+info+"')";
+			jdbcTemplate.update(sqlinsert);
+		}
+	}
+	
+
+	public void deleteHotline(String id){
+		String sql = "delete from hotlines where id="+id+"";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		jdbcTemplate.update(sql);
 	}

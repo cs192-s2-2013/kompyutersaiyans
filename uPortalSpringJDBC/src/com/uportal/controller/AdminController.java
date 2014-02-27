@@ -91,11 +91,18 @@ public class AdminController {
 	 
 	 @RequestMapping(value="/hotline_update", method=RequestMethod.GET)
 	 public @ResponseBody String updateHotline(@RequestParam String id, @RequestParam String name, @RequestParam String info){
-		 System.out.println("Update hotline" + id + " " + name + " " + info);
+		 System.out.println("Update hotline: " + id + " " + name + " " + info);
 		 resourceService.updateHotline(id, name, info);
 		 return "redirect:/AdminPage";
 	 }
 	 
+	 @RequestMapping(value="/hotline_delete", method=RequestMethod.GET)
+	 public @ResponseBody String deleteHotline(@RequestParam String id){
+		 System.out.println("Delete hotline: " + id);
+		 resourceService.deleteHotline(id);
+		 return "redirect:/AdminPage";
+	 }
+
 	 @RequestMapping("/delete_admin")
 	 public String deleteAdmin(@RequestParam String userid, @RequestParam String typeid, ModelMap model, Principal principal, RedirectAttributes redirectAttributes) {
 		 adminRequestService.deleteAdmin(userid,typeid);
