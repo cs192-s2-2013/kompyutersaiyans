@@ -30,16 +30,9 @@ function Save(){
     
   //update database
     $.ajax({  
-        type : "GET",   
+    	type: "GET",
         url : "/hotline_update",   
-        data : "id=" + tid + "&name=" + tname+ "&info=" + tinfo, 
-        success : function(response) {  
-         alert(response);   
-        },  
-        error : function(e) {  
-         alert("Can't connect to Spring controller");   
-         return;
-        }  
+        data : "id=" + tid + "&name=" + tname+ "&info=" + tinfo,
        });
     
     tdID.html(tdID.children("input[type=text]").val());

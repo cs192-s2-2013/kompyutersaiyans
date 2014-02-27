@@ -295,6 +295,7 @@
 								      </table>  
 								      <button id="btnAdd">add new</button>
 								     </center>  
+								 <p id="status"></p>
 								 <ul class="states">
 									<li class="warning">When editing hotline numbers, please separate them with asterisk.</li>
 								</ul>

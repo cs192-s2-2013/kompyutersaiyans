@@ -90,10 +90,10 @@ public class AdminController {
 	 }
 	 
 	 @RequestMapping(value="/hotline_update", method=RequestMethod.GET)
-	 public @ResponseBody String updateHotline(@RequestParam(value="id") String id, @RequestParam(value="name") String name, @RequestParam(value="info") String info){
+	 public @ResponseBody String updateHotline(@RequestParam String id, @RequestParam String name, @RequestParam String info){
 		 System.out.println("Update hotline" + id + " " + name + " " + info);
 		 resourceService.updateHotline(id, name, info);
-		 return "AdminPage";
+		 return "redirect:/AdminPage";
 	 }
 	 
 	 @RequestMapping("/delete_admin")
