@@ -80,4 +80,31 @@ public class AdminRequestDaoImpl implements AdminRequestDao {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		jdbcTemplate.update(sql);
 	}
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public int getNumberOfAdminRequests(int typeid){
+		String sql = "select count(*) from adminRequests where typeid="+typeid;
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		return jdbcTemplate.queryForInt(sql);
+	}
+	
+	@Override
+	public List<AdminRequest> getAdminRequestList(int typeid){
+		ArrayList<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
+		String sql = "select users.userid,userTypes.typeid,username,typename from adminRequests,users,userTypes where adminRequests.userid=users.userid and userTypes.typeid=adminRequests.typeid and adminRequests.typeid="+typeid;
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		adminRequestList = (ArrayList<AdminRequest>) jdbcTemplate.query(sql, new AdminRequestRowMapper());
+		return adminRequestList;
+	}
+	
+	@Override
+	public List<AdminRequest> getAdminList(int typeid){
+		ArrayList<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
+		String sql = "select users.userid,userTypes.typeid,username,typename from userRoles,users,userTypes where userRoles.userid=users.userid and userTypes.typeid=userRoles.typeid and userRoles.typeid="+typeid;
+
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		adminRequestList = (ArrayList<AdminRequest>) jdbcTemplate.query(sql, new AdminRequestRowMapper());
+		return adminRequestList;
+	}
 }

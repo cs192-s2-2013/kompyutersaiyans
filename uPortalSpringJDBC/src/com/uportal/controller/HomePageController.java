@@ -86,8 +86,8 @@ public class HomePageController {
 		 model.addAttribute("username", name);
 		 User user= userService.getUser(name);
 		 List<String> roles= resourceService.getRoles(user.getUserId());
-		 if(roles.indexOf("GOD") >= 0)
-			 model.addAttribute("isAdmin", "true");
+		 if(roles.indexOf("GOD") >= 0 || roles.indexOf("ADMIN_CLASS") >= 0 || roles.indexOf("ADMIN_BUDDY") >= 0 || roles.indexOf("ADMIN_GYM") >= 0 || roles.indexOf("ADMIN_MAPS") >= 0 || roles.indexOf("ADMIN_PORTAL") >= 0)
+			 model.addAttribute("isAdmin", true);
 	 	}
 	 List<ValueTuple> hotlineList = new ArrayList<ValueTuple>();
 	 hotlineList = resourceService.getHotlines();
@@ -113,21 +113,63 @@ public class HomePageController {
 		 model.addAttribute("request", request);
 	 if(seeAdminList != null)
 		 model.addAttribute("seeAdminList", seeAdminList);
-	 if(principal != null){
-		 String name = principal.getName();
-		 model.addAttribute("username", name);
-	 }
+	 String name = principal.getName();
+	 model.addAttribute("username", name);
 	 List<ValueTuple> hotlineList = new ArrayList<ValueTuple>();
 	 hotlineList = resourceService.getHotlines();
 	 model.addAttribute("hotlineList", hotlineList);
 	 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
-	 model.addAttribute("numberOfAdminRequests", adminRequestService.getNumberOfAdminRequests());
-	 List<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
-	 adminRequestList = adminRequestService.getAdminRequestList();
-	 model.addAttribute("adminRequestList", adminRequestList);
-	 List<AdminRequest> adminList = new ArrayList<AdminRequest>();
-	 adminList = adminRequestService.getAdminList();
-	 model.addAttribute("adminList", adminList);
+	 User user= userService.getUser(name);
+	 List<String> roles= resourceService.getRoles(user.getUserId());
+	 if(roles.indexOf("GOD") >= 0)
+	 {
+		 model.addAttribute("numberOfAdminRequests", adminRequestService.getNumberOfAdminRequests());
+		 List<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
+		 adminRequestList = adminRequestService.getAdminRequestList();
+		 model.addAttribute("adminRequestList", adminRequestList);
+		 List<AdminRequest> adminList = new ArrayList<AdminRequest>();
+		 adminList = adminRequestService.getAdminList();
+		 model.addAttribute("adminList", adminList);
+	 }
+	 else
+	 {
+		 int numberOfAdminRequests = 0;
+		 List<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
+		 List<AdminRequest> adminList = new ArrayList<AdminRequest>();
+		 if(roles.indexOf("ADMIN_PORTAL") >= 0)
+		 {
+			adminRequestList.addAll(adminRequestService.getAdminRequestList(4)); 
+			adminList.addAll(adminRequestService.getAdminList(4)); 
+			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(4);
+		 }
+		 if(roles.indexOf("ADMIN_MAPS") >= 0)
+		 {
+			adminRequestList.addAll(adminRequestService.getAdminRequestList(5)); 
+			adminList.addAll(adminRequestService.getAdminList(5)); 
+			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(5);
+		 }
+		 if(roles.indexOf("ADMIN_BUDDY") >= 0)
+		 {
+			adminRequestList.addAll(adminRequestService.getAdminRequestList(6)); 
+			adminList.addAll(adminRequestService.getAdminList(6)); 
+			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(6);
+		 }
+		 if(roles.indexOf("ADMIN_CLASS") >= 0)
+		 {
+			adminRequestList.addAll(adminRequestService.getAdminRequestList(7)); 
+			adminList.addAll(adminRequestService.getAdminList(7)); 
+			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(7);
+		 }
+		 if(roles.indexOf("ADMIN_GYM") >= 0)
+		 {
+			adminRequestList.addAll(adminRequestService.getAdminRequestList(8)); 
+			adminList.addAll(adminRequestService.getAdminList(8)); 
+			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(8);
+		 }
+		 model.addAttribute("numberOfAdminRequests", numberOfAdminRequests);
+		 model.addAttribute("adminRequestList", adminRequestList);
+		 model.addAttribute("adminList", adminList);
+	 }
 	 return "AdminPage";
  }
  

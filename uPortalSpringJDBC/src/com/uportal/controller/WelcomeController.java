@@ -34,6 +34,10 @@ public class WelcomeController {
 		User user= userService.getUser(name);
 		List<String> roles= resourceService.getRoles(user.getUserId());
 		model.addAttribute("roles", roles);
+		
+		if(roles.indexOf("GOD") >= 0 || roles.indexOf("ADMIN_CLASS") >= 0 || roles.indexOf("ADMIN_BUDDY") >= 0 || roles.indexOf("ADMIN_GYM") >= 0 || roles.indexOf("ADMIN_MAPS") >= 0 || roles.indexOf("ADMIN_PORTAL") >= 0)
+			 model.addAttribute("isAdmin", true);
+		
 		if(roles.indexOf("GOD") >= 0)
 			 model.addAttribute("isGod", "true");
 		if(roles.indexOf("ADMIN_PORTAL") >= 0)

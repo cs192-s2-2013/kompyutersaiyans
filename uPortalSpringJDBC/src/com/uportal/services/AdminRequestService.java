@@ -12,4 +12,7 @@ public interface AdminRequestService {
 	 public List<AdminRequest> getAdminRequestList();
 	 public List<AdminRequest> getAdminList();
 	 public void deleteAdmin(String userid, String typeid);
+	 public int getNumberOfAdminRequests(int typeid);
+	 public List<AdminRequest> getAdminRequestList(int typeid);
+	 public List<AdminRequest> getAdminList(int typeid);
 }

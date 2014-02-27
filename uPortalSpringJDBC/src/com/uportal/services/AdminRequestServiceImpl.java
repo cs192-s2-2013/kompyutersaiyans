@@ -47,4 +47,19 @@ public class AdminRequestServiceImpl implements AdminRequestService{
 	public void deleteAdmin(String userid, String typeid){
 		adminrequestdao.deleteAdmin(userid, typeid);
 	}
+	
+	@Override
+	public int getNumberOfAdminRequests(int typeid){
+		return adminrequestdao.getNumberOfAdminRequests(typeid);
+	}
+	
+	@Override
+	public List<AdminRequest> getAdminRequestList(int typeid){
+		return adminrequestdao.getAdminRequestList(typeid);
+	}
+	
+	@Override
+	public List<AdminRequest> getAdminList(int typeid){
+		return adminrequestdao.getAdminList(typeid);
+	}
 }
