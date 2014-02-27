@@ -108,9 +108,11 @@ public class HomePageController {
  }
  
  @RequestMapping("/AdminPage")
- public String AdminPage(ModelMap model, Principal principal, @RequestParam(required = false) String request){
+ public String AdminPage(ModelMap model, Principal principal, @RequestParam(required = false) String request, @RequestParam(required = false) String seeAdminList){
 	 if(request != null)
 		 model.addAttribute("request", request);
+	 if(seeAdminList != null)
+		 model.addAttribute("seeAdminList", seeAdminList);
 	 if(principal != null){
 		 String name = principal.getName();
 		 model.addAttribute("username", name);
