@@ -107,4 +107,14 @@ public class AdminRequestDaoImpl implements AdminRequestDao {
 		adminRequestList = (ArrayList<AdminRequest>) jdbcTemplate.query(sql, new AdminRequestRowMapper());
 		return adminRequestList;
 	}
+	
+	@Override
+	public List<AdminRequest> getAdminListWithoutUser(int typeid, String username){
+		ArrayList<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
+		String sql = "select users.userid,userTypes.typeid,username,typename from userRoles,users,userTypes where userRoles.userid=users.userid and userTypes.typeid=userRoles.typeid and userRoles.typeid="+typeid+" and users.username !=\'"+username+"\'";
+
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		adminRequestList = (ArrayList<AdminRequest>) jdbcTemplate.query(sql, new AdminRequestRowMapper());
+		return adminRequestList;
+	}
 }

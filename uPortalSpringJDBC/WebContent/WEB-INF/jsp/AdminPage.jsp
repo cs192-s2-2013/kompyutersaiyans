@@ -106,14 +106,14 @@
 								       <tr>  
 								        <td class="heading">Username</td>  
 								        <td class="heading">Typename</td>  
-								        <td class="heading">Delete</td>  
+								        <td class="heading">Operations</td>  
 								       </tr>  
 								       <c:forEach var="admin" items="${adminList}">  
-								        <tr>  
-								         <td>${admin.username}</td>  
-								         <td>${admin.typename}</td>  
-								         <td><a href="delete_admin?userid=${admin.userid}&typeid=${admin.typeid}">Delete</a></td>    
-								        </tr>  
+								        	<tr>  
+								         	<td>${admin.username}</td>  
+								         	<td>${admin.typename}</td>  
+								         	<td><a href="delete_admin?userid=${admin.userid}&typeid=${admin.typeid}">Delete</a></td>    
+								        	</tr>  
 								       </c:forEach>  
 								       <c:if test="${adminList.size() == 0}">
 								       	<tr><td colspan="4">No admins </td></tr>  
@@ -160,8 +160,7 @@
 								       <tr>  
 								        <td class="heading">Username</td>  
 								        <td class="heading">Typename</td>  
-								        <td class="heading">Approve</td>  
-								        <td class="heading">Decline</td>  
+								        <td class="heading" colspan="2">Operations</td> 
 								       </tr>  
 								       <c:forEach var="request" items="${adminRequestList}">  
 								        <tr>  

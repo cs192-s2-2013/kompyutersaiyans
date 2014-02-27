@@ -62,4 +62,9 @@ public class AdminRequestServiceImpl implements AdminRequestService{
 	public List<AdminRequest> getAdminList(int typeid){
 		return adminrequestdao.getAdminList(typeid);
 	}
+	
+	@Override
+	public List<AdminRequest> getAdminListWithoutUser(int typeid, String username){
+		return adminrequestdao.getAdminListWithoutUser(typeid,username);
+	}
 }

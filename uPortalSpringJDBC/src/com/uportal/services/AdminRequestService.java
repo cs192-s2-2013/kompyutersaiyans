@@ -15,4 +15,5 @@ public interface AdminRequestService {
 	 public int getNumberOfAdminRequests(int typeid);
 	 public List<AdminRequest> getAdminRequestList(int typeid);
 	 public List<AdminRequest> getAdminList(int typeid);
+	 public List<AdminRequest> getAdminListWithoutUser(int typeid, String username);
 }

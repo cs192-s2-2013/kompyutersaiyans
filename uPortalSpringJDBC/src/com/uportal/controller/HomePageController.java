@@ -139,31 +139,31 @@ public class HomePageController {
 		 if(roles.indexOf("ADMIN_PORTAL") >= 0)
 		 {
 			adminRequestList.addAll(adminRequestService.getAdminRequestList(4)); 
-			adminList.addAll(adminRequestService.getAdminList(4)); 
+			adminList.addAll(adminRequestService.getAdminListWithoutUser(4,name)); 
 			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(4);
 		 }
 		 if(roles.indexOf("ADMIN_MAPS") >= 0)
 		 {
 			adminRequestList.addAll(adminRequestService.getAdminRequestList(5)); 
-			adminList.addAll(adminRequestService.getAdminList(5)); 
+			adminList.addAll(adminRequestService.getAdminListWithoutUser(5,name)); 
 			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(5);
 		 }
 		 if(roles.indexOf("ADMIN_BUDDY") >= 0)
 		 {
 			adminRequestList.addAll(adminRequestService.getAdminRequestList(6)); 
-			adminList.addAll(adminRequestService.getAdminList(6)); 
+			adminList.addAll(adminRequestService.getAdminListWithoutUser(6,name)); 
 			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(6);
 		 }
 		 if(roles.indexOf("ADMIN_CLASS") >= 0)
 		 {
 			adminRequestList.addAll(adminRequestService.getAdminRequestList(7)); 
-			adminList.addAll(adminRequestService.getAdminList(7)); 
+			adminList.addAll(adminRequestService.getAdminListWithoutUser(7,name)); 
 			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(7);
 		 }
 		 if(roles.indexOf("ADMIN_GYM") >= 0)
 		 {
 			adminRequestList.addAll(adminRequestService.getAdminRequestList(8)); 
-			adminList.addAll(adminRequestService.getAdminList(8)); 
+			adminList.addAll(adminRequestService.getAdminListWithoutUser(8,name)); 
 			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(8);
 		 }
 		 model.addAttribute("numberOfAdminRequests", numberOfAdminRequests);
