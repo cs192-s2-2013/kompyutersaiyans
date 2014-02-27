@@ -94,8 +94,8 @@ public class ResourceDaoImpl implements ResourceDao{
 		 jdbcTemplate.update(updateCounter);
 	}
 	
-	public void updateHotline(int ID, String name, String info){
-		String sql = "update hotlines set id="+ID+", name='"+"', info='"+"' where 1";
+	public void updateHotline(String id, String name, String info){
+		String sql = "update hotlines set id="+id+", name='"+name+"', info='"+info+"' where 1";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		jdbcTemplate.update(sql);
 	}

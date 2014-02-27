@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -85,6 +87,13 @@ public class AdminController {
 		 adminRequestService.addAdmin(userid,typeid);
 		 adminRequestService.deleteAdminRequest(userid, typeid);
 		 return "redirect:/requestList";
+	 }
+	 
+	 @RequestMapping(value="/updateHotline", method=RequestMethod.POST)
+	 public @ResponseBody String updateHotline(@RequestParam(value="id") String id, @RequestParam(value="name") String name, @RequestParam(value="info") String info){
+		 System.out.println("Update hotline" + id + " " + name + " " + info);
+		 resourceService.updateHotline(id, name, info);
+		 return "AdminPage";
 	 }
 	 
 	 @RequestMapping("/delete_admin")

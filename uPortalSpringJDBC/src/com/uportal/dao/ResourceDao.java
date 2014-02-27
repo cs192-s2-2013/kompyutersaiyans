@@ -17,5 +17,5 @@ public interface ResourceDao {
 	public List<String> getRoles(int userid);
 	public int getHomePageCounter();
 	public void updateHomePageCounter(int views);
-	public void updateHotline(int ID, String name, String info);
+	public void updateHotline(String id, String name, String info);
 }

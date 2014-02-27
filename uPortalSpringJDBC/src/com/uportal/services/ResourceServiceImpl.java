@@ -69,7 +69,7 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 
 	@Override
-	public void updateHotline(int ID, String name, String info){
+	public void updateHotline(String ID, String name, String info){
 		resourcedao.updateHotline(ID, name, info);
 	}
 }
