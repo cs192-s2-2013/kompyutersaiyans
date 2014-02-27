@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uportal.domain.AdminRequest;
 import com.uportal.domain.User;
@@ -67,24 +68,9 @@ public class AdminController {
 	 }
 	 
 	 @RequestMapping("/requestList")
-	 public String request(ModelMap model, Principal principal) {
-		 model.addAttribute("request", "true");
-		 if(principal != null){
-			 String name = principal.getName();
-			 model.addAttribute("username", name);
-		 }
-		 List<ValueTuple> hotlineList = new ArrayList<ValueTuple>();
-		 hotlineList = resourceService.getHotlines();
-		 model.addAttribute("hotlineList", hotlineList);
-		 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
-		 model.addAttribute("numberOfAdminRequests", adminRequestService.getNumberOfAdminRequests());
-		 List<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
-		 adminRequestList = adminRequestService.getAdminRequestList();
-		 model.addAttribute("adminRequestList", adminRequestList);
-		 List<AdminRequest> adminList = new ArrayList<AdminRequest>();
-		 adminList = adminRequestService.getAdminList();
-		 model.addAttribute("adminList", adminList);
-		 return "AdminPage";
+	 public String request(ModelMap model, Principal principal, RedirectAttributes redirectAttributes) {
+		 redirectAttributes.addAttribute("request", "true");
+		 return "redirect:/AdminPage";
 	 }
 	 
 	 @RequestMapping("/decline_admin")

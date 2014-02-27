@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.ModelMap;  
 
@@ -107,7 +108,9 @@ public class HomePageController {
  }
  
  @RequestMapping("/AdminPage")
- public String AdminPage(ModelMap model, Principal principal){
+ public String AdminPage(ModelMap model, Principal principal, @RequestParam(required = false) String request){
+	 if(request != null)
+		 model.addAttribute("request", request);
 	 if(principal != null){
 		 String name = principal.getName();
 		 model.addAttribute("username", name);
