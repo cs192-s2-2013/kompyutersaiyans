@@ -89,7 +89,7 @@ public class AdminController {
 		 return "redirect:/requestList";
 	 }
 	 
-	 @RequestMapping(value="/updateHotline", method=RequestMethod.POST)
+	 @RequestMapping(value="/hotline_update", method=RequestMethod.GET)
 	 public @ResponseBody String updateHotline(@RequestParam(value="id") String id, @RequestParam(value="name") String name, @RequestParam(value="info") String info){
 		 System.out.println("Update hotline" + id + " " + name + " " + info);
 		 resourceService.updateHotline(id, name, info);
