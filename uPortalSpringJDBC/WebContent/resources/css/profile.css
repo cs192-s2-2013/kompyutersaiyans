@@ -84,3 +84,7 @@
 #prof-links button i{
 	font-size: 6em;
 }
+
+#profile-buttons{
+	min-width: 275px;
+}
