@@ -243,6 +243,7 @@
 								 <p id="status"></p>
 								 <ul class="states">
 									<li class="warning">When editing hotline numbers, please separate them with asterisk.</li>
+									<li class="warning">Saving duplicate IDs will remove the older entry.</li>
 								</ul>
 							</article>
 						</div>

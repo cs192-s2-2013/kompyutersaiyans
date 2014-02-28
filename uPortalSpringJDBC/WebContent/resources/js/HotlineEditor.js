@@ -41,9 +41,12 @@ function Save(){
     tdName.html(tdName.children("input[type=text]").val());
     tdInfo.html(tdInfo.children("input[type=text]").val());
     tdButtons.html("<button class='btnEdit'>Edit</button><button class='btnDelete'>Delete</button>");
- 
     $(".btnEdit").bind("click", Edit);
     $(".btnDelete").bind("click", Delete);
+    //history.go(0);
+    //window.location.reload(true);
+    window.location.href = "AdminPage#tab-5";
+    //window.location = window.location;
 };
 
 function Delete(){
