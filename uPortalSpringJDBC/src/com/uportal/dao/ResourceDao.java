@@ -18,4 +18,5 @@ public interface ResourceDao {
 	public int getHomePageCounter();
 	public void updateHomePageCounter(int views);
 	public void updateHotline(String id, String name, String info);
+	public void deleteHotline(String id);
 }

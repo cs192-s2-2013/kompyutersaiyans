@@ -227,7 +227,6 @@
 								        <td class="heading">Options</td>
 								       </tr>  
 								       
-								       <tbody>
 								       <c:forEach var="tel" items="${hotlineList}">
 								        <tr>  
 								       	 <td>${tel.getValue()}</td>
@@ -236,6 +235,7 @@
 								         <td><button class="btnEdit">Edit</button><button class="btnDelete">Delete</button></td>
 								        </tr>  
 								       </c:forEach>
+								       <tbody>
 								       </tbody>    
 								      </table>  
 								      <button id="btnAdd">add new</button>

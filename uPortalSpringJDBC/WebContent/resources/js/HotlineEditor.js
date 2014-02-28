@@ -24,15 +24,17 @@ function Save(){
     tinfo = tdInfo.children("input[type=text]").val();
     
     if (tid=="" || tname=="" || tinfo==""){
-    	alert('Please complete the entries.');
+    	alert('Please complete the fields.');
     	return;
     }
     
   //update database
     $.ajax({  
-    	type: "GET",
-        url : "/hotline_update",   
-        data : "id=" + tid + "&name=" + tname+ "&info=" + tinfo,
+    	type: 'GET',
+        url : 'hotline_update',
+        data: ({id: tid, name: tname, info: tinfo}),
+        success: function(r){$("#status").html("&nbsp&nbsp&nbsp&nbspSuccessfully updated.");},
+        //error: function(e){alert(e);}
        });
     
     tdID.html(tdID.children("input[type=text]").val());
@@ -42,7 +44,21 @@ function Save(){
  
     $(".btnEdit").bind("click", Edit);
     $(".btnDelete").bind("click", Delete);
-    $("#status").html("&nbsp&nbsp&nbsp&nbspSuccessfully updated.");
+};
+
+function Delete(){
+    var par = $(this).parent().parent(); //tr
+    var tdID = par.children("td:nth-child(1)");
+    tid = tdID.html();
+    //tid = tdID.children("input[type=text]").val();
+    $.ajax({  
+    	type: 'GET',
+        url : 'hotline_delete',
+        data: ({id: tid}),
+        success: function(r){$("#status").html("&nbsp&nbsp&nbsp&nbspHotline "+ tid +" removed.");},
+        //error: function(e){alert(tid);}
+       });
+    par.remove();
 };
 
 function Edit(){
@@ -52,21 +68,24 @@ function Edit(){
     var tdInfo = par.children("td:nth-child(3)");
     var tdButtons = par.children("td:nth-child(4)");
 
+    tid = tdID.html();
+
     tdID.html("<input type='text' id='txtID' value='"+tdID.html()+"'/>");
     tdName.html("<input type='text' id='txtName' value='"+tdName.html()+"'/>");
     tdInfo.html("<input type='text' id='txtInfo' value='"+tdInfo.html()+"'/>");
     tdButtons.html("<button class='btnSave'>Save</button>");
+    
+    $.ajax({  
+    	type: 'GET',
+        url : 'hotline_delete',
+        data: ({id: tid}),
+        success: function(r){$("#status").html("&nbsp&nbsp&nbsp&nbspEditing");},
+        error: function(e){alert(e);}
+       });
  
     $(".btnSave").bind("click", Save);
     $(".btnEdit").bind("click", Edit);
     $(".btnDelete").bind("click", Delete);
-    $("#status").html("");
-};
-
-function Delete(){
-    var par = $(this).parent().parent(); //tr
-    var tdID = par.children("td:nth-child(1)");
-    par.remove();
     $("#status").html("");
 };
 
