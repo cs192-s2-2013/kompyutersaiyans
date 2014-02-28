@@ -50,14 +50,14 @@
 	
 		<c:if test="${isPortalAdmin != true}">
 			<div>
-				<a href="request_portal">Request to be a PORTAL admin</a>
+				<a href="send?typeid=4">Request to be a PORTAL admin</a>
 			</div>
 			<br>
 		</c:if>
 		
 		<c:if test="${isMapAdmin != true}">
 			<div>
-				<a href="request_maps">Request to be a UP MAP admin</a>
+				<a href="send?typeid=5">Request to be a UP MAP admin</a>
 			</div>
 			<br>
 		</c:if>
@@ -65,7 +65,7 @@
 		
 		<c:if test="${isBuddyAdmin != true}">
 			<div>
-				<a href="request_buddy">Request to be a STUDY BUDDY admin</a>
+				<a href="send?typeid=6">Request to be a STUDY BUDDY admin</a>
 			</div>
 			<br>
 		</c:if>
@@ -73,7 +73,7 @@
 		<c:if test="${department == 'Department of Computer Science'}">
 			<c:if test="${isClassAdmin != true}">
 				<div>
-					<a href="request_class">Request to be an ONLINE CLASSROOM admin</a>
+					<a href="send?typeid=7">Request to be an ONLINE CLASSROOM admin</a>
 				</div>
 				<br>
 			</c:if>
@@ -82,7 +82,7 @@
 		<c:if test="${college == 'College of Engineering' || college == 'College of Science'}">
 			<c:if test="${isGymAdmin != true}">
 				<div>
-					<a href="request_gym">Request to be a BRAIN GYM admin</a>
+					<a href="send?typeid=8">Request to be a BRAIN GYM admin</a>
 				</div>
 				<br>
 			</c:if>

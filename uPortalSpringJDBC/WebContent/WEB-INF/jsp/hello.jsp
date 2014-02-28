@@ -30,23 +30,31 @@
 			</div>
 		</div>
 	</div>
-	<div class="pure-g-r" id="prof-links">	
-		<a class="pure-u-1-4" href="#" title="visit UP Map"><button class="pure-button"><i class="fa fa-laptop"></i><br>UP Map</button></a>
-		<a class="pure-u-1-4" href="#" title="visit Study Buddy"><button class="pure-button"><i class="fa fa-money"></i><br>Study Buddy</button></a>
-		<c:if test="${college == 'College of Engineering' || college == 'College of Science' || roles.get(0) == 'GOD'}">
-			<a class="pure-u-1-4" href="#" title="visit Brain Gym"><button class="pure-button"><i class="fa fa-youtube-play"></i><br>Brain Gym</button></a>
-		</c:if>
-		<c:if test="${college != 'College of Engineering' && college != 'College of Science' && roles.get(0) != 'GOD'}">
-			<span class="pure-u-1-4"><button  class="pure-u-1-4 pure-button" title="available to College of Engineering and Science students only" disabled><i class="fa fa-youtube-play"></i><br>Brain Gym</button></span>
-		</c:if>
-		<c:if test="${department == 'Department of Computer Science' ||  roles.get(0) == 'GOD'}">
-			<a class="pure-u-1-4" href="#" title="visit Online Classroom"><button class="pure-button"><i class="fa fa-cut"></i><br>Classroom</button></a>
-		</c:if>
-		<c:if test="${department != 'Department of Computer Science' &&  roles.get(0) != 'GOD'}">
-			<span class="pure-u-1-4"><button class="pure-u-1-4 pure-button" title="available to DCS students only" disabled><i class="fa fa-cut"></i><br>Classroom</button></span>
-		</c:if>
+	<div class="pure-g-r" id="prof-links">
+		<div class="pure-u-1-4" id="profile-buttons">
+			<a  href="#" title="visit UP Map"><button class="pure-button"><i class="fa fa-laptop"></i><br>UP Map</button></a>
+		</div>
+		<div class="pure-u-1-4" id="profile-buttons">
+			<a href="#" title="visit Study Buddy"><button class="pure-button"><i class="fa fa-money"></i><br>Study Buddy</button></a>
+		</div>
+		<div class="pure-u-1-4" id="profile-buttons">
+			<c:if test="${college == 'College of Engineering' || college == 'College of Science' || roles.indexOf('GOD') >= 0}">
+				<a href="#" title="visit Brain Gym"><button class="pure-button"><i class="fa fa-youtube-play"></i><br>Brain Gym</button></a>
+			</c:if>
+			<c:if test="${college != 'College of Engineering' && college != 'College of Science' && roles.indexOf('GOD') < 0}">
+				<button  class="pure-button" title="available to College of Engineering and Science students only" disabled><i class="fa fa-youtube-play"></i><br>Brain Gym</button>
+			</c:if>
+		</div>
+		<div class="pure-u-1-4" id="profile-buttons">
+			<c:if test="${department == 'Department of Computer Science' ||  roles.indexOf('GOD') >= 0}">
+				<a href="#" title="visit Online Classroom"><button class="pure-button"><i class="fa fa-cut"></i><br>Classroom</button></a>
+			</c:if>
+			<c:if test="${department != 'Department of Computer Science' &&  roles.indexOf('GOD') < 0}">
+				<button class="pure-button" title="available to DCS students only" disabled><i class="fa fa-cut"></i><br>Classroom</button>
+			</c:if>
+		</div>
 	</div>
-	<c:if test="${roles.get(0) != 'GOD'}">
+	<c:if test="${roles.indexOf('GOD') < 0}">
 		<div align="center">
 			<a href="request">Request to be an admin</a>
 		</div>
