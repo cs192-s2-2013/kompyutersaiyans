@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uportal.services.ResourceService;
 
@@ -52,7 +53,7 @@ public class CounterController {
 	/*public String checkCounter(
 			@CookieValue(value = "hitCounter", defaultValue = "0") Long hitCounter,
 			HttpServletResponse response, ModelMap model, Principal principal) { */
-	public String checkCounter(ModelMap model, Principal principal) {
+	public String checkCounter(ModelMap model, Principal principal, RedirectAttributes redirectAttributes) {
 		/*
 		hitCounter -= hitCounter;
 		Cookie counter = new Cookie("hitCounter", hitCounter.toString());
@@ -65,9 +66,9 @@ public class CounterController {
 		}
 		int newViews = 0;
 		resourceService.updateHomePageCounter(newViews);
-		model.addAttribute("homePageCounter", newViews);
-		model.addAttribute("reset_success", "true");
-		return "AdminPage";
+		//model.addAttribute("homePageCounter", newViews);
+		redirectAttributes.addAttribute("reset_success", "true");
+		return "redirect:/AdminPage";
 	}
 
 }

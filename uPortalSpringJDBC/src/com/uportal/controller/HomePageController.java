@@ -108,13 +108,16 @@ public class HomePageController {
  }
  
  @RequestMapping("/AdminPage")
- public String AdminPage(ModelMap model, Principal principal, @RequestParam(required = false) String request, @RequestParam(required = false) String seeAdminList){
+ public String AdminPage(ModelMap model, Principal principal, @RequestParam(required = false) String request, @RequestParam(required = false) String seeAdminList, @RequestParam(required = false) String reset_success){
 	 if(request != null)
 		 model.addAttribute("request", request);
 	 if(seeAdminList != null)
 		 model.addAttribute("seeAdminList", seeAdminList);
+	 if(reset_success != null)
+		 model.addAttribute("reset_success", reset_success);
 	 String name = principal.getName();
 	 model.addAttribute("username", name);
+	 model.addAttribute("isAdmin", "true");
 	 List<ValueTuple> hotlineList = new ArrayList<ValueTuple>();
 	 hotlineList = resourceService.getHotlines();
 	 model.addAttribute("hotlineList", hotlineList);
