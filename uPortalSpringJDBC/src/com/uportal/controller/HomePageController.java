@@ -94,16 +94,14 @@ public class HomePageController {
 	 List<ValueTuple> hotlineList1 = new ArrayList<ValueTuple>();
 	 List<ValueTuple> hotlineList2 = new ArrayList<ValueTuple>();
 	 int size = hotlineList.size(), y = (int) Math.ceil(size/2);
-	 for (int i=0; i<=y; i++){
+	 for (int i=0; i<y; i++){
 		 hotlineList1.add(hotlineList.get(i));
 	 }
-	 for (int i=y+1; i<size; i++){
+	 for (int i=y; i<size; i++){
 		 hotlineList2.add(hotlineList.get(i));
 	 }
 	 model.addAttribute("hotlineList1", hotlineList1);
 	 model.addAttribute("hotlineList2", hotlineList2);
-
-	 
 	 return "hotlines";
  }
  

@@ -34,7 +34,7 @@ function Save(){
         url : 'hotline_update',
         data: ({id: tid, name: tname, info: tinfo}),
         success: function(r){$("#status").html("&nbsp&nbsp&nbsp&nbspSuccessfully updated.");},
-        error: function(e){alert(e);}
+        //error: function(e){alert(e);}
        });
     
     tdID.html(tdID.children("input[type=text]").val());
@@ -68,10 +68,20 @@ function Edit(){
     var tdInfo = par.children("td:nth-child(3)");
     var tdButtons = par.children("td:nth-child(4)");
 
+    tid = tdID.html();
+
     tdID.html("<input type='text' id='txtID' value='"+tdID.html()+"'/>");
     tdName.html("<input type='text' id='txtName' value='"+tdName.html()+"'/>");
     tdInfo.html("<input type='text' id='txtInfo' value='"+tdInfo.html()+"'/>");
     tdButtons.html("<button class='btnSave'>Save</button>");
+    
+    $.ajax({  
+    	type: 'GET',
+        url : 'hotline_delete',
+        data: ({id: tid}),
+        success: function(r){$("#status").html("&nbsp&nbsp&nbsp&nbspEditing");},
+        error: function(e){alert(e);}
+       });
  
     $(".btnSave").bind("click", Save);
     $(".btnEdit").bind("click", Edit);
