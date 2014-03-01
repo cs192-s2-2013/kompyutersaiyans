@@ -116,10 +116,10 @@
 								<center> 
 									<h1>Hotline List | uPortal </h1> 
 									<table class="pure-table pure-table-striped" width="95%" id="tblData">  
-										<col width="5%">
+										<col width="2%">
 										<col width="30%">
 										<col width="55%">
-										<col width="10%">
+										<col width="15%">
 										<thead>
 											<tr>  
 												<th>ID</th>
@@ -135,14 +135,14 @@
 													<td>${tel.getLabel()}</td>  
 													<td>${tel.getTelInfo()}</td>
 													<td>
-														<button class="pure-button" id="modifyHtln">Edit</button>
-														<button class="pure-button" id="modifyHtln">Delete</button>
+														<button class='btnEdit'>Edit</button>
+														<button class='btnDelete'>Delete</button>
 													</td>
 												</tr>  
 											</c:forEach>
 										</tbody>    
 									</table>  
-									<button class="pure-button" id="btnAdd">add new</button>
+									<button class="pure-button" id="btnAdd">Add new</button>
 								</center>  
 								<p id="status"></p>
 								<ul class="states">

@@ -9,9 +9,11 @@
 		<link rel="stylesheet" href=<c:url value="/resources/font-awesome/css/font-awesome.min.css"/>>
 		<link rel="stylesheet" type="text/css" href=<c:url value="/resources/css/ie.css"/>>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-		<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="js/jquery-1.7.2.min.js"><\/script>');</script>
+		<script type="text/javascript">
+			window.jQuery || document.write("<script type='text/javascript' src='js/jquery-1.7.2.min.js'></script>");
+		</script>
 		<script type="text/javascript" src= <c:url value = "/resources/js/jquery.main.js"/>></script>
-		<%--s<script type="text/javascript" src= <c:url value = "/resources/js/jquery-1.7.2.min.js"/>></script>--%>
+		<%--<script type="text/javascript" src= <c:url value = "/resources/js/jquery-2.1.0.js"/>></script> --%>
 		<script type="text/javascript" src= <c:url value = "/resources/js/HotlineEditor.js"/>></script>
 		<link rel="stylesheet" href=<c:url value="/resources/css/pure.css"/>>
 		<link rel="stylesheet" type="text/css" href=<c:url value="/resources/css/pricing.css"/>>
