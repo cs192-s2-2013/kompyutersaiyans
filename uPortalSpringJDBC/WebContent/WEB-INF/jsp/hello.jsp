@@ -42,7 +42,7 @@
 				<a href="https://uportal-kompyutersaiyans.rhcloud.com/BrainGym" title="visit Brain Gym"><button class="pure-button"><img src=<c:url value="/resources/imgs/Brain-Gym.png"/>></button></a>
 			</c:if>
 			<c:if test="${college != 'College of Engineering' && college != 'College of Science' && roles.indexOf('GOD') < 0}">
-				<button  class="pure-button" title="available to College of Engineering and Science students only" disabled><i class="fa fa-youtube-play"></i><br>Brain Gym</button>
+				<button  class="pure-button" title="available to College of Engineering and Science students only" disabled><img src=<c:url value="/resources/imgs/Brain-Gym.png"/>></button>
 			</c:if>
 		</div>
 		<div class="pure-u-1-4" id="profile-buttons">
