@@ -11,19 +11,21 @@ of the UP hotlines just like registered users.
 A track counter also has been set up to track the number of visitors visiting the site.
 
 Database tool
-===============
+--------------
 MySQL
+JDBC
 
 IDE
-===============
+--------------
 Java Eclipse EEE
 
 Framework
-===============
+---------------
 Spring MVC with JDBC
 
 Tools:
 [Xampp](http://www.apachefriends.org/download.html)
+
 [Eclipse Java EEE, plug-ins available on it](http://www.eclipse.org/)
 
 
