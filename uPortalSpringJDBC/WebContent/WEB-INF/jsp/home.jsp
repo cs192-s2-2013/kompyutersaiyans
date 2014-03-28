@@ -41,19 +41,19 @@
 					<h3>UP Map</h3>
 					<p id="apps-desc">Not yet familiar with the whereabouts of different places in UP Diliman? Try this app! Surely, it will help you how to go there as fast as possible!</p>
 					<div class="vis-site">
-						<a href="map" title="visit UP Map">visit site <i class="fa fa-arrow-right"></i></a>
+						<a href="https://uportal-kompyutersaiyans.rhcloud.com/UPMap" title="visit UP Map">visit site <i class="fa fa-arrow-right"></i></a>
 					</div>
 				</div> 
 				<div class="pure-u-1-3" style="font-size: 45px;">
 				   
-					<img src=<c:url value="/resources/imgs/goup.jpg"/> width="250" height="250">
+					<img src=<c:url value="/resources/imgs/goup.png"/> width="250" height="250">
 				</div>
 			</div> 
 			
 			
 			<div class="apps-desc-div">
 				<div class="pure-u-1-3" style="font-size: 45px;">
-					<img src=<c:url value="/resources/imgs/braingym.jpg"/> width="250" height="250">
+					<img src=<c:url value="/resources/imgs/Brain-Gym.png"/> width="250" height="250">
 				</div> 
 				<div class="pure-u-2-3">
 					<h3>Brain Gym</h3>
@@ -73,7 +73,7 @@
 				<h3>Study Buddy</h3>
 				<p id="apps-desc">Having a hard time managing your study life with the many luring stuff meddling upon your studies? Study Buddy is your best friend!</p>
 				<div class="vis-site">
-					<a href="#" title="visit Study Buddy">visit site <i class="fa fa-arrow-right"></i></a>
+					<a href="https://uportal-kompyutersaiyans.rhcloud.com/StudyBuddy" title="visit Study Buddy">visit site <i class="fa fa-arrow-right"></i></a>
 				</div>
 			</div> 
 			<div class="pure-u-1-3" style="font-size: 45px; margin-bottom: 80px;">
@@ -89,7 +89,6 @@
 				<div class="pure-u-1-3">
 					<h4>Sherlyne Francia</h4>
 					<img src=<c:url value="/resources/imgs/sher.jpg"/> width="250" height="250">
-					<
 				</div>
 				<div class="pure-u-1-3">
 					<h4>Denise Alyssa Francisco</h4>

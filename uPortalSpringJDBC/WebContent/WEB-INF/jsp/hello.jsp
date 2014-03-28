@@ -32,14 +32,14 @@
 	</div>
 	<div class="pure-g-r" id="prof-links">
 		<div class="pure-u-1-4" id="profile-buttons">
-			<a  href="#" title="visit UP Map"><button class="pure-button"><i class="fa fa-laptop"></i><br>UP Map</button></a>
+			<a  href="https://uportal-kompyutersaiyans.rhcloud.com/UPMap" title="visit UP Map"><button class="pure-button"><img src=<c:url value="/resources/imgs/goup.png"/>></button></a>
 		</div>
 		<div class="pure-u-1-4" id="profile-buttons">
-			<a href="#" title="visit Study Buddy"><button class="pure-button"><i class="fa fa-money"></i><br>Study Buddy</button></a>
+			<a href="https://uportal-kompyutersaiyans.rhcloud.com/StudyBuddy" title="visit Study Buddy"><button class="pure-button"><i class="fa fa-money"></i><br>Study Buddy</button></a>
 		</div>
 		<div class="pure-u-1-4" id="profile-buttons">
 			<c:if test="${college == 'College of Engineering' || college == 'College of Science' || roles.indexOf('GOD') >= 0}">
-				<a href="#" title="visit Brain Gym"><button class="pure-button"><i class="fa fa-youtube-play"></i><br>Brain Gym</button></a>
+				<a href="https://uportal-kompyutersaiyans.rhcloud.com/BrainGym" title="visit Brain Gym"><button class="pure-button"><img src=<c:url value="/resources/imgs/Brain-Gym.png"/>></button></a>
 			</c:if>
 			<c:if test="${college != 'College of Engineering' && college != 'College of Science' && roles.indexOf('GOD') < 0}">
 				<button  class="pure-button" title="available to College of Engineering and Science students only" disabled><i class="fa fa-youtube-play"></i><br>Brain Gym</button>
@@ -47,7 +47,7 @@
 		</div>
 		<div class="pure-u-1-4" id="profile-buttons">
 			<c:if test="${department == 'Department of Computer Science' ||  roles.indexOf('GOD') >= 0}">
-				<a href="#" title="visit Online Classroom"><button class="pure-button"><i class="fa fa-cut"></i><br>Classroom</button></a>
+				<a href="https://uportal-kompyutersaiyans.rhcloud.com/OnlineClassroom" title="visit Online Classroom"><button class="pure-button"><i class="fa fa-cut"></i><br>Classroom</button></a>
 			</c:if>
 			<c:if test="${department != 'Department of Computer Science' &&  roles.indexOf('GOD') < 0}">
 				<button class="pure-button" title="available to DCS students only" disabled><i class="fa fa-cut"></i><br>Classroom</button>
