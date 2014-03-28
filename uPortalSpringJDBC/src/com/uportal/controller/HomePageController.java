@@ -56,6 +56,7 @@ public class HomePageController {
 	 int newViews = resourceService.getHomePageCounter()+1;
 	 resourceService.updateHomePageCounter(newViews);
 	 model.addAttribute("homePageCounter", newViews);
+	
 	 return "home";
 
  }
