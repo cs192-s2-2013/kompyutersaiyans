@@ -13,6 +13,9 @@
 	        <a href="register" title="register now"><button class="pure-button" id="getstarted">Get started <i class="fa fa-angle-double-right"></i></button></a>
 	    </h1>
 	</div>
+	
+	
+	
 	<div class="cont-div">
 		<div class="pure-g-r">
 			<div class="apps-desc-div">
@@ -42,14 +45,15 @@
 					</div>
 				</div> 
 				<div class="pure-u-1-3" style="font-size: 45px;">
-					<i class="fa fa-linux fa-5x" style="float:right"></i>
+				   
+					<img src=<c:url value="/resources/imgs/goup.jpg"/> width="250" height="250">
 				</div>
 			</div> 
 			
 			
 			<div class="apps-desc-div">
 				<div class="pure-u-1-3" style="font-size: 45px;">
-					<i class="fa fa-twitter fa-5x"></i>
+					<img src=<c:url value="/resources/imgs/braingym.jpg"/> width="250" height="250">
 				</div> 
 				<div class="pure-u-2-3">
 					<h3>Brain Gym</h3>
@@ -79,34 +83,32 @@
 	</div>
 	
 	<div class="about-us">
-		<h2 style="text-align: center; padding: 17px;">About Us</h2>
+		<h2 style="text-align: center; padding: 17px;">Developers</h2>
 		<div class="cont-div">
 			<div class="pure-g-r" style="text-align: center;">
 				<div class="pure-u-1-3">
 					<h4>Sherlyne Francia</h4>
-					<img src=<c:url value="/resources/imgs/troll1.png"/> width="250" height="250">
-					<p id="about-indiv">Blah blah blah. Something about Sherlyne Francia. Lala lala lala</p>
+					<img src=<c:url value="/resources/imgs/sher.jpg"/> width="250" height="250">
+					<
 				</div>
 				<div class="pure-u-1-3">
 					<h4>Denise Alyssa Francisco</h4>
-					<img src=<c:url value="/resources/imgs/troll2.png"/> width="250" height="250">
-					<p id="about-indiv">Blah blah blah. Something about Denise Alyssa Francisco. Lala lala lala</p>
-				</div>
-				<div class="pure-u-1-3">
-					<h4>Mark Paolo Navata</h4>
-					<img src=<c:url value="/resources/imgs/troll3.png"/> width="250" height="250">
-					<p id="about-indiv">Blah blah blah. Something about Mark Paolo Navata. Lala lala lala</p>
-				</div>
-				<div class="pure-u-1-3">
-					<h4>Joshua Frank Rayo</h4>
-					<img src=<c:url value="/resources/imgs/troll4.png"/> width="250" height="250">
-					<p id="about-indiv">Blah blah blah. Something about Joshua Frank Rayo. Lala lala lala</p>
+					<img src=<c:url value="/resources/imgs/denise.jpg"/> width="250" height="250">
+					
 				</div>
 				<div class="pure-u-1-3">
 					<h4>Erwin Sanchez</h4>
-					<img src=<c:url value="/resources/imgs/troll5.png"/> width="250" height="250">
-					<p id="about-indiv">Blah blah blah. Something about Erwin Sanchez. Lala lala lala</p>
+					<img src=<c:url value="/resources/imgs/awin.jpg"/> width="250" height="250">
 				</div>
+				<div class="pure-u-1-3">
+					<h4>Joshua Frank Rayo</h4>
+					<img src=<c:url value="/resources/imgs/frank.jpg"/> width="250" height="250">
+				</div>
+				<div class="pure-u-1-3">
+					<h4>Mark Paolo Navata</h4>
+					<img src=<c:url value="/resources/imgs/mark.jpg"/> width="250" height="250">
+				</div>
+				
 			</div>
 		</div>
 	</div>
