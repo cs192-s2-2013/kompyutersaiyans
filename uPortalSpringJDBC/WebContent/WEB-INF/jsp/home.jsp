@@ -88,24 +88,24 @@
 			<div class="pure-g-r" style="text-align: center;">
 				<div class="pure-u-1-3">
 					<h4>Sherlyne Francia</h4>
-					<img src=<c:url value="/resources/imgs/sher.jpg"/> width="250" height="250">
+					<img src=<c:url value="/resources/imgs/sher.png"/> width="250" height="250">
 				</div>
 				<div class="pure-u-1-3">
 					<h4>Denise Alyssa Francisco</h4>
-					<img src=<c:url value="/resources/imgs/denise.jpg"/> width="250" height="250">
+					<img src=<c:url value="/resources/imgs/denise.png"/> width="250" height="250">
 					
 				</div>
 				<div class="pure-u-1-3">
 					<h4>Erwin Sanchez</h4>
-					<img src=<c:url value="/resources/imgs/awin.jpg"/> width="250" height="250">
+					<img src=<c:url value="/resources/imgs/awin.png"/> width="250" height="250">
 				</div>
 				<div class="pure-u-1-3">
 					<h4>Joshua Frank Rayo</h4>
-					<img src=<c:url value="/resources/imgs/frank.jpg"/> width="250" height="250">
+					<img src=<c:url value="/resources/imgs/frank.png"/> width="250" height="250">
 				</div>
 				<div class="pure-u-1-3">
 					<h4>Mark Paolo Navata</h4>
-					<img src=<c:url value="/resources/imgs/mark.jpg"/> width="250" height="250">
+					<img src=<c:url value="/resources/imgs/mark.png"/> width="250" height="250">
 				</div>
 				
 			</div>
