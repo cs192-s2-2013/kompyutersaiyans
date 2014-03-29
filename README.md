@@ -17,7 +17,7 @@ JDBC
 
 IDE
 --------------
-Java Eclipse EEE
+Java Eclipse EE
 
 Framework
 ---------------
@@ -26,7 +26,7 @@ Spring MVC with JDBC
 Tools:
 [Xampp](http://www.apachefriends.org/download.html)
 
-[Eclipse Java EEE, plug-ins available on it](http://www.eclipse.org/)
+[Eclipse Java EE, plug-ins available on it](http://www.eclipse.org/)
 
 
 
