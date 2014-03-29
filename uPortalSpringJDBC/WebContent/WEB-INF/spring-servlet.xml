@@ -37,6 +37,9 @@
  
  <bean id="adminRequestDao" class="com.uportal.dao.AdminRequestDaoImpl" />
  <bean id="adminRequestService" class="com.uportal.services.AdminRequestServiceImpl" />
+ 
+ <bean id="feedbackDao" class="com.uportal.dao.FeedbackDaoImpl" />
+ <bean id="feedbackService" class="com.uportal.services.FeedbackServiceImpl" />
 
  <!-- declare datasource bean -->
  <bean id="dataSource"

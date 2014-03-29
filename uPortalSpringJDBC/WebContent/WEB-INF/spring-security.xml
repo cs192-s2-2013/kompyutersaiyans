@@ -12,6 +12,7 @@
 		<intercept-url pattern="/private*" access="ROLE_GENERAL, ROLE_ADMIN" />
 		<intercept-url pattern="/getList*" access="ROLE_ADMIN" />
 		<intercept-url pattern="/AdminPage*" access="ROLE_GOD, ROLE_ADMIN" />
+		<intercept-url pattern="/feeds*" access="ROLE_GOD, ROLE_ADMIN" />
 		<intercept-url pattern="/reset*" access="ROLE_GOD, ROLE_ADMIN" />
 		<form-login login-page="/login" default-target-url="/welcome"
 			authentication-failure-url="/loginfailed" />

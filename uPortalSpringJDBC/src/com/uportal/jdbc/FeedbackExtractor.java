@@ -6,19 +6,17 @@ import java.sql.SQLException;
 import org.springframework.dao.DataAccessException;  
 import org.springframework.jdbc.core.ResultSetExtractor;  
 
-import com.uportal.domain.AdminRequest;
+import com.uportal.domain.Feedback;
 
-public class FeedbackExtractor {
-	public FeedbackExtractor extractData(ResultSet resultSet) throws SQLException,  
+public class FeedbackExtractor implements ResultSetExtractor<Feedback>{
+	public Feedback extractData(ResultSet resultSet) throws SQLException,  
 	   DataAccessException {  
 	    
-	  AdminRequest request = new AdminRequest();
+	  Feedback feed = new Feedback();
 	  
-	  request.setUserid(resultSet.getInt(1));
-	  request.setTypeid(resultSet.getInt(2));
-	  request.setUsername(resultSet.getString(3));
-	  request.setTypename(resultSet.getString(4));
+	  feed.setUsername(resultSet.getString(1));
+	  feed.setFeed(resultSet.getString(2));
 	  
-	  return request;  
+	  return feed;  
 	 }
 }
