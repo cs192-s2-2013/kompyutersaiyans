@@ -3,21 +3,15 @@ package com.uportal.controller;
 import java.security.Principal;
 import java.util.*;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.ModelMap;  
 
 import com.uportal.domain.User;
@@ -39,26 +33,15 @@ public class HomePageController {
  @Autowired
  DataSource dataSource;
  
- 
- /*
- public String homePage(ModelMap model, Principal principal,@CookieValue(value = "hitCounter", defaultValue = "0") Long hitCounter,
- HttpServletResponse response ) { */
  @RequestMapping(value="/home", method = RequestMethod.GET )
    public String homePage(ModelMap model, Principal principal) {
 	 if(principal != null){
 		 return "redirect:/welcome";
 	 }
-	 /*
- 	 hitCounter++;
- 	 Cookie counter = new Cookie("hitCounter", hitCounter.toString());
- 	 response.addCookie(counter);
-	 */
 	 int newViews = resourceService.getHomePageCounter()+1;
 	 resourceService.updateHomePageCounter(newViews);
 	 model.addAttribute("homePageCounter", newViews);
-	
 	 return "home";
-
  }
  
  @RequestMapping(value="/private", method = RequestMethod.GET)
@@ -107,13 +90,15 @@ public class HomePageController {
  }
  
  @RequestMapping("/AdminPage")
- public String AdminPage(ModelMap model, Principal principal, @RequestParam(required = false) String request, @RequestParam(required = false) String seeAdminList, @RequestParam(required = false) String reset_success){
+ public String AdminPage(ModelMap model, Principal principal, @RequestParam(required = false) String request, @RequestParam(required = false) String seeAdminList, @RequestParam(required = false) String reset_success, @RequestParam(required = false) String invitation){
 	 if(request != null)
 		 model.addAttribute("request", request);
 	 if(seeAdminList != null)
 		 model.addAttribute("seeAdminList", seeAdminList);
 	 if(reset_success != null)
 		 model.addAttribute("reset_success", reset_success);
+	 if(invitation != null)
+		 model.addAttribute("invitation", invitation);
 	 String name = principal.getName();
 	 model.addAttribute("username", name);
 	 model.addAttribute("isAdmin", "true");
@@ -123,6 +108,7 @@ public class HomePageController {
 	 model.addAttribute("homePageCounter", resourceService.getHomePageCounter());
 	 User user= userService.getUser(name);
 	 List<String> roles= resourceService.getRoles(user.getUserId());
+	 model.addAttribute("roles",roles);
 	 if(roles.indexOf("GOD") >= 0)
 	 {
 		 model.addAttribute("numberOfAdminRequests", adminRequestService.getNumberOfAdminRequests());
@@ -136,6 +122,7 @@ public class HomePageController {
 	 else
 	 {
 		 int numberOfAdminRequests = 0;
+		 int appsAdmin = 0;
 		 List<AdminRequest> adminRequestList = new ArrayList<AdminRequest>();
 		 List<AdminRequest> adminList = new ArrayList<AdminRequest>();
 		 if(roles.indexOf("ADMIN_PORTAL") >= 0)
@@ -143,35 +130,78 @@ public class HomePageController {
 			adminRequestList.addAll(adminRequestService.getAdminRequestList(4)); 
 			adminList.addAll(adminRequestService.getAdminListWithoutUser(4,name)); 
 			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(4);
+			appsAdmin++;
 		 }
 		 if(roles.indexOf("ADMIN_MAPS") >= 0)
 		 {
 			adminRequestList.addAll(adminRequestService.getAdminRequestList(5)); 
 			adminList.addAll(adminRequestService.getAdminListWithoutUser(5,name)); 
 			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(5);
+			appsAdmin++;
 		 }
 		 if(roles.indexOf("ADMIN_BUDDY") >= 0)
 		 {
 			adminRequestList.addAll(adminRequestService.getAdminRequestList(6)); 
 			adminList.addAll(adminRequestService.getAdminListWithoutUser(6,name)); 
 			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(6);
+			appsAdmin++;
 		 }
 		 if(roles.indexOf("ADMIN_CLASS") >= 0)
 		 {
 			adminRequestList.addAll(adminRequestService.getAdminRequestList(7)); 
 			adminList.addAll(adminRequestService.getAdminListWithoutUser(7,name)); 
 			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(7);
+			appsAdmin++;
 		 }
 		 if(roles.indexOf("ADMIN_GYM") >= 0)
 		 {
 			adminRequestList.addAll(adminRequestService.getAdminRequestList(8)); 
 			adminList.addAll(adminRequestService.getAdminListWithoutUser(8,name)); 
 			numberOfAdminRequests += adminRequestService.getNumberOfAdminRequests(8);
+			appsAdmin++;
 		 }
 		 model.addAttribute("numberOfAdminRequests", numberOfAdminRequests);
 		 model.addAttribute("adminRequestList", adminRequestList);
 		 model.addAttribute("adminList", adminList);
+		 model.addAttribute("appsAdmin", appsAdmin);
 	 }
+	 List<User> userList = userService.getUserList();
+	 
+	 
+	 for(int x = 0; x < userList.size(); x++)
+	 {
+		 if(userList.get(x).getCollege() != null)
+		 {
+			 if(userList.get(x).getCollege().trim().length() > 0)
+			 {
+				 String collegeid = userList.get(x).getCollege().trim();
+				 //System.out.println(collegeid + " " + userList.size());
+				 userList.get(x).setCollege(resourceService.getCollege(Integer.parseInt(collegeid)));;
+			 }
+		 }
+		 
+		 if(userList.get(x).getDepartment() != null)
+		 {
+			 if(userList.get(x).getDepartment().trim().length() > 0)
+			 {
+				 String deptid = userList.get(x).getDepartment().trim();
+				 //System.out.println(deptid + " " + userList.size());
+				 userList.get(x).setDepartment(resourceService.getDept(Integer.parseInt(deptid)));;
+			 }
+		 }
+		 
+		 if(userList.get(x).getCourse() != null)
+		 {
+			 if(userList.get(x).getCourse().trim().length() > 0) 
+			 {
+				 String courseid = userList.get(x).getCourse().trim();
+				 //System.out.println(courseid + " " + userList.size());
+				 userList.get(x).setCourse(resourceService.getCourse(Integer.parseInt(courseid)));;
+			 }
+		 }
+		 userList.get(x).setRoles(resourceService.getRoles(userList.get(x).getUserId()));
+	 }
+	 model.addAttribute("userList", userList);
 	 return "AdminPage";
  }
  

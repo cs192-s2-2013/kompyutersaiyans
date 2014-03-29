@@ -1,7 +1,6 @@
 package com.uportal.dao;
 
 import java.util.ArrayList;
-import java.sql.*;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -15,8 +14,6 @@ import com.uportal.jdbc.UserRowMapper;
 
 public class UserDaoImpl implements UserDao {
 
-	private boolean isDBinit = false;
-	
 	@Autowired
 	DataSource dataSource;
 	
@@ -92,7 +89,7 @@ public class UserDaoImpl implements UserDao {
 
 	public List<User> getUserList() {
 		ArrayList<User> userList = new ArrayList<User>();
-		String sql = "select * from users";
+		String sql = "select userid,firstname,lastname,email,username,password,collegeid,departmentid,courseid from users";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		userList = (ArrayList<User>) jdbcTemplate.query(sql, new UserRowMapper());

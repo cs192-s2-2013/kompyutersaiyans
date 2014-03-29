@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <t:userpage title="Welcome">
 	<div class="pbanner" >
@@ -59,5 +60,28 @@
 			<a href="request">Request to be an admin</a>
 		</div>
 	</c:if>
+	
+		<div class="cont-div" style="margin-bottom: 50px;">
+			<div class="pure-g-r">
+				<div class= "pure-u-1-3"  style="font-size: 15px; margin-top: 65px;">
+					Comments? Suggestions? Violent reactions?<br>
+					Send us a feedback!
+				</div>
+				<div class= "pure-u-2-3"  style="font-size: 12px;">
+					<div class="formdiv" >
+						<form:form method="post" action="/send_feedback">
+							<div class="pure-u-1-3" style="width: 170px;">
+								<textarea cols="18" style="resize:none; border: 1px solid #ccc; border-radius: 5px; padding: 7px;" name="name" rows="1" maxlength="25"  placeholder="name/alias" required="true"></textarea>
+								<button type="submit" class="pure-button pure-input-1-3 pure-button-primary" value="Save" style="background: #8e44ad; border-radius: 5px; width: 100px; margin-top: 10px; margin-left: 57px; height: 30px;">Submit</button>
+							</div>
+							<div class="pure-u-1-3">
+								<textarea style="overflow:auto;resize:none; border: 1px solid #ccc; border-radius: 5px; padding: 7px;" cols="55" rows="7" name="feedback" maxlength="1000" placeholder="Enter your feedback here: (Maximum of 1000 characters)" required="true"></textarea>
+							</div>
+						</form:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	
 </t:userpage>
 	

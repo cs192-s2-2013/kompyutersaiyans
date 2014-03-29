@@ -88,9 +88,9 @@
 											<th>Last Name</th>  
 											<th>Email</th>  
 											<th>Username</th>
-											<th>Password</th>  
-											<th>Edit</th>  
-											<th>Delete</th>
+											<th>College</th>
+											<th>Department</th>
+											<th>Course</th>
 										</tr>  
 									</thead>
 									<tbody>
@@ -101,9 +101,9 @@
 												<td>${user.lastName}</td>  
 												<td>${user.email}</td>  
 												<td>${user.username}</td>  
-												<td>${user.password}</td>
-												<td><a href="edit?userid=${user.userId}">Edit</a></td>  
-												<td><a href="delete?userid=${user.userId}">Delete</a></td>  
+												<td>${user.college}</td>
+												<td>${user.department }</td>
+												<td>${user.course }</td>
 											</tr>  
 										</c:forEach>  
 										<tr><td colspan="8"><a href="register">Add New User</a></td></tr>  
@@ -152,6 +152,88 @@
 							</article>
 						</div>
 						
+						<div id="tab-10">
+							<center>  
+								<h1>Send Admin Invitation | uPortal </h1>  
+								<table class="pure-table pure-table-striped"> 
+									<thead> 
+										<tr>  
+											<th>Username</th>  
+											<c:if test="${roles.indexOf('GOD') >= 0 }">
+												<th colspan="5">Operations</th>  
+											</c:if>
+											<c:if test="${roles.indexOf('GOD') < 0}">
+												<th colspan="${appsAdmin}">Operations</th>
+											</c:if>
+										</tr>  
+									</thead>
+									<tbody>
+										<c:forEach var="user" items="${userList}">  
+											<tr>  
+												<td>${user.username}</td>  
+												
+												<c:if test="${roles.indexOf('GOD') >= 0 || roles.indexOf('ADMIN_PORTAL') >= 0 }">
+													<c:if test="${user.roles.indexOf('GOD') >= 0 || user.roles.indexOf('ADMIN_PORTAL') >= 0 }">
+														<td>User is already a Portal Admin</td>
+													</c:if>
+													<c:if test="${user.roles.indexOf('GOD') < 0 && user.roles.indexOf('ADMIN_PORTAL') < 0 }">
+														<td><a href="send_invitation?userid=${user.userId}&typeid=4">Send Invitation to be a Portal Admin</a></td>
+													</c:if>
+												</c:if>
+												 
+												 <c:if test="${roles.indexOf('GOD') >= 0 || roles.indexOf('ADMIN_MAPS') >= 0 }">
+													<c:if test="${user.roles.indexOf('GOD') >= 0 || user.roles.indexOf('ADMIN_MAPS') >= 0 }">
+														<td>User is already a UP Map Admin</td>
+													</c:if>
+													<c:if test="${user.roles.indexOf('GOD') < 0 && user.roles.indexOf('ADMIN_MAPS') < 0 }">
+														<td><a href="send_invitation?userid=${user.userId}&typeid=5">Send Invitation to be a UP Map Admin</a></td>
+													</c:if> 
+												</c:if>
+												
+												<c:if test="${roles.indexOf('GOD') >= 0 || roles.indexOf('ADMIN_BUDDY') >= 0 }">
+													<c:if test="${user.roles.indexOf('GOD') >= 0 || user.roles.indexOf('ADMIN_BUDDY') >= 0 }">
+														<td>User is already a Study Buddy Admin</td>
+													</c:if>
+													<c:if test="${user.roles.indexOf('GOD') < 0 && user.roles.indexOf('ADMIN_BUDDY') < 0 }">
+														<td><a href="send_invitation?userid=${user.userId}&typeid=6">Send Invitation to be a Study Buddy Admin</a></td>
+													</c:if>
+												</c:if>
+												
+												<c:if test="${roles.indexOf('GOD') >= 0 || roles.indexOf('ADMIN_CLASS') >= 0 }">
+													<c:if test="${user.department == 'Department of Computer Science' ||  user.roles.indexOf('GOD') >= 0}">
+														<c:if test="${user.roles.indexOf('GOD') >= 0 || user.roles.indexOf('ADMIN_CLASS') >= 0 }">
+															<td>User is already an Online Classroom Admin</td>
+														</c:if>
+														<c:if test="${user.roles.indexOf('GOD') < 0 && user.roles.indexOf('ADMIN_CLASS') < 0 }">
+															<td><a href="send_invitation?userid=${user.userId}&typeid=7">Send Invitation to be an Online Classroom Admin</a></td>
+														</c:if>
+													</c:if>
+													<c:if test="${user.department != 'Department of Computer Science' &&  user.roles.indexOf('GOD') < 0}">
+														<td>N/A</td>
+													</c:if>
+												</c:if>
+												
+												<c:if test="${roles.indexOf('GOD') >= 0 || roles.indexOf('ADMIN_GYM') >= 0 }">
+													<c:if test="${user.college == 'College of Engineering' || user.college == 'College of Science' || user.roles.indexOf('GOD') >= 0}">
+														<c:if test="${user.roles.indexOf('GOD') >= 0 || user.roles.indexOf('ADMIN_GYM') >= 0 }">
+															<td>User is already a Brain Gym Admin</td>
+														</c:if>
+														<c:if test="${user.roles.indexOf('GOD') < 0 && user.roles.indexOf('ADMIN_GYM') < 0 }">
+															<td><a href="send_invitation?userid=${user.userId}&typeid=8">Send Invitation to be a Brain Gym Admin</a></td>
+														</c:if>
+													</c:if>
+													<c:if test="${user.college != 'College of Engineering' && user.college != 'College of Science' && user.roles.indexOf('GOD') < 0}">
+														<td>N/A</td>
+													</c:if>
+												</c:if>
+												
+											</tr>  
+										</c:forEach>  
+									</tbody>
+								</table>  
+							</center>  				
+						</div>
+						
 						<div id="tab-8" class="tab">
 							<article>
 								<div class="text-section">
@@ -177,13 +259,13 @@
 			<aside id="sidebar">
 				
 				<ul class="tabset buttons">
-					<c:if test="${request != true && seeAdminList != true && reset_success != true}">
+					<c:if test="${request != true && seeAdminList != true && reset_success != true && invitation != true}">
 						<li class="active">
 							<a href="#tab-1" class="ico1"><span>Dashboard</span><em></em></a>
 							<span class="tooltip"><span>Dashboard</span></span>
 						</li>
 					</c:if>
-					<c:if test="${request == true || seeAdminList == true || reset_success == true}">
+					<c:if test="${request == true || seeAdminList == true || reset_success == true || invitation == true}">
 						<li>
 							<a href="#tab-1" class="ico1"><span>Dashboard</span><em></em></a>
 							<span class="tooltip"><span>Dashboard</span></span>
@@ -217,6 +299,21 @@
 						<a href="#tab-4" class="ico3"><span>Users</span><em></em></a>
 						<span class="tooltip"><span>Users</span></span>
 					</li>
+					
+					<c:if test="${invitation == true}">
+					<li class="active">
+						<a href="#tab-10" class="ico3"><span>Send Admin Invitation</span><em></em></a>
+						<span class="tooltip"><span>Send Admin Invitation</span></span>
+					</li>
+					</c:if>
+					
+					<c:if test="${invitation != true}">
+					<li>
+						<a href="#tab-10" class="ico3"><span>Send Admin Invitation</span><em></em></a>
+						<span class="tooltip"><span>Send Admin Invitation</span></span>
+					</li>
+					</c:if>
+					
 					<li>
 						<a href="#tab-5" class="ico3"><span>Edit Hotlines</span><em></em></a>
 						<span class="tooltip"><span>Edit Hotlines</span></span>

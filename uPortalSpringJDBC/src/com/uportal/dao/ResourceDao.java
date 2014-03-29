@@ -2,7 +2,6 @@ package com.uportal.dao;
 
 import java.util.List;
 
-import com.uportal.domain.AdminRequest;
 import com.uportal.domain.ValueTuple;
 
 public interface ResourceDao {
