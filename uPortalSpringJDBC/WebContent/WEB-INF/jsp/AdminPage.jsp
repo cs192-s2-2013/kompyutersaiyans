@@ -40,7 +40,7 @@
 								        	<tr>  
 								         	<td>${admin.username}</td>  
 								         	<td>${admin.typename}</td>  
-								         	<td><a href="delete_admin?userid=${admin.userid}&typeid=${admin.typeid}">Delete</a></td>    
+								         	<td><a href="delete_admin?userid=${admin.userid}&typeid=${admin.typeid}" onclick="return confirm('Are you sure?')">Delete</a></td>    
 								        	</tr>  
 								       </c:forEach>  
 								       <c:if test="${adminList.size() == 0}">
