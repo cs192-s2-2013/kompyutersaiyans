@@ -10,8 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.uportal.domain.ValueTuple;
 import com.uportal.jdbc.ValueTupleRowMapper;
-import com.uportal.domain.AdminRequest;
-import com.uportal.jdbc.AdminRequestRowMapper;
 
 public class ResourceDaoImpl implements ResourceDao{
 	@Autowired

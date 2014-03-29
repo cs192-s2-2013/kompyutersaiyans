@@ -1,5 +1,7 @@
 package com.uportal.domain;
 
+import java.util.List;
+
 public class User {  
     
 private int userid;  
@@ -13,6 +15,7 @@ private String role;
 private String college;
 private String department;
 private String course;
+private List<String> roles;
 
 	public int getUserId() {  
 		return userid;  
@@ -101,6 +104,12 @@ private String course;
 	public void setCourse(String course){
 		this.course = course;
 	}
+
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
 }  
-
-
